@@ -2,4 +2,26 @@
     <qresource prefix="/back">
         <file>background.jpg</file>
     </qresource>
+    <qresource prefix="/font">
+        <file>Font/Anurati-Regular.otf</file>
+        <file>Font/Futura.ttc</file>
+        <file>Font/Kohinoor.ttc</file>
+        <file>Font/KohinoorBangla.ttc</file>
+        <file>Font/KohinoorGujarati.ttc</file>
+        <file>Font/KohinoorTelugu.ttc</file>
+        <file>Font/Kokonor.ttf</file>
+        <file>Font/MononokiNerdFont-Bold.ttf</file>
+        <file>Font/MononokiNerdFont-BoldItalic.ttf</file>
+        <file>Font/MononokiNerdFont-Italic.ttf</file>
+        <file>Font/MononokiNerdFont-Regular.ttf</file>
+        <file>Font/MononokiNerdFontMono-Bold.ttf</file>
+        <file>Font/MononokiNerdFontMono-BoldItalic.ttf</file>
+        <file>Font/MononokiNerdFontMono-Italic.ttf</file>
+        <file>Font/MononokiNerdFontMono-Regular.ttf</file>
+        <file>Font/MononokiNerdFontPropo-Bold.ttf</file>
+        <file>Font/MononokiNerdFontPropo-BoldItalic.ttf</file>
+        <file>Font/MononokiNerdFontPropo-Italic.ttf</file>
+        <file>Font/MononokiNerdFontPropo-Regular.ttf</file>
+        <file>Font/Please Read This.rtf</file>
+    </qresource>
 </RCC>
