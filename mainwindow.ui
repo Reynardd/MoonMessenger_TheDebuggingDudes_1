@@ -22,6 +22,12 @@
     <height>500</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Monaco</family>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -33,15 +39,16 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>130</y>
+      <y>133</y>
       <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
-      <bold>false</bold>
+      <family>Mononoki Nerd Font</family>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -55,10 +62,17 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>160</y>
+      <y>165</y>
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mononoki Nerd Font</family>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);</string>
@@ -71,10 +85,16 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>130</y>
+      <y>131</y>
       <width>171</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Futura</family>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
@@ -82,30 +102,48 @@ border-color: rgb(53, 71, 120);
 border: none;
 border-radius: 2px;</string>
     </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>160</y>
+      <y>163</y>
       <width>171</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Futura</family>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
 border-radius: 2px;
 border: none</string>
     </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>53</x>
       <y>250</y>
-      <width>121</width>
-      <height>16</height>
+      <width>151</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mononoki Nerd Font</family>
+      <pointsize>15</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);</string>
@@ -117,11 +155,18 @@ border: none</string>
    <widget class="QLabel" name="craete">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>250</y>
-      <width>91</width>
+      <x>205</x>
+      <y>252</y>
+      <width>101</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mononoki Nerd Font</family>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(39, 255, 100);</string>
@@ -136,11 +181,18 @@ border: none</string>
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>39</x>
+      <x>45</x>
       <y>200</y>
       <width>261</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Kohinoor Bangla</family>
+      <pointsize>15</pointsize>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">
@@ -163,20 +215,50 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>L o g i n</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>80</y>
-      <width>49</width>
-      <height>16</height>
+      <x>40</x>
+      <y>20</y>
+      <width>271</width>
+      <height>81</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Anurati</family>
+      <pointsize>30</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;M &lt;span style=&quot; color:#090d18;&quot;&gt;O&lt;/span&gt; O N&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;M E S S E N G E R&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="buddy">
+     <cstring></cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>17</y>
+      <width>58</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Moon</family>
+      <pointsize>34</pointsize>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>J</string>
     </property>
    </widget>
   </widget>
