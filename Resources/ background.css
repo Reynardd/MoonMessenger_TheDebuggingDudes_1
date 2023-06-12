@@ -1,0 +1,16 @@
+@charset "utf-8";
+	.texture_background
+{
+	background-image : url(texture_background.png);
+	background-repeat : no-repeat;
+}
+.upper_design_elements
+{
+	background-image : url(upper_design_elements.png);
+	background-repeat : no-repeat;
+}
+.lower_design_elements_1_
+{
+	background-image : url(lower_design_elements_1_.png);
+	background-repeat : no-repeat;
+}

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/back">
+        <file> background.svg</file>
+        <file> background.jpg</file>
+        <file>green.webp</file>
+    </qresource>
+</RCC>
