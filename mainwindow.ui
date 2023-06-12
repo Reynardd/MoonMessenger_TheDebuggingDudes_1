@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>350</width>
-    <height>0</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -78,7 +78,8 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
-border-color: rgb(53, 71, 120);</string>
+border-color: rgb(53, 71, 120);
+border: none</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
@@ -91,7 +92,9 @@ border-color: rgb(53, 71, 120);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(53, 71, 120);</string>
+     <string notr="true">background-color: rgb(53, 71, 120);
+
+border: none</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -134,6 +137,26 @@ border-color: rgb(53, 71, 120);</string>
       <width>261</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton {
+    border-radius: 8px;
+	border-color: rgb(6, 118, 255);
+	background-color: rgb(6, 118, 255);
+}
+
+QPushButton:hover {
+    background-color: #7FB3D5; 
+    border-style: outset; 
+    border-width: 2px;
+}
+
+QPushButton:pressed {
+    background-color: #4E7CA8; 
+    border-style: inset; 
+    border-width: 2px;
+}</string>
     </property>
     <property name="text">
      <string>Login</string>
