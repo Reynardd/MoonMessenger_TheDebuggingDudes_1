@@ -40,8 +40,8 @@
     </property>
     <property name="font">
      <font>
-      <family>B Esfehan</family>
-      <bold>true</bold>
+      <family>Segoe UI</family>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -55,7 +55,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>170</y>
+      <y>160</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -79,21 +79,22 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
 border-color: rgb(53, 71, 120);
-border: none</string>
+border: none;
+border-radius: 2px;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>170</y>
+      <y>160</y>
       <width>171</width>
       <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
-
+border-radius: 2px;
 border: none</string>
     </property>
    </widget>
@@ -122,6 +123,9 @@ border: none</string>
       <height>16</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(39, 255, 100);</string>
+    </property>
     <property name="text">
      <string>&lt;a href&gt;Create Account&lt;/a&gt;</string>
     </property>
@@ -141,7 +145,7 @@ border: none</string>
     <property name="styleSheet">
      <string notr="true">
 QPushButton {
-    border-radius: 8px;
+    border-radius: 16px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
 }
@@ -160,6 +164,19 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>80</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
