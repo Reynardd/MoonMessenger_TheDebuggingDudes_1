@@ -5,7 +5,6 @@ SignupWindow::SignupWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SignupWindow)
 {
-    this->setStyleSheet("#{background-image: url(:/back/background.jpg);}");
     ui->setupUi(this);
 }
 

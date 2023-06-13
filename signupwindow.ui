@@ -270,7 +270,7 @@ border: none</string>
     <string>New to Messenger?</string>
    </property>
   </widget>
-  <widget class="QWidget" name="centralwidget" native="true">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -279,7 +279,20 @@ border: none</string>
      <height>500</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/back/background.jpg);</string>
+   </property>
   </widget>
+  <zorder>widget</zorder>
+  <zorder>username</zorder>
+  <zorder>label_4</zorder>
+  <zorder>loginButton</zorder>
+  <zorder>password</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label</zorder>
+  <zorder>craete</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
  </widget>
  <resources/>
  <connections/>
