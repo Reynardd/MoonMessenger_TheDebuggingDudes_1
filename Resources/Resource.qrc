@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/back">
         <file>background.jpg</file>
+        <file>backgroundWin.jpg</file>
     </qresource>
     <qresource prefix="/font">
         <file>Font/Anurati-Regular.otf</file>

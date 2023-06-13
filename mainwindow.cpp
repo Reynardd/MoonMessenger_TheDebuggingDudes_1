@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
+    this->setStyleSheet("#centralwidget{background-image: url(:/back/backgroundWin.jpg);}");
 
 }
 
