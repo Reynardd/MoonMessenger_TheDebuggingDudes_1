@@ -15,6 +15,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_craete_linkActivated(const QString &link);
+
 private:
     Ui::MainWindow *ui;
 };

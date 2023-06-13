@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>signuppage</class>
- <widget class="QWidget" name="signuppage">
+ <class>SignupWindow</class>
+ <widget class="QWidget" name="SignupWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -26,13 +26,13 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/back/background.jpg);</string>
+   <string notr="true"/>
   </property>
   <widget class="QLineEdit" name="username">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>146</y>
+     <x>127</x>
+     <y>151</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -57,8 +57,8 @@ border-radius: 2px;</string>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>35</y>
+     <x>37</x>
+     <y>40</y>
      <width>271</width>
      <height>81</height>
     </rect>
@@ -84,8 +84,8 @@ border-radius: 2px;</string>
   <widget class="QPushButton" name="loginButton">
    <property name="geometry">
     <rect>
-     <x>45</x>
-     <y>215</y>
+     <x>42</x>
+     <y>220</y>
      <width>261</width>
      <height>32</height>
     </rect>
@@ -125,8 +125,8 @@ QPushButton:pressed {
   <widget class="QLineEdit" name="password">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>178</y>
+     <x>127</x>
+     <y>183</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -147,11 +147,35 @@ border: none</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>141</x>
+     <y>37</y>
+     <width>58</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Moon</family>
+     <pointsize>34</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>J</string>
+   </property>
+  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>148</y>
+     <x>47</x>
+     <y>153</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -171,11 +195,38 @@ border: none</string>
     <string>Username:</string>
    </property>
   </widget>
+  <widget class="QLabel" name="craete">
+   <property name="geometry">
+    <rect>
+     <x>202</x>
+     <y>272</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Mononoki Nerd Font</family>
+     <pointsize>12</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(39, 255, 100);</string>
+   </property>
+   <property name="text">
+    <string>&lt;a href&gt;Create Account&lt;/a&gt;</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::RichText</enum>
+   </property>
+  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>180</y>
+     <x>47</x>
+     <y>185</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -193,6 +244,40 @@ border: none</string>
    </property>
    <property name="text">
     <string>Password:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>270</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Mononoki Nerd Font</family>
+     <pointsize>15</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>New to Messenger?</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="centralwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>350</width>
+     <height>500</height>
+    </rect>
    </property>
   </widget>
  </widget>
