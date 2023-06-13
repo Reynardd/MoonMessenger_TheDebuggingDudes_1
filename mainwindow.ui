@@ -25,6 +25,7 @@
   <property name="font">
    <font>
     <family>Monaco</family>
+    <italic>false</italic>
     <bold>false</bold>
    </font>
   </property>
@@ -32,7 +33,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">font:url(:/font/Font/Anurati-Regular.otf)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -48,7 +49,8 @@
      <font>
       <family>Mononoki Nerd Font</family>
       <pointsize>14</pointsize>
-      <bold>true</bold>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -71,7 +73,8 @@
      <font>
       <family>Mononoki Nerd Font</family>
       <pointsize>14</pointsize>
-      <bold>true</bold>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -93,6 +96,7 @@
     <property name="font">
      <font>
       <family>Futura</family>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
@@ -118,6 +122,7 @@ border-radius: 2px;</string>
     <property name="font">
      <font>
       <family>Futura</family>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
@@ -143,6 +148,8 @@ border: none</string>
      <font>
       <family>Mononoki Nerd Font</family>
       <pointsize>15</pointsize>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -165,7 +172,8 @@ border: none</string>
      <font>
       <family>Mononoki Nerd Font</family>
       <pointsize>12</pointsize>
-      <bold>true</bold>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -191,6 +199,7 @@ border: none</string>
      <font>
       <family>Kohinoor Bangla</family>
       <pointsize>15</pointsize>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
@@ -231,8 +240,12 @@ QPushButton:pressed {
      <font>
       <family>Anurati</family>
       <pointsize>30</pointsize>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;M &lt;span style=&quot; color:#090d18;&quot;&gt;O&lt;/span&gt; O N&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;M E S S E N G E R&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -254,8 +267,12 @@ QPushButton:pressed {
      <font>
       <family>Moon</family>
       <pointsize>34</pointsize>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>J</string>
