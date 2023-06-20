@@ -9,7 +9,9 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chatlistpage.cpp \
     conversation.cpp \
+    infodialog.cpp \
     main.cpp \
     mainwindow.cpp \
     message.cpp \
@@ -18,7 +20,9 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
+    chatlistpage.h \
     conversation.h \
+    infodialog.h \
     mainwindow.h \
     message.h \
     request.h \
@@ -26,6 +30,8 @@ HEADERS += \
     user.h
 
 FORMS += \
+    chatlistpage.ui \
+    infodialog.ui \
     mainwindow.ui \
     signupwindow.ui
 

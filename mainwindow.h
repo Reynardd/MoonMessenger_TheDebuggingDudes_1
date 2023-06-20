@@ -18,6 +18,8 @@ public:
 private slots:
     void on_craete_linkActivated(const QString &link);
 
+    void on_loginButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
