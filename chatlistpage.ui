@@ -115,6 +115,7 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
       <string notr="true">
 QPushButton {
     border-radius: 12px;
+	color: white;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
 }
