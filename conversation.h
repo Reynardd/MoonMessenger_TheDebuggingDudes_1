@@ -7,6 +7,7 @@ class Conversation : public QObject
     Q_OBJECT
 public:
     explicit Conversation(QString _name,QString type,QObject *parent = nullptr);
+    QString toString();
 private:
     QString _name;
     int _messageCount;

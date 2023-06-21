@@ -8,8 +8,13 @@ class User : public QObject
     Q_OBJECT
 public:
     explicit User(QObject *parent = nullptr);
+    void logout();
 private:
     QString token;
+    QString username;
+    QString Password;
+
+
 signals:
 
 };

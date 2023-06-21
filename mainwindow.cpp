@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "signupwindow.h"
 #include "chatlistpage.h"
+#include "request.h"
 #include "infodialog.h"
 #include <QFontDatabase>
 MainWindow::MainWindow(QWidget *parent)
@@ -33,7 +34,23 @@ void MainWindow::on_loginButton_clicked()
 //    ChatListPage * chatList = new ChatListPage();
 //    chatList->show();
     QString username = ui->username->text(),password = ui->password->text();
-    infoDialog *dialog = new infoDialog("Login info: "+username+"\n"+password);
-    dialog->exec();
+    QUrlQuery query;
+    query.addQueryItem("username",username);
+    query.addQueryItem("password",password);
+    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/login",query);
+    if(response.empty())
+    {
+        infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection",this);
+        dialog->exec();
+        return;
+    }
+    if(response.value("token")==QJsonValue::Undefined)
+    {
+        infoDialog *dialog = new infoDialog("Server Message: "+response.value("message").toString(),this);
+        dialog->exec();
+        return;
+    }
+
+
 }
 

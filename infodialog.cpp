@@ -1,6 +1,6 @@
 #include "infodialog.h"
 #include "ui_infodialog.h"
-
+#include <QTextOption>
 infoDialog::infoDialog(QString text,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::infoDialog)
@@ -10,6 +10,9 @@ infoDialog::infoDialog(QString text,QWidget *parent) :
     setWindowFlag(Qt::FramelessWindowHint);
     ui->plainTextEdit->appendPlainText(text);
     setAttribute(Qt::WA_TranslucentBackground);
+    QTextOption option = ui->plainTextEdit->document()->defaultTextOption();
+    option.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    ui->plainTextEdit->document()->setDefaultTextOption(option);
 }
 
 infoDialog::~infoDialog()

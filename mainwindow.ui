@@ -127,6 +127,9 @@ color: rgb(255, 255, 255);</string>
       <bold>false</bold>
      </font>
     </property>
+    <property name="accessibleDescription">
+     <string/>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
 border-color: rgb(53, 71, 120);
@@ -134,8 +137,20 @@ border: none;
 border-radius: 2px;
 color: rgb(255, 255, 255);</string>
     </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -212,6 +227,7 @@ QPushButton {
     border-radius: 16px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
+	color: white;
 }
 
 QPushButton:hover {
