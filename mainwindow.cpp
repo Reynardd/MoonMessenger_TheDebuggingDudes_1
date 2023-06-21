@@ -50,7 +50,9 @@ void MainWindow::on_loginButton_clicked()
         dialog->exec();
         return;
     }
-
+    ChatListPage * chatList = new ChatListPage(username,password,response.value("token").toString());
+    chatList->show();
+    this->close();
 
 }
 

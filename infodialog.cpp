@@ -15,6 +15,7 @@ infoDialog::infoDialog(QString text,QWidget *parent) :
     ui->plainTextEdit->document()->setDefaultTextOption(option);
 }
 
+
 infoDialog::~infoDialog()
 {
     delete ui;
