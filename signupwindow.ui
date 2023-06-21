@@ -285,12 +285,31 @@ color: rgb(255, 255, 255);</string>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/back/background.jpg);</string>
    </property>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>166</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;________________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>197</y>
+     <y>199</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -314,7 +333,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>195</y>
+     <y>197</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -341,7 +360,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>229</y>
+     <y>231</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -365,7 +384,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>227</y>
+     <y>229</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -388,6 +407,25 @@ color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>199</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>19</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;________________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
   <zorder>widget</zorder>
   <zorder>username</zorder>
   <zorder>label_4</zorder>
@@ -399,9 +437,10 @@ color: rgb(255, 255, 255);</string>
   <zorder>label_2</zorder>
   <zorder>label_3</zorder>
   <zorder>label_6</zorder>
-  <zorder>cPassword</zorder>
   <zorder>label_7</zorder>
   <zorder>name</zorder>
+  <zorder>label_9</zorder>
+  <zorder>cPassword</zorder>
  </widget>
  <resources/>
  <connections/>

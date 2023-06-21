@@ -18,6 +18,12 @@ public:
 private slots:
     void on_craete_linkActivated(const QString &link);
 
+    void on_signupButton_clicked();
+
+    void on_password_textChanged(const QString &arg1);
+
+    void on_cPassword_textChanged(const QString &arg1);
+
 private:
     Ui::SignupWindow *ui;
     QPropertyAnimation *anim,anim2;
