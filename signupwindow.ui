@@ -48,7 +48,8 @@
     <string notr="true">background-color: rgb(53, 71, 120);
 border-color: rgb(53, 71, 120);
 border: none;
-border-radius: 2px;</string>
+border-radius: 2px;
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -140,8 +141,10 @@ QPushButton:pressed {
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(53, 71, 120);
+border-color: rgb(53, 71, 120);
+border: none;
 border-radius: 2px;
-border: none</string>
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -325,8 +328,10 @@ border: none</string>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(53, 71, 120);
+border-color: rgb(53, 71, 120);
+border: none;
 border-radius: 2px;
-border: none</string>
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>
@@ -374,8 +379,9 @@ border: none</string>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(53, 71, 120);
-border-radius: 2px;
+border-color: rgb(53, 71, 120);
 border: none;
+border-radius: 2px;
 color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
