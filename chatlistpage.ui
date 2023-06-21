@@ -141,13 +141,19 @@ QPushButton:pressed {
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>41</width>
+      <width>31</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">
 QPushButton {
+	color:white;
     border-radius: 12px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);

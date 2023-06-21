@@ -15,6 +15,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
+    connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});
 }
 
 ChatListPage::~ChatListPage()
@@ -29,22 +30,44 @@ void ChatListPage::userLoggedOut()
 }
 void ChatListPage::on_menuToggleButton_clicked()
 {
+    ui->menuToggleButton->setEnabled(false);
     if(showingMenu)
     {
-        //add animation later
-        ui->menuToggleButton->setGeometry(ui->menuToggleButton->geometry().x() - 230,ui->menuToggleButton->geometry().y(),\
-        ui->menuToggleButton->geometry().width(),ui->menuToggleButton->geometry().height());
-        ui->menuLayout->setGeometry(ui->menuLayout->geometry().x() - 230,ui->menuLayout->geometry().y(),\
-        ui->menuLayout->geometry().width(),ui->menuLayout->geometry().height());
+        menuAnimation->setStartValue(ui->menuLayout->geometry());
+
+        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()-230,ui->menuLayout->geometry().y(),\
+        ui->menuLayout->width(),ui->menuLayout->height()));
+
+
+        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
+
+        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()-230,ui->menuToggleButton->geometry().y()\
+        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
+
+        menuAnimation->setDuration(170);
+        menuButtonAnimation->setDuration(170);
+        menuAnimation->start();
+        menuButtonAnimation->start();
         showingMenu = false;
         ui->menuToggleButton->setText(">");
     }
     else
     {
-        ui->menuToggleButton->setGeometry(ui->menuToggleButton->geometry().x() + 230,ui->menuToggleButton->geometry().y(),\
-        ui->menuToggleButton->geometry().width(),ui->menuToggleButton->geometry().height());
-        ui->menuLayout->setGeometry(ui->menuLayout->geometry().x() + 230,ui->menuLayout->geometry().y(),\
-        ui->menuLayout->geometry().width(),ui->menuLayout->geometry().height());
+        menuAnimation->setStartValue(ui->menuLayout->geometry());
+
+        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()+230,ui->menuLayout->geometry().y(),\
+        ui->menuLayout->width(),ui->menuLayout->height()));
+
+
+        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
+
+        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()+230,ui->menuToggleButton->geometry().y()\
+        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
+
+        menuAnimation->setDuration(170);
+        menuButtonAnimation->setDuration(170);
+        menuAnimation->start();
+        menuButtonAnimation->start();
         showingMenu = true;
         ui->menuToggleButton->setText("<");
     }
