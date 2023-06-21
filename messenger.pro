@@ -17,7 +17,8 @@ SOURCES += \
     message.cpp \
     request.cpp \
     signupwindow.cpp \
-    user.cpp
+    user.cpp \
+    yesnodialog.cpp
 
 HEADERS += \
     chatlistpage.h \
@@ -27,13 +28,15 @@ HEADERS += \
     message.h \
     request.h \
     signupwindow.h \
-    user.h
+    user.h \
+    yesnodialog.h
 
 FORMS += \
     chatlistpage.ui \
     infodialog.ui \
     mainwindow.ui \
-    signupwindow.ui
+    signupwindow.ui \
+    yesnodialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

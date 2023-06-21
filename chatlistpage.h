@@ -15,9 +15,13 @@ public:
     explicit ChatListPage(QString username,QString password,QString token,QWidget *parent = nullptr);
     ~ChatListPage();
 
+private slots:
+    void on_menuToggleButton_clicked();
+
 private:
     Ui::ChatListPage *ui;
     User* user;
+    bool showingMenu;
 };
 
 #endif // CHATLISTPAGE_H

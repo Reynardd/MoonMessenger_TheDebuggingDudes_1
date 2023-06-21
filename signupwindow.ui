@@ -406,6 +406,9 @@ color: rgb(255, 255, 255);</string>
    <property name="text">
     <string/>
    </property>
+   <property name="placeholderText">
+    <string>Optional</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">

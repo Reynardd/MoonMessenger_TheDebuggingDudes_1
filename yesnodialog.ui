@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>YesNoDialog</class>
+ <widget class="QWidget" name="YesNoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>387</width>
+    <height>131</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>387</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="yesButton">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>100</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton {
+    border-radius: 12px;
+	border-color: rgb(6, 118, 255);
+	background-color: rgb(6, 118, 255);
+}
+
+QPushButton:hover {
+    background-color: #7FB3D5; 
+    border-style: outset; 
+    border-width: 2px;
+}
+
+QPushButton:pressed {
+    background-color: #4E7CA8; 
+    border-style: inset; 
+    border-width: 2px;
+}</string>
+    </property>
+    <property name="text">
+     <string>Yes</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>0</y>
+      <width>371</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border :none;
+color: rgb(255, 255, 255);
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="noButton">
+    <property name="geometry">
+     <rect>
+      <x>196</x>
+      <y>100</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton {
+    border-radius: 12px;
+	border-color: rgb(6, 118, 255);
+	background-color: rgb(6, 118, 255);
+}
+
+QPushButton:hover {
+    background-color: #7FB3D5; 
+    border-style: outset; 
+    border-width: 2px;
+}
+
+QPushButton:pressed {
+    background-color: #4E7CA8; 
+    border-style: inset; 
+    border-width: 2px;
+}</string>
+    </property>
+    <property name="text">
+     <string>No</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -12,7 +12,7 @@ public:
 private:
     QString token;
     QString username;
-    QString Password;
+    QString password;
     QVector<Conversation> conversations;
 private slots:
     void newConversation(QString name,QString type);

@@ -33,6 +33,7 @@ void MainWindow::on_loginButton_clicked()
     //this is for test only
 //    ChatListPage * chatList = new ChatListPage();
 //    chatList->show();
+    ui->loginButton->setEnabled(false);
     QString username = ui->username->text(),password = ui->password->text();
     QUrlQuery query;
     query.addQueryItem("username",username);
@@ -42,12 +43,14 @@ void MainWindow::on_loginButton_clicked()
     {
         infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection",this);
         dialog->exec();
+        ui->loginButton->setEnabled(true);
         return;
     }
     if(response.value("token")==QJsonValue::Undefined)
     {
         infoDialog *dialog = new infoDialog("Server Message: "+response.value("message").toString(),this);
         dialog->exec();
+        ui->loginButton->setEnabled(true);
         return;
     }
     ChatListPage * chatList = new ChatListPage(username,password,response.value("token").toString());

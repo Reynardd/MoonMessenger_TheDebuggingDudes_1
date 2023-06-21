@@ -27,6 +27,8 @@ private slots:
 private:
     Ui::SignupWindow *ui;
     QPropertyAnimation *anim,anim2;
+    bool passwordMatch;
+    int passwordStrength;
 };
 
 #endif // SIGNUPWINDOW_H
