@@ -103,6 +103,7 @@ color: rgb(255, 255, 255);</string>
     <string notr="true">
 QPushButton {
     border-radius: 16px;
+	color : white;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
 }

@@ -5,6 +5,7 @@
 #include "request.h"
 #include "infodialog.h"
 #include <QFontDatabase>
+#include "yesnodialog.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -48,6 +49,32 @@ void MainWindow::on_loginButton_clicked()
     }
     if(response.value("token")==QJsonValue::Undefined)
     {
+        if(response.value("message").toString()=="You are already logged in!")
+        {
+            YesNoDialog *dialog = new YesNoDialog("A Session has already logged in to this Account\nDo you wish to terminate them?",this);
+            int r = dialog->exec();
+            if(r==QDialog::Accepted)
+            {
+                QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
+                if(response.empty())
+                {
+                    infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
+                    dialog->exec();
+                }
+                else if(response.value("code").toString()=="200")
+                {
+                    infoDialog *dialog = new infoDialog("The Previous Session has Been terminated\nEnjoy Logging in :)");
+                    dialog->exec();
+                }
+                else
+                {
+                    infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
+                    dialog->exec();
+                }
+            }
+            ui->loginButton->setEnabled(true);
+            return;
+        }
         infoDialog *dialog = new infoDialog("Server Message: "+response.value("message").toString(),this);
         dialog->exec();
         ui->loginButton->setEnabled(true);
