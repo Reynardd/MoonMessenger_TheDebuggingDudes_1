@@ -129,7 +129,8 @@ border-radius: 2px;</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(53, 71, 120);
 border-radius: 2px;
-border: none</string>
+border: none;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
