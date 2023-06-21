@@ -1,6 +1,6 @@
 #include "chatlistpage.h"
 #include "ui_chatlistpage.h"
-
+#include "mainwindow.h"
 ChatListPage::ChatListPage(QString username,QString password,QString token,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatListPage)
@@ -10,15 +10,23 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
     user = new User(username,password,token,this);
     this->setWindowTitle(username);
+    ui->nameLabel->setText("Logged in as "+ username);
     connect(ui->pushButton,&QPushButton::clicked,user,&User::logout);
-    connect(ui->menuToggleButton,&QPushButton::clicked,this,&ChatListPage::on_menuToggleButton_clicked);
+    connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
+    menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
+    menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
 }
 
 ChatListPage::~ChatListPage()
 {
     delete ui;
 }
-
+void ChatListPage::userLoggedOut()
+{
+    MainWindow * loginPage = new MainWindow();
+    loginPage->show();
+    this->close();
+}
 void ChatListPage::on_menuToggleButton_clicked()
 {
     if(showingMenu)

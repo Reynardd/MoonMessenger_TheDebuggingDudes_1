@@ -49,6 +49,9 @@
      <height>500</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#centralwidget{background-image: url(:/back/background.jpg);}</string>
+   </property>
    <widget class="QFrame" name="menuLayout">
     <property name="geometry">
      <rect>
@@ -59,8 +62,15 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#menuLayout{background-image: url(:/back/background.jpg);}
-</string>
+     <string notr="true">#menuLayout
+{
+background-color:black;border: 1px solid white;border-radius: 10px;
+border-top-color:rgb(6, 118, 255);
+border-right-color:rgb(6, 118, 255);
+border-left-color:rgb(6, 118, 255);
+border-bottom-color:rgb(6, 118, 255);
+border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-right-radius:0px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -73,9 +83,20 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>49</width>
-       <height>16</height>
+       <width>211</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>mononoki NF</family>
+       <pointsize>12</pointsize>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string>TextLabel</string>

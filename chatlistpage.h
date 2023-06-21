@@ -1,6 +1,6 @@
 #ifndef CHATLISTPAGE_H
 #define CHATLISTPAGE_H
-
+#include <QPropertyAnimation>
 #include <QWidget>
 #include "user.h"
 namespace Ui {
@@ -17,9 +17,12 @@ public:
 
 private slots:
     void on_menuToggleButton_clicked();
+    void userLoggedOut();
 
 private:
     Ui::ChatListPage *ui;
+    QPropertyAnimation* menuAnimation;
+    QPropertyAnimation* menuButtonAnimation;
     User* user;
     bool showingMenu;
 };

@@ -24,4 +24,17 @@ void User::logout()
         dialog->exec();
         return;
     }
+    if(response.value("code").toString()=="200")
+    {
+        infoDialog *dialog = new infoDialog("Logged Out Succesfully");
+        dialog->exec();
+        emit loggedOut();
+        return;
+    }
+    else
+    {
+        infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
+        dialog->exec();
+        return;
+    }
 }

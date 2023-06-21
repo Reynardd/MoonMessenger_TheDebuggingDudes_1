@@ -6,7 +6,7 @@ infoDialog::infoDialog(QString text,QWidget *parent) :
     ui(new Ui::infoDialog)
 {
     ui->setupUi(this);
-    this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);border: 1px solid white;border-radius: 10px}");
+    //this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);border: 1px solid white;border-radius: 10px}");
     setWindowFlag(Qt::FramelessWindowHint);
     ui->plainTextEdit->appendPlainText(text);
     setAttribute(Qt::WA_TranslucentBackground);

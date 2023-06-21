@@ -18,7 +18,7 @@ private slots:
     void newConversation(QString name,QString type);
 
 signals:
-
+    void loggedOut();
 };
 
 #endif // USER_H

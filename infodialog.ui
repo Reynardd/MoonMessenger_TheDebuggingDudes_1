@@ -94,6 +94,9 @@ QPushButton:pressed {
      <height>131</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#centralwidget{background-image: url(:/back/background.jpg);border: 1px solid white;border-radius: 10px}</string>
+   </property>
   </widget>
   <zorder>centralwidget</zorder>
   <zorder>plainTextEdit</zorder>
