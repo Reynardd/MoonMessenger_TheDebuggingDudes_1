@@ -56,6 +56,7 @@ void Conversation::getUpdate(QString token)
                 date = message.value("date").toString();
                 Message* mes = new Message(sender,text,date,this->parent());
                 messages.push_back(mes);
+                qDebug() << sender << ":" << text;
                 emit newMessage_arrived();
             }
         }

@@ -7,10 +7,22 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
     username = _username;
     password = _password;
     token = _token;
+    userChatCount = 0;
+    groupChatCount = 0;
+    channelChatCount = 0;
 }
 void User:: newConversation(QString name,QString type)
 {
-
+    Conversation* conversation = new Conversation(name,type,this->parent());
+    conversations.push_back(conversation);
+    if(type=="user")userChatCount++;
+    else if(type=="gtoup")groupChatCount++;
+    else channelChatCount++;
+}
+int* User::getConversationCount()
+{
+    int res[3] = {userChatCount,groupChatCount,channelChatCount};
+    return res;
 }
 void User::logout()
 {
@@ -37,4 +49,12 @@ void User::logout()
         dialog->exec();
         return;
     }
+}
+const std::vector<Conversation*>& User::getConversations()
+{
+    return conversations;
+}
+QString User::getToken()
+{
+    return token;
 }

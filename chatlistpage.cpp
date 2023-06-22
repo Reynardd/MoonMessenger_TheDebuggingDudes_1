@@ -16,6 +16,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
     connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});
+
 }
 
 ChatListPage::~ChatListPage()
