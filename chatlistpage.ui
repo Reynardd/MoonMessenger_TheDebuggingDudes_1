@@ -111,6 +111,13 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
        <height>24</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Kohinoor Bangla</family>
+       <pointsize>13</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">
 QPushButton {
@@ -133,7 +140,7 @@ QPushButton:pressed {
 }</string>
      </property>
      <property name="text">
-      <string>Logout</string>
+      <string>L o g o u t</string>
      </property>
     </widget>
    </widget>
