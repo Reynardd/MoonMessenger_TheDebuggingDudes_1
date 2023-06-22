@@ -31,6 +31,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Kohinoor Bangla</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">
 QPushButton {
@@ -69,6 +75,7 @@ QPushButton:pressed {
     </property>
     <property name="font">
      <font>
+      <family>Lucida Grande</family>
       <pointsize>16</pointsize>
      </font>
     </property>
@@ -96,6 +103,12 @@ color: rgb(255, 255, 255);
       <width>80</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Kohinoor Bangla</family>
+      <pointsize>15</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">
