@@ -10,7 +10,7 @@ public:
     explicit User(QString username,QString password,QString token,QObject *parent = nullptr);
     void logout();
     QString getToken();
-    int* getConversationCount();
+    int getConversationCount(QString type);
     const std::vector<Conversation*>& getConversations();
     void newConversation(QString name,QString type);
 private:

@@ -3,6 +3,7 @@
 #include <QPropertyAnimation>
 #include <QWidget>
 #include "user.h"
+#include "chatthread.h"
 namespace Ui {
 class ChatListPage;
 }
@@ -19,11 +20,14 @@ private slots:
     void on_menuToggleButton_clicked();
     void userLoggedOut();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::ChatListPage *ui;
     QPropertyAnimation* menuAnimation;
     QPropertyAnimation* menuButtonAnimation;
     User* user;
+    ChatThread* chatThread ;
     bool showingMenu;
 };
 

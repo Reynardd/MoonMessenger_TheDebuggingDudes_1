@@ -5,7 +5,6 @@
 #include "user.h"
 using namespace std;
 #include <functional>
-typedef function<void()> Func;
 class ChatThread : public QObject
 {
     Q_OBJECT
@@ -15,7 +14,6 @@ public:
     void start();
     void stop();
 private:
-    vector<Func> updaters;
     void check_new_user();
     void check_new_channel();
     void check_new_group();

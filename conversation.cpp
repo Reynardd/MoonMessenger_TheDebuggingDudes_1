@@ -11,7 +11,12 @@ Conversation::Conversation(QString name,QString type,QObject *parent)
 QString Conversation::lastDate()
 {
     QString date = messages[messageCount-1]->date();
-    return date.replace(" ","").replace(":","").replace("-","");
+    QString fDate =  date.replace(" ","").replace(":","").replace("-","");
+    qDebug() << fDate;
+    unsigned long long int d = fDate.toULongLong();
+    d++;
+    qDebug() << d;
+    return QString::number(d);
 }
 void Conversation::getUpdate(QString token)
 {
@@ -54,9 +59,10 @@ void Conversation::getUpdate(QString token)
                 text = message.value("body").toString();
                 sender = message.value("src").toString();
                 date = message.value("date").toString();
-                Message* mes = new Message(sender,text,date,this->parent());
+                Message* mes = new Message(sender,text,date);
                 messages.push_back(mes);
                 qDebug() << sender << ":" << text;
+                messageCount++;
                 emit newMessage_arrived();
             }
         }

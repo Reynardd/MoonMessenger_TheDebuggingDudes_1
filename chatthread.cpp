@@ -3,16 +3,14 @@
 #include "yesnodialog.h"
 #include "infodialog.h"
 #include "request.h"
-#define URL QString::fromUtf8("http:/api.barafardayebehtar.ml:8080/")
+#include <QThread>
+#define URL QString::fromUtf8("http://api.barafardayebehtar.ml:8080/")
+
+
 ChatThread::ChatThread(User* user,QObject *parent)
     : QObject{parent}
 {
     this->user= user;
-    for(auto& x :user->getConversations())
-    {
-        auto f = bind(&Conversation::getUpdate,x,user->getToken());
-        updaters.push_back(f);
-    }
     running = false;
 }
 void ChatThread::stop()
@@ -27,10 +25,11 @@ void ChatThread::start()
         QtConcurrent::run(bind(&ChatThread::check_new_user,this));
         QtConcurrent::run(bind(&ChatThread::check_new_channel,this));
         QtConcurrent::run(bind(&ChatThread::check_new_group,this));
-        for(auto& updater:updaters)
+        for(auto conv:user->getConversations())
         {
-            QtConcurrent::run(updater);
+            QtConcurrent::run(&Conversation::getUpdate,conv,user->getToken());
         }
+        QThread::sleep(1);
     }
 }
 void ChatThread::check_new(QString type)
@@ -57,15 +56,17 @@ void ChatThread::check_new(QString type)
             dialog->exec();
         }
         int newConversationCount = match.captured(0).toInt();
-        int conversationCount = user->getConversationCount()[0];
+        int n;
+        if(type=="user")n=0;
+        else if(type=="group")n=1;
+        else n=2;
+        int conversationCount = user->getConversationCount(type);
         if(conversationCount<newConversationCount)
         {
             for (int x = 0; x < newConversationCount-conversationCount; x++)
             {
                 QJsonObject newConversation = response.value("block "+QString::number(x+conversationCount)).toObject();
                 user->newConversation(newConversation.value("src").toString(),type);
-                auto f = bind(&Conversation::getUpdate,user->getConversations()[newConversationCount],user->getToken());
-                updaters.push_back(f);
             }
         }
     }

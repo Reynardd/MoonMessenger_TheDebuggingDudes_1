@@ -13,16 +13,17 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
 }
 void User:: newConversation(QString name,QString type)
 {
-    Conversation* conversation = new Conversation(name,type,this->parent());
+    Conversation* conversation = new Conversation(name,type);
     conversations.push_back(conversation);
     if(type=="user")userChatCount++;
     else if(type=="gtoup")groupChatCount++;
     else channelChatCount++;
 }
-int* User::getConversationCount()
+int User::getConversationCount(QString type)
 {
-    int res[3] = {userChatCount,groupChatCount,channelChatCount};
-    return res;
+    if(type=="user")return userChatCount;
+    if(type=="group")return groupChatCount;
+    if(type=="channel")return channelChatCount;
 }
 void User::logout()
 {

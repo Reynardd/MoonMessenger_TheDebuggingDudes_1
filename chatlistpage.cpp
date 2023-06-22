@@ -1,6 +1,7 @@
 #include "chatlistpage.h"
 #include "ui_chatlistpage.h"
 #include "mainwindow.h"
+#include <QtConcurrent/QtConcurrent>
 ChatListPage::ChatListPage(QString username,QString password,QString token,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatListPage)
@@ -9,6 +10,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     showingMenu = false;
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
     user = new User(username,password,token,this);
+    chatThread = new ChatThread(user,this);
     this->setWindowTitle(username);
     ui->nameLabel->setText("Logged in as "+ username);
     connect(ui->pushButton,&QPushButton::clicked,user,&User::logout);
@@ -16,15 +18,18 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
     connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});
+    //chatThread->start();
 
 }
 
 ChatListPage::~ChatListPage()
 {
     delete ui;
+    qDebug() << "chatlistpage deleted";
 }
 void ChatListPage::userLoggedOut()
 {
+    chatThread->stop();
     MainWindow * loginPage = new MainWindow();
     loginPage->show();
     this->close();
@@ -92,5 +97,11 @@ void ChatListPage::on_menuToggleButton_clicked()
         image: url(:/back/arrowBackPressed.svg);\
         }");
     }
+}
+
+
+void ChatListPage::on_pushButton_2_clicked()
+{
+    QtConcurrent::run(&ChatThread::start,chatThread);
 }
 
