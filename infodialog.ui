@@ -33,7 +33,9 @@
    </property>
    <property name="font">
     <font>
+     <family>Lucida Grande</family>
      <pointsize>16</pointsize>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
@@ -51,6 +53,9 @@ color: rgb(255, 255, 255);
    <property name="readOnly">
     <bool>true</bool>
    </property>
+   <property name="plainText">
+    <string/>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -60,6 +65,13 @@ color: rgb(255, 255, 255);
      <width>80</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Kohinoor Bangla</family>
+     <pointsize>15</pointsize>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">
@@ -82,7 +94,7 @@ QPushButton:pressed {
 }</string>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>O K</string>
    </property>
   </widget>
   <widget class="QWidget" name="centralwidget" native="true">

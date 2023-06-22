@@ -163,7 +163,7 @@ border-radius: 0px; border-top-right-radius: 10px; border-bottom-right-radius: 1
 }
 
 QPushButton:hover {
-    background-color: #7FB3D5; 
+    background-color: rgb(6, 118, 255); 
     border-style: outset; 
     border-width: 2px;
 }
