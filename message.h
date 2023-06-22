@@ -9,6 +9,7 @@ class Message : public QObject
 public:
     explicit Message(QString sender,QString text,QString date,QObject *parent = nullptr);
     QString toString();
+    QString date();
 private:
     QString _sender;
     QString _text;

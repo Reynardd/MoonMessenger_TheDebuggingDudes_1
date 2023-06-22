@@ -7,3 +7,7 @@ Message::Message(QString sender,QString text,QString date,QObject *parent)
     _text = text;
     _date = date;
 }
+QString Message::date()
+{
+    return _date;
+}
