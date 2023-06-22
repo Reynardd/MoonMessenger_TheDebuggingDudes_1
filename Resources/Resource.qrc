@@ -9,6 +9,7 @@
         <file>arrowHover.svg</file>
         <file>arrowBackHover.svg</file>
         <file>arrowBack.svg</file>
+        <file>background.svg</file>
     </qresource>
     <qresource prefix="/font">
         <file>Font/Anurati-Regular.otf</file>
