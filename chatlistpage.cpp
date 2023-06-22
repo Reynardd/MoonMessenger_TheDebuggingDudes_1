@@ -49,7 +49,17 @@ void ChatListPage::on_menuToggleButton_clicked()
         menuAnimation->start();
         menuButtonAnimation->start();
         showingMenu = false;
-        ui->menuToggleButton->setText(">");
+        ui->menuToggleButton->setStyleSheet(\
+        "QPushButton {\
+        image: url(:/back/arrow.svg);\
+        border:none\
+        }\
+        QPushButton:hover {\
+        image: url(:/back/arrowHover.svg);\
+        }\
+        QPushButton:pressed {\
+        image: url(:/back/arrowPressed.svg);\
+        }");
     }
     else
     {
@@ -69,7 +79,17 @@ void ChatListPage::on_menuToggleButton_clicked()
         menuAnimation->start();
         menuButtonAnimation->start();
         showingMenu = true;
-        ui->menuToggleButton->setText("<");
+        ui->menuToggleButton->setStyleSheet(\
+        "QPushButton {\
+        image: url(:/back/arrowBack.svg);\
+        border:none\
+        }\
+        QPushButton:hover {\
+        image: url(:/back/arrowBackHover.svg);\
+        }\
+        QPushButton:pressed {\
+        image: url(:/back/arrowBackPressed.svg);\
+        }");
     }
 }
 

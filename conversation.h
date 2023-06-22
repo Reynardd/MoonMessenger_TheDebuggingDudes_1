@@ -17,7 +17,7 @@ private:
     QString _name;
     int messageCount;
     QString chatType;
-    vector<Message> messages;
+    vector<Message*> messages;
 signals:
     void getUpdate_failed();
     void connection_lost();

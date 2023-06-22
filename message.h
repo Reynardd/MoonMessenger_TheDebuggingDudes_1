@@ -8,6 +8,8 @@ class Message : public QObject
     Q_OBJECT
 public:
     explicit Message(QString sender,QString text,QString date,QObject *parent = nullptr);
+    Message(Message& m);
+    ~Message();
     QString toString();
     QString date();
 private:
