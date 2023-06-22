@@ -148,10 +148,22 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
-      <width>31</width>
+      <y>1</y>
+      <width>24</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>24</horstretch>
+      <verstretch>24</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
     </property>
     <property name="font">
      <font>
@@ -159,30 +171,21 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-QPushButton {
-	color:white;
-    border-radius: 12px;
-	border-color: rgb(6, 118, 255);
-	background-color: rgb(6, 118, 255);
-	border-left: none;
-border-radius: 0px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left: none;
+     <string notr="true">QPushButton {
+	image: url(:/back/arrow.svg);
+	border:none
 }
 
 QPushButton:hover {
-    background-color: rgb(6, 118, 255); 
-    border-style: outset; 
-    border-width: 2px;
+	image: url(:/back/arrowHover.svg);
 }
 
 QPushButton:pressed {
-    background-color: #4E7CA8; 
-    border-style: inset; 
-    border-width: 2px;
+	image: url(:/back/arrowPressed.svg);
 }</string>
     </property>
     <property name="text">
-     <string>&gt;</string>
+     <string/>
     </property>
    </widget>
   </widget>

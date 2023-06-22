@@ -1,6 +1,13 @@
 <RCC>
     <qresource prefix="/back">
         <file>background.jpg</file>
+        <file>arrow.jpg</file>
+        <file>arrrow 1.svg</file>
+        <file>arrow.svg</file>
+        <file>arrowBackHover.svg</file>
+        <file>arrowBackPressed.svg</file>
+        <file>arrowPressed.svg</file>
+        <file>arrowHover.svg</file>
     </qresource>
     <qresource prefix="/font">
         <file>Font/Anurati-Regular.otf</file>
