@@ -59,7 +59,7 @@ void Conversation::getUpdate(QString token)
                 text = message.value("body").toString();
                 sender = message.value("src").toString();
                 date = message.value("date").toString();
-                Message* mes = new Message(sender,text,date);
+                Message* mes = new Message(messageCount,sender,text,date);
                 messages.push_back(mes);
                 qDebug() << sender << ":" << text;
                 messageCount++;

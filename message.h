@@ -7,12 +7,13 @@ class Message : public QObject
 {
     Q_OBJECT
 public:
-    explicit Message(QString sender,QString text,QString date,QObject *parent = nullptr);
+    explicit Message(int id,QString sender,QString text,QString date,QObject *parent = nullptr);
     Message(Message& m);
     ~Message();
     QString toString();
     QString date();
 private:
+    int _id;
     QString _sender;
     QString _text;
     QString _date;
