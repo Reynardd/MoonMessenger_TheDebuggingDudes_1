@@ -18,12 +18,15 @@ void User:: newConversation(QString name,QString type)
     if(type=="user")userChatCount++;
     else if(type=="gtoup")groupChatCount++;
     else channelChatCount++;
+
+    emit new_conversation(name,type);
 }
 int User::getConversationCount(QString type)
 {
     if(type=="user")return userChatCount;
     if(type=="group")return groupChatCount;
     if(type=="channel")return channelChatCount;
+    return 0;
 }
 void User::logout()
 {

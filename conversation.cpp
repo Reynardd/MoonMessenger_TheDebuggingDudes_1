@@ -68,3 +68,7 @@ void Conversation::getUpdate(QString token)
         }
     }
 }
+void Conversation::show_conversation()
+{
+    qDebug() << "showing conversation";
+}

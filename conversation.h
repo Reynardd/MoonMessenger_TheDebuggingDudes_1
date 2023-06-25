@@ -13,6 +13,7 @@ public:
     QString toString();
     void getUpdate(QString token);
     QString lastDate();
+    void show_conversation();
 private:
     QString _name;
     int messageCount;

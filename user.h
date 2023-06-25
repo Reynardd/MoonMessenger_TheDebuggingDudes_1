@@ -1,3 +1,4 @@
+
 #ifndef USER_H
 #define USER_H
 #include "conversation.h"
@@ -23,9 +24,9 @@ private:
     std::vector<Conversation*> conversations;
 private slots:
 
-
 signals:
     void loggedOut();
+    void new_conversation(QString name,QString type);
 };
 
 #endif // USER_H

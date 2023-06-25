@@ -12,6 +12,11 @@ ChatThread::ChatThread(User* user,QObject *parent)
 {
     this->user= user;
     running = false;
+    layout = nullptr;
+}
+void ChatThread::setLayout(QLayout* layout)
+{
+    this->layout = layout;
 }
 void ChatThread::stop()
 {
@@ -56,10 +61,6 @@ void ChatThread::check_new(QString type)
             dialog->exec();
         }
         int newConversationCount = match.captured(0).toInt();
-        int n;
-        if(type=="user")n=0;
-        else if(type=="group")n=1;
-        else n=2;
         int conversationCount = user->getConversationCount(type);
         if(conversationCount<newConversationCount)
         {

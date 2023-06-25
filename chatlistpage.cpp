@@ -2,30 +2,40 @@
 #include "ui_chatlistpage.h"
 #include "mainwindow.h"
 #include <QtConcurrent/QtConcurrent>
+#include <QVBoxLayout>
 ChatListPage::ChatListPage(QString username,QString password,QString token,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatListPage)
 {
     ui->setupUi(this);
     showingMenu = false;
+    this->setAttribute(Qt::WA_DeleteOnClose,true);
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
     user = new User(username,password,token,this);
     chatThread = new ChatThread(user,this);
     this->setWindowTitle(username);
     ui->nameLabel->setText("Logged in as "+ username);
+    chatsLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
+    ui->scrollAreaWidgetContents->setLayout(chatsLayout);
+    ui->scrollArea->setWidgetResizable(true);
+    chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     connect(ui->pushButton,&QPushButton::clicked,user,&User::logout);
     connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
+    connect(user,SIGNAL(new_conversation(QString,QString)),this,SLOT(new_conversation(QString,QString)));
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
-    connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});
-    //chatThread->start();
-
+    connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});    //chatThread->start();
+    QtConcurrent::run(&ChatThread::start,chatThread);
 }
 
 ChatListPage::~ChatListPage()
 {
-    delete ui;
+    chatThread->stop();
+    delete chatThread;
     qDebug() << "chatlistpage deleted";
+    delete ui;
+
+
 }
 void ChatListPage::userLoggedOut()
 {
@@ -39,6 +49,7 @@ void ChatListPage::on_menuToggleButton_clicked()
     ui->menuToggleButton->setEnabled(false);
     if(showingMenu)
     {
+        ui->scrollAreaWidgetContents->setEnabled(true);
         menuAnimation->setStartValue(ui->menuLayout->geometry());
 
         menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()-230,ui->menuLayout->geometry().y(),\
@@ -69,8 +80,8 @@ void ChatListPage::on_menuToggleButton_clicked()
     }
     else
     {
+        ui->scrollAreaWidgetContents->setEnabled(false);
         menuAnimation->setStartValue(ui->menuLayout->geometry());
-
         menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()+230,ui->menuLayout->geometry().y(),\
         ui->menuLayout->width(),ui->menuLayout->height()));
 
@@ -98,10 +109,32 @@ void ChatListPage::on_menuToggleButton_clicked()
         }");
     }
 }
-
-
-void ChatListPage::on_pushButton_2_clicked()
+void ChatListPage::new_conversation(QString name,QString type)
 {
-    QtConcurrent::run(&ChatThread::start,chatThread);
+    QPushButton *button = new QPushButton("    "+name);
+    button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    button->setFixedHeight(30);
+    button->setStyleSheet("\
+        QPushButton {\
+                color : rgb(255 , 255, 255);\
+                text-align:left;\
+                border-radius: 0px;\
+                border : none;\
+                border-color: rgb(6, 118, 255);\
+                background-color: rgb(12, 16, 27);\
+        }\
+        QPushButton:hover {\
+                background-color: rgb(32,42,71); \
+                border : none;\
+                border-style: outset; \
+                border-width: 2px;\
+        }\
+        QPushButton:pressed {\
+                background-color: rgb(40,54,92);\
+                border : none;\
+                border-style: inset; \
+                border-width: 2px;\
+        }");
+    chatsLayout->addWidget(button);
 }
 

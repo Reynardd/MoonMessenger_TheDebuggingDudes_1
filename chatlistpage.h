@@ -19,13 +19,13 @@ public:
 private slots:
     void on_menuToggleButton_clicked();
     void userLoggedOut();
-
-    void on_pushButton_2_clicked();
+    void new_conversation(QString name,QString type);
 
 private:
     Ui::ChatListPage *ui;
     QPropertyAnimation* menuAnimation;
     QPropertyAnimation* menuButtonAnimation;
+    QVBoxLayout* chatsLayout;
     User* user;
     ChatThread* chatThread ;
     bool showingMenu;

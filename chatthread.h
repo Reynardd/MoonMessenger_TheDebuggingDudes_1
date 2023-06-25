@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "user.h"
+#include <QLayout>
 using namespace std;
 #include <functional>
 class ChatThread : public QObject
@@ -13,7 +14,9 @@ public:
     ~ChatThread();
     void start();
     void stop();
+    void setLayout(QLayout* layout);
 private:
+    QLayout* layout;
     void check_new_user();
     void check_new_channel();
     void check_new_group();

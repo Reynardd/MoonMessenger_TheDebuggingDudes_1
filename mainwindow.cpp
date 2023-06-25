@@ -65,6 +65,7 @@ void MainWindow::on_loginButton_clicked()
                 {
                     infoDialog *dialog = new infoDialog("The Previous Session has Been terminated\nEnjoy Logging in :)");
                     dialog->exec();
+                    on_loginButton_clicked();
                 }
                 else
                 {
@@ -72,6 +73,7 @@ void MainWindow::on_loginButton_clicked()
                     dialog->exec();
                 }
             }
+
             ui->loginButton->setEnabled(true);
             return;
         }
