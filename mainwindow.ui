@@ -63,9 +63,9 @@
    <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>131</y>
-      <width>171</width>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -90,15 +90,15 @@ color: rgb(255, 255, 255);</string>
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>Username</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>163</y>
-      <width>171</width>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -129,47 +129,17 @@ color: rgb(255, 255, 255);</string>
      <string/>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>Password</string>
     </property>
     <property name="clearButtonEnabled">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>53</x>
-      <y>250</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Mononoki Nerd Font</family>
-      <pointsize>15</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>New to Messenger?</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="craete">
     <property name="geometry">
      <rect>
-      <x>205</x>
-      <y>252</y>
+      <x>203</x>
+      <y>251</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -183,10 +153,10 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(39, 255, 100);</string>
+     <string notr="true">image: url(:/label/labelCreate.svg);</string>
     </property>
     <property name="text">
-     <string>&lt;a href&gt;Create Account&lt;/a&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;1&quot;&gt;&lt;span style=&quot; font-size:72pt; text-decoration: underline; color:#007af4;&quot;&gt;.        .&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="textFormat">
      <enum>Qt::RichText</enum>
@@ -212,26 +182,38 @@ color: rgb(255, 255, 255);</string>
     <property name="styleSheet">
      <string notr="true">
 QPushButton {
-    border-radius: 16px;
+	border-radius: 16px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
 	color: white;
+	
+	image: url(:/label/loginButton.svg);
+	border:none;
 }
 
 QPushButton:hover {
     background-color: #7FB3D5; 
     border-style: outset; 
     border-width: 2px;
+	
+	
+	
+	image: url(:/label/loginButtonHover.svg);
+	border:none;
 }
 
 QPushButton:pressed {
     background-color: #4E7CA8; 
     border-style: inset; 
     border-width: 2px;
+
+	
+	image: url(:/label/loginButtonPressed.svg);
+	border:none;
 }</string>
     </property>
     <property name="text">
-     <string>L o g i n</string>
+     <string/>
     </property>
    </widget>
    <widget class="QWidget" name="widget" native="true">
@@ -247,18 +229,17 @@ QPushButton:pressed {
      <string notr="true">image: url(:/back/logo.svg);</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget_3" native="true">
+   <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>133</y>
-      <width>71</width>
-      <height>16</height>
+      <x>49</x>
+      <y>249</y>
+      <width>151</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-image: url(:/label/labelUsername-01.svg);</string>
+     <string notr="true">image: url(:/label/labelNewLogin.svg);</string>
     </property>
    </widget>
   </widget>

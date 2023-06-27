@@ -37,5 +37,10 @@
     <qresource prefix="/label">
         <file>labelUsername.svg</file>
         <file>labelUsername-01.svg</file>
+        <file>loginButton.svg</file>
+        <file>loginButtonHover.svg</file>
+        <file>loginButtonPressed.svg</file>
+        <file>labelNewLogin.svg</file>
+        <file>labelCreate.svg</file>
     </qresource>
 </RCC>
