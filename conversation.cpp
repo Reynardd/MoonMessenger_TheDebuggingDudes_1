@@ -1,12 +1,35 @@
 #include "conversation.h"
 #include <QRegularExpression>
 #include "infodialog.h"
+#include <QTextStream>
 Conversation::Conversation(QString name,QString type,QObject *parent)
     : QObject{parent}
 {
     _name = name;
     chatType = type;
     messageCount = 0;
+}
+Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
+{
+    QTextStream stream(&data);
+    chatType = stream.readLine();
+    messageCount = stream.readLine().toInt();
+    _name = stream.readLine();
+    QString buffer;
+    QString message;
+    while(!stream.atEnd())
+    {
+        buffer = stream.readLine();
+        if(buffer=="MM:ENDOFMESSAGE")
+        {
+            messages.push_back(new Message(message));
+            message.clear();
+        }
+        else
+        {
+            message+=buffer;
+        }
+    }
 }
 QString Conversation::lastDate()
 {
@@ -85,11 +108,12 @@ Conversation::~Conversation()
 QString Conversation::toString()
 {
     QString res;
-    res += chatType + " " + QString::number(messageCount) + "\n";
+    res += chatType + "\n" + QString::number(messageCount) + "\n";
     res += _name + "\n";
     for(auto& message : messages)
     {
         res+=message->toString();
     }
+    res+="MM:ENDOFCONV\n";
     return res;
 }

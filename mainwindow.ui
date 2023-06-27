@@ -249,8 +249,8 @@ QPushButton:pressed {
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>18</y>
+      <x>50</x>
+      <y>30</y>
       <width>270</width>
       <height>81</height>
      </rect>

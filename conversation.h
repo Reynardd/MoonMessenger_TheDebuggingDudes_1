@@ -9,7 +9,7 @@ class Conversation : public QObject
 {
     Q_OBJECT
 public:
-    explicit Conversation(QString _name,QString type,QObject *parent = nullptr);
+    explicit Conversation(QString _name,QString type,QObject* parent = nullptr);
     explicit Conversation(QString data,QObject* parent = nullptr);
     ~Conversation();
     QString toString();

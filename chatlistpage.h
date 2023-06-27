@@ -13,7 +13,7 @@ class ChatListPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChatListPage(QString username,QString password,QString token,QWidget *parent = nullptr);
+    explicit ChatListPage(QString username,QString password,QString token,bool readFromFile = false,QWidget *parent = nullptr);
     ~ChatListPage();
 
 private slots:

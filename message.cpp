@@ -8,7 +8,7 @@ Message::Message(int id,QString sender,QString text,QString date,QObject *parent
     _text = text;
     _date = date;
 }
-Message::Message(QString data,QObject* parent)
+Message::Message(QString data,QObject* parent) : QObject{parent}
 {
     QTextStream stream(&data);
     _id = stream.readLine().toInt();
@@ -30,7 +30,7 @@ QString Message::date()
 QString Message::toString()
 {
     QString res;
-    res+=_id + "\n";
+    res+= QString::number(_id) + "\n";
     res+= _sender + "\n";
     res+= _date+ "\n";
     res+= _text+"\n";
