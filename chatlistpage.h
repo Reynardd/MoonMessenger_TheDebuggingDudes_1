@@ -19,7 +19,7 @@ public:
 private slots:
     void on_menuToggleButton_clicked();
     void userLoggedOut();
-    void new_conversation(QString name,QString type);
+    void new_conversation(Conversation* conversation);
 
 private:
     Ui::ChatListPage *ui;

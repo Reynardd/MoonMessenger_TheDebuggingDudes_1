@@ -20,7 +20,3 @@ QString Message::date()
 {
     return _date;
 }
-Message::~Message()
-{
-
-}

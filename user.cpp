@@ -19,7 +19,7 @@ void User:: newConversation(QString name,QString type)
     else if(type=="gtoup")groupChatCount++;
     else channelChatCount++;
 
-    emit new_conversation(name,type);
+    emit new_conversation(conversation);
 }
 int User::getConversationCount(QString type)
 {
@@ -61,4 +61,12 @@ const std::vector<Conversation*>& User::getConversations()
 QString User::getToken()
 {
     return token;
+}
+User::~User()
+{
+    for(auto&x : conversations)
+    {
+        delete x;
+    }
+    qDebug() << "user deleted";
 }

@@ -21,7 +21,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,QWidg
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     connect(ui->pushButton,&QPushButton::clicked,user,&User::logout);
     connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
-    connect(user,SIGNAL(new_conversation(QString,QString)),this,SLOT(new_conversation(QString,QString)));
+    connect(user,SIGNAL(new_conversation(Conversation*)),this,SLOT(new_conversation(Conversation*)));
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
     connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});    //chatThread->start();
@@ -32,6 +32,10 @@ ChatListPage::~ChatListPage()
 {
     chatThread->stop();
     delete chatThread;
+    delete chatsLayout;
+    delete user;
+    delete menuAnimation;
+    delete menuButtonAnimation;
     qDebug() << "chatlistpage deleted";
     delete ui;
 
@@ -109,11 +113,12 @@ void ChatListPage::on_menuToggleButton_clicked()
         }");
     }
 }
-void ChatListPage::new_conversation(QString name,QString type)
+void ChatListPage::new_conversation(Conversation* conversation)
 {
-    QPushButton *button = new QPushButton("    "+name);
+    QPushButton *button = new QPushButton("    "+conversation->name());
+    connect(button,&QPushButton::clicked,conversation,&Conversation::show_conversation);
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    button->setFixedHeight(30);
+    button->setFixedHeight(50);
     button->setStyleSheet("\
         QPushButton {\
                 color : rgb(255 , 255, 255);\

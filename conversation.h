@@ -10,8 +10,11 @@ class Conversation : public QObject
     Q_OBJECT
 public:
     explicit Conversation(QString _name,QString type,QObject *parent = nullptr);
+    ~Conversation();
     QString toString();
     void getUpdate(QString token);
+    const QString& name();
+    const QString& type();
     QString lastDate();
     void show_conversation();
 private:

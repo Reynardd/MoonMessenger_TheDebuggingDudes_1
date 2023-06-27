@@ -9,6 +9,7 @@ class User : public QObject
     Q_OBJECT
 public:
     explicit User(QString username,QString password,QString token,QObject *parent = nullptr);
+    ~User();
     void logout();
     QString getToken();
     int getConversationCount(QString type);
@@ -26,7 +27,7 @@ private slots:
 
 signals:
     void loggedOut();
-    void new_conversation(QString name,QString type);
+    void new_conversation(Conversation* conversation);
 };
 
 #endif // USER_H

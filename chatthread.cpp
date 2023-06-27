@@ -67,7 +67,10 @@ void ChatThread::check_new(QString type)
             for (int x = 0; x < newConversationCount-conversationCount; x++)
             {
                 QJsonObject newConversation = response.value("block "+QString::number(x+conversationCount)).toObject();
-                user->newConversation(newConversation.value("src").toString(),type);
+                QString senderKey = "src";
+                if(type=="channel")senderKey = "channel_name";
+                if(type=="group")senderKey = "group_name";
+                user->newConversation(newConversation.value(senderKey).toString(),type);
             }
         }
     }

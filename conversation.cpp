@@ -72,3 +72,13 @@ void Conversation::show_conversation()
 {
     qDebug() << "showing conversation";
 }
+const QString& Conversation::name() {return _name; }
+const QString& Conversation::type() {return chatType; }
+Conversation::~Conversation()
+{
+    for(auto& x:messages)
+    {
+        delete x;
+    }
+    qDebug() << this->_name << "deleted";
+}
