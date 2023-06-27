@@ -34,4 +34,8 @@
         <file>Font/MononokiNerdFontPropo-Regular.ttf</file>
         <file>Font/Please Read This.rtf</file>
     </qresource>
+    <qresource prefix="/label">
+        <file>labelUsername.svg</file>
+        <file>labelUsername-01.svg</file>
+    </qresource>
 </RCC>
