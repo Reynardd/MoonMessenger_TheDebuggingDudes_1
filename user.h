@@ -22,11 +22,12 @@ private:
     int userChatCount;
     int groupChatCount;
     int channelChatCount;
+    void writeToFile();
     std::vector<Conversation*> conversations;
 private slots:
-
 signals:
     void loggedOut();
+    void readFile_failed();
     void new_conversation(Conversation* conversation);
 };
 

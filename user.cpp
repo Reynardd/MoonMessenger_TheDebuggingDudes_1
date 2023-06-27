@@ -70,3 +70,7 @@ User::~User()
     }
     qDebug() << "user deleted";
 }
+void User::writeToFile()
+{
+
+}

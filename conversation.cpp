@@ -82,3 +82,14 @@ Conversation::~Conversation()
     }
     qDebug() << this->_name << "deleted";
 }
+QString Conversation::toString()
+{
+    QString res;
+    res += chatType + " " + QString::number(messageCount) + "\n";
+    res += _name + "\n";
+    for(auto& message : messages)
+    {
+        res+=message->toString();
+    }
+    return res;
+}
