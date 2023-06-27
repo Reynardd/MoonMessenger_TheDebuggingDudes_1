@@ -79,7 +79,6 @@ User::~User()
 }
 void User::writeToFile()
 {
-    qDebug() << "writing to file";
     QFile userFile("user.txt");
     if(!userFile.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
@@ -128,7 +127,6 @@ void User::readFromFile()
     while(!stream.atEnd())
     {
         conversationName = stream.readLine();
-        qDebug() << conversationName;
         QFile conversationFile(conversationName);
         if(!conversationFile.open(QIODevice::ReadWrite))
         {
@@ -137,9 +135,7 @@ void User::readFromFile()
         }
         QTextStream conversationStream(&conversationFile);
         QString data = conversationStream.readAll();
-        qDebug() << "data\n"<<data;
         Conversation* conversationPtr = new Conversation(data,this);
-
         connect(conversationPtr,&Conversation::newMessage_arrived,this,&User::new_change);
         conversations.push_back(conversationPtr);
         emit new_conversation(conversationPtr);

@@ -10,7 +10,6 @@ Message::Message(int id,QString sender,QString text,QString date,QObject *parent
 }
 Message::Message(QString data,QObject* parent) : QObject{parent}
 {
-    qDebug() << "message data:"<<data;
     QTextStream stream(&data);
     _id = stream.readLine().toInt();
     _sender = stream.readLine();

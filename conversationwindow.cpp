@@ -15,8 +15,6 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     connect(conversation,&Conversation::newMessage_arrived,this,&ConversationWindow::new_message);
     for(auto message: conversation->Messages())
     {
-        qDebug() << "message:"<<message->text();
-        qDebug() << "sender:"<<message->sender();
         QLabel* label = new QLabel(" "+message->sender()+"\n    "+message->text(),this);
         QHBoxLayout* layout = new QHBoxLayout();
         if(message->sender()==conversation->name())
@@ -36,7 +34,6 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
         label->setFixedWidth(250);
 
         messagesLayout->addLayout(layout);
-        qDebug() << "label added to layout";
     }
 }
 

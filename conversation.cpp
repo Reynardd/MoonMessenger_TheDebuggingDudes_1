@@ -36,7 +36,6 @@ QString Conversation::lastDate()
 {
     QString date = messages[messageCount-1]->date();
     QString fDate =  date.replace(" ","").replace(":","").replace("-","");
-    qDebug() << fDate;
     unsigned long long int d = fDate.toULongLong();
     d++;
     return QString::number(d);
@@ -84,7 +83,6 @@ void Conversation::getUpdate(QString token)
                 date = message.value("date").toString();
                 Message* mes = new Message(messageCount,sender,text,date);
                 messages.push_back(mes);
-                qDebug() << sender << ":" << text;
                 messageCount++;
                 emit newMessage_arrived(mes);
             }
@@ -93,7 +91,6 @@ void Conversation::getUpdate(QString token)
 }
 void Conversation::show_conversation()
 {
-    qDebug() << "showing conv";
     ConversationWindow* window = new ConversationWindow(this);
     window->show();
 }

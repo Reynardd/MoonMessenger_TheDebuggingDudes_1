@@ -7,7 +7,7 @@ QJsonObject get(QString url, QUrlQuery params)
     QNetworkRequest request;
     request.setUrl(requestURL);
     QNetworkReply* reply = manager->get(request);
-    qDebug() << "url: "<<requestURL;
+    //qDebug() << "url: "<<requestURL;
     QEventLoop eventLoop;
     QObject::connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
     eventLoop.exec();
@@ -23,7 +23,7 @@ QJsonObject get(QString url, QUrlQuery params)
         QByteArray response = reply->readAll();
         QJsonDocument doc(QJsonDocument::fromJson(response));
         jsonObject = doc.object();
-        qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
+        //qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
     }
     reply->deleteLater();
     delete manager;

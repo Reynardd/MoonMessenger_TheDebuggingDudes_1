@@ -123,12 +123,10 @@ void ChatListPage::on_menuToggleButton_clicked()
 }
 void ChatListPage::new_conversation(Conversation* conversation)
 {
-    qDebug() << "chatlist:: new conversation";
     QPushButton *button = new QPushButton("    "+conversation->name());
     connect(button,&QPushButton::clicked,conversation,&Conversation::show_conversation);
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     button->setFixedHeight(50);
-    qDebug() << "button created";
     button->setStyleSheet("\
         QPushButton {\
                 color : rgb(255 , 255, 255);\
@@ -151,6 +149,5 @@ void ChatListPage::new_conversation(Conversation* conversation)
                 border-width: 2px;\
         }");
     chatsLayout->addWidget(button);
-    qDebug()<<"button added to chatLayout";
 }
 
