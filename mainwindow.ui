@@ -33,7 +33,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font:url(:/font/Font/Anurati-Regular.otf)</string>
+   <string notr="true">font:url(:/font/Font/Anurati-Regular.otf);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -246,55 +246,17 @@ QPushButton:pressed {
      <string>L o g i n</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>20</y>
-      <width>271</width>
+      <y>18</y>
+      <width>270</width>
       <height>81</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Anurati</family>
-      <pointsize>30</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;M &lt;span style=&quot; color:#090d18;&quot;&gt;O&lt;/span&gt; O N&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;M E S S E N G E R&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="buddy">
-     <cstring></cstring>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>144</x>
-      <y>17</y>
-      <width>58</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Moon</family>
-      <pointsize>34</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>J</string>
+     <string notr="true">image: url(:/back/logo.svg);</string>
     </property>
    </widget>
   </widget>
