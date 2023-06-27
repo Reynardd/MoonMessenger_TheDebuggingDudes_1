@@ -18,6 +18,7 @@ public:
     const QString& type();
     QString lastDate();
     void show_conversation();
+    const vector<Message*>& Messages();
 private:
     QString _name;
     int messageCount;
@@ -27,7 +28,7 @@ signals:
     void getUpdate_failed();
     void connection_lost();
     void session_expired();
-    void newMessage_arrived();
+    void newMessage_arrived(Message* message);
 };
 
 #endif // CONVERSATION_H

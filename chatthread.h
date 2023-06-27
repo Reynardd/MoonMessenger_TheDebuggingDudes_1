@@ -4,6 +4,7 @@
 #include <QObject>
 #include "user.h"
 #include <QLayout>
+#include <QThreadPool>
 using namespace std;
 #include <functional>
 class ChatThread : public QObject
@@ -20,6 +21,7 @@ private:
     void check_new_user();
     void check_new_channel();
     void check_new_group();
+    QThreadPool threadPool;
     void check_new(QString type);
     bool running;
     User* user;

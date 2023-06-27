@@ -2,6 +2,7 @@
 #include <QRegularExpression>
 #include "infodialog.h"
 #include <QTextStream>
+#include "conversationwindow.h"
 Conversation::Conversation(QString name,QString type,QObject *parent)
     : QObject{parent}
 {
@@ -27,7 +28,7 @@ Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
         }
         else
         {
-            message+=buffer;
+            message+=buffer+"\n";
         }
     }
 }
@@ -38,7 +39,6 @@ QString Conversation::lastDate()
     qDebug() << fDate;
     unsigned long long int d = fDate.toULongLong();
     d++;
-    qDebug() << d;
     return QString::number(d);
 }
 void Conversation::getUpdate(QString token)
@@ -86,17 +86,20 @@ void Conversation::getUpdate(QString token)
                 messages.push_back(mes);
                 qDebug() << sender << ":" << text;
                 messageCount++;
-                emit newMessage_arrived();
+                emit newMessage_arrived(mes);
             }
         }
     }
 }
 void Conversation::show_conversation()
 {
-    qDebug() << "showing conversation";
+    qDebug() << "showing conv";
+    ConversationWindow* window = new ConversationWindow(this);
+    window->show();
 }
 const QString& Conversation::name() {return _name; }
 const QString& Conversation::type() {return chatType; }
+const vector<Message*>& Conversation::Messages() {return messages; }
 Conversation::~Conversation()
 {
     for(auto& x:messages)

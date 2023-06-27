@@ -41,8 +41,8 @@ ChatListPage::~ChatListPage()
     delete user;
     delete menuAnimation;
     delete menuButtonAnimation;
-    qDebug() << "chatlistpage deleted";
     delete ui;
+    qDebug() << "chatlistpage deleted";
 
 
 }

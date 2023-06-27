@@ -12,6 +12,7 @@ SOURCES += \
     chatlistpage.cpp \
     chatthread.cpp \
     conversation.cpp \
+    conversationwindow.cpp \
     infodialog.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     chatlistpage.h \
     chatthread.h \
     conversation.h \
+    conversationwindow.h \
     infodialog.h \
     mainwindow.h \
     message.h \
@@ -35,6 +37,7 @@ HEADERS += \
 
 FORMS += \
     chatlistpage.ui \
+    conversationwindow.ui \
     infodialog.ui \
     mainwindow.ui \
     signupwindow.ui \

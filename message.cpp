@@ -1,5 +1,5 @@
 #include "message.h"
-
+#include <QDebug>
 Message::Message(int id,QString sender,QString text,QString date,QObject *parent)
     : QObject{parent}
 {
@@ -10,6 +10,7 @@ Message::Message(int id,QString sender,QString text,QString date,QObject *parent
 }
 Message::Message(QString data,QObject* parent) : QObject{parent}
 {
+    qDebug() << "message data:"<<data;
     QTextStream stream(&data);
     _id = stream.readLine().toInt();
     _sender = stream.readLine();
@@ -26,6 +27,14 @@ Message::Message(Message &m)
 QString Message::date()
 {
     return _date;
+}
+QString Message::sender()
+{
+    return _sender;
+}
+QString Message::text()
+{
+    return _text;
 }
 QString Message::toString()
 {

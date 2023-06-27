@@ -20,6 +20,7 @@ void ChatThread::setLayout(QLayout* layout)
 }
 void ChatThread::stop()
 {
+    threadPool.waitForDone();
     running = false;
 }
 void ChatThread::start()
@@ -27,12 +28,12 @@ void ChatThread::start()
     running = true;
     while(running)
     {
-        QtConcurrent::run(bind(&ChatThread::check_new_user,this));
-        QtConcurrent::run(bind(&ChatThread::check_new_channel,this));
-        QtConcurrent::run(bind(&ChatThread::check_new_group,this));
+        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_user,this));
+        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_channel,this));
+        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_group,this));
         for(auto conv:user->getConversations())
         {
-            QtConcurrent::run(&Conversation::getUpdate,conv,user->getToken());
+            QtConcurrent::run(&threadPool,&Conversation::getUpdate,conv,user->getToken());
         }
         QThread::sleep(1);
     }
@@ -78,6 +79,7 @@ void ChatThread::check_new(QString type)
 ChatThread::~ChatThread()
 {
     stop();
+    qDebug() << "chatthread deleted";
 }
 void ChatThread::check_new_user()
 {

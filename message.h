@@ -10,6 +10,8 @@ public:
     explicit Message(int id,QString sender,QString text,QString date,QObject *parent = nullptr);
     explicit Message(QString data,QObject* parent = nullptr);
     Message(Message& m);
+    QString sender();
+    QString text();
     QString toString();
     QString date();
 private:
