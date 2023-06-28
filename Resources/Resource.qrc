@@ -51,5 +51,19 @@
         <file>passwordValidation-01.svg</file>
         <file>lineEditBorderPassword.svg</file>
         <file>lineEditBorderUsername.svg</file>
+        <file>lineEditBorderGreen.svg</file>
+        <file>lineEditBorderOrange.svg</file>
+        <file>lineEditBorderRed.svg</file>
+        <file>lineEditBorderYellow.svg</file>
+        <file>lineEditBorder.svg</file>
+        <file>lineEditBorderCnfirmGreen.svg</file>
+        <file>lineEditBorderConfirmOrange.svg</file>
+        <file>lineEditBorderConfirmRed.svg</file>
+        <file>lineEditBorderConfirmYellow.svg</file>
+        <file>lineEditBorderPasswordGreen.svg</file>
+        <file>lineEditBorderPasswordOrange.svg</file>
+        <file>lineEditBorderPasswordRed.svg</file>
+        <file>lineEditBorderPasswordYellow.svg</file>
+        <file>lineEditBorderConfirm.svg</file>
     </qresource>
 </RCC>
