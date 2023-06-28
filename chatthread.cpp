@@ -20,8 +20,10 @@ void ChatThread::setLayout(QLayout* layout)
 }
 void ChatThread::stop()
 {
+    qDebug() <<"stopping chatThread";
     threadPool.waitForDone();
     running = false;
+    qDebug() << "chatThread stopped";
 }
 void ChatThread::start()
 {

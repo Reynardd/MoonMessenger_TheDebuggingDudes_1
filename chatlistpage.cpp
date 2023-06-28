@@ -5,6 +5,7 @@
 #include "user.h"
 #include <QtConcurrent/QtConcurrent>
 #include <QVBoxLayout>
+#include <QDebug>
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatListPage)
@@ -24,7 +25,6 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
     ui->scrollArea->setWidgetResizable(true);
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    connect(ui->pushButton,&QPushButton::clicked,[&](){chatThread->stop();user->logout();});
     connect(user,&User::logOut_failed,[&](){QtConcurrent::run(&ChatThread::start,chatThread);});
 
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
@@ -149,5 +149,13 @@ void ChatListPage::new_conversation(Conversation* conversation)
                 border-width: 2px;\
         }");
     chatsLayout->addWidget(button);
+}
+
+
+void ChatListPage::on_pushButton_clicked()
+{
+    qDebug() << "logout button clicked";
+    chatThread->stop();
+    user->logout();
 }
 

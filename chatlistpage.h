@@ -21,6 +21,8 @@ private slots:
     void userLoggedOut();
     void new_conversation(Conversation* conversation);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::ChatListPage *ui;
     QPropertyAnimation* menuAnimation;
