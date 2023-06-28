@@ -389,6 +389,14 @@ background:none;
   <zorder>FName</zorder>
   <zorder>widget_3</zorder>
  </widget>
+ <tabstops>
+  <tabstop>username</tabstop>
+  <tabstop>password</tabstop>
+  <tabstop>signupButton</tabstop>
+  <tabstop>cPassword</tabstop>
+  <tabstop>FName</tabstop>
+  <tabstop>LName</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

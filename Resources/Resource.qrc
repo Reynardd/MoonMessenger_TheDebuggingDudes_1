@@ -49,5 +49,7 @@
         <file>labelAlready.svg</file>
         <file>passwordValidation.svg</file>
         <file>passwordValidation-01.svg</file>
+        <file>lineEditBorderPassword.svg</file>
+        <file>lineEditBorderUsername.svg</file>
     </qresource>
 </RCC>

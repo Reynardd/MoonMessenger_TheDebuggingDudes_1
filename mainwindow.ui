@@ -36,37 +36,13 @@
    <string notr="true">font:url(:/font/Font/Anurati-Regular.otf);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>165</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Mononoki Nerd Font</family>
-      <pointsize>14</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Password:</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>131</y>
+      <y>127</y>
       <width>251</width>
-      <height>21</height>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -77,11 +53,9 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(53, 71, 120);
-border-color: rgb(53, 71, 120);
+     <string notr="true">background-color:transparent;
 border: none;
-border-radius: 2px;
-color: rgb(255, 255, 255);</string>
+padding-left:24px;</string>
     </property>
     <property name="text">
      <string/>
@@ -90,16 +64,16 @@ color: rgb(255, 255, 255);</string>
      <number>0</number>
     </property>
     <property name="placeholderText">
-     <string>Username</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>163</y>
+      <y>162</y>
       <width>251</width>
-      <height>21</height>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -113,11 +87,9 @@ color: rgb(255, 255, 255);</string>
      <string/>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(53, 71, 120);
-border-color: rgb(53, 71, 120);
+     <string notr="true">background-color:transparent;
 border: none;
-border-radius: 2px;
-color: rgb(255, 255, 255);</string>
+padding-left:24px;</string>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhNone</set>
@@ -129,7 +101,7 @@ color: rgb(255, 255, 255);</string>
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Password</string>
+     <string/>
     </property>
     <property name="clearButtonEnabled">
      <bool>true</bool>
@@ -242,6 +214,40 @@ QPushButton:pressed {
      <string notr="true">image: url(:/label/labelNewLogin.svg);</string>
     </property>
    </widget>
+   <widget class="QWidget" name="passwoedBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>163</y>
+      <width>251</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/label/lineEditBorderPassword.svg);</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="usernameBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>128</y>
+      <width>251</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/label/lineEditBorderUsername.svg);</string>
+    </property>
+   </widget>
+   <zorder>usernameBorder</zorder>
+   <zorder>passwoedBorder</zorder>
+   <zorder>username</zorder>
+   <zorder>password</zorder>
+   <zorder>craete</zorder>
+   <zorder>loginButton</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_2</zorder>
   </widget>
  </widget>
  <resources/>
