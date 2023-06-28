@@ -13,21 +13,21 @@ SignupWindow::SignupWindow(QWidget *parent) :
     passwordStrength = 0;
     passwordMatch = false;
     ui->setupUi(this);
-    ui->label_7->hide();
+    ui->FName->hide();
     ui->label_6->hide();
     ui->label_8->hide();
     ui->label_9->hide();
     ui->cPassword->hide();
-    ui->name->hide();
+    ui->LName->hide();
     anim = new QPropertyAnimation(ui->signupButton,"geometry",this);
     anim->setDuration(250);
     anim->setStartValue(ui->signupButton->geometry());
     anim->setEndValue(QRect(45,268,ui->signupButton->geometry().width(),ui->signupButton->geometry().height()));
     anim->start();
-    connect(anim,&QPropertyAnimation::finished,ui->label_7,&QWidget::show);
+    connect(anim,&QPropertyAnimation::finished,ui->FName,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->label_6,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->cPassword,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->name,&QWidget::show);
+    connect(anim,&QPropertyAnimation::finished,ui->LName,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->label_9,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->label_8,&QWidget::show);
 }
@@ -51,7 +51,7 @@ void SignupWindow::on_signupButton_clicked()
     ui->signupButton->setEnabled(false);
     QString username = ui->username->text();
     QString password = ui->password->text();
-    QString name = ui->name->text();
+    QString name = ui->LName->text();
     if(username == "")
     {
         infoDialog* dialog = new infoDialog("Username Cannot be empty\nPlease Provide a Username",this);

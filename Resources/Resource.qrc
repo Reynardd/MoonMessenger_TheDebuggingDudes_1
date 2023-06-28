@@ -42,5 +42,12 @@
         <file>loginButtonPressed.svg</file>
         <file>labelNewLogin.svg</file>
         <file>labelCreate.svg</file>
+        <file>signupButton.svg</file>
+        <file>signupButtonHover.svg</file>
+        <file>signupButtonPressed.svg</file>
+        <file>labelSignIn.svg</file>
+        <file>labelAlready.svg</file>
+        <file>passwordValidation.svg</file>
+        <file>passwordValidation-01.svg</file>
     </qresource>
 </RCC>
