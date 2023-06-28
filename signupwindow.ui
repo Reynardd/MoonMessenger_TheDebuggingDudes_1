@@ -115,7 +115,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>163</y>
+     <y>166</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -144,7 +144,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>258</x>
-     <y>319</y>
+     <y>315</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -180,30 +180,11 @@ image: url(:/label/labelSignIn.svg);</string>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/back/background.jpg);</string>
    </property>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>350</y>
-      <width>251</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>19</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;________________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>317</y>
+      <y>313</y>
       <width>203</width>
       <height>20</height>
      </rect>
@@ -240,36 +221,40 @@ background:none;</string>
 image: url(:/label/lineEditBorderUsername.svg);</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>450</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Mononoki Nerd Font</family>
-     <pointsize>14</pointsize>
-     <italic>false</italic>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>Confirm:</string>
-   </property>
+   <widget class="QWidget" name="FNameBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>227</y>
+      <width>121</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+image: url(:/label/lineEditName.svg);</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="LNameBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>227</y>
+      <width>121</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+image: url(:/label/lineEditName.svg);</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLineEdit" name="cPassword">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>200</y>
+     <y>198</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -291,14 +276,14 @@ color:white;</string>
     <string/>
    </property>
    <property name="placeholderText">
-    <string>confirm</string>
+    <string>Confirm</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="LName">
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>229</y>
+     <y>230</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -311,11 +296,10 @@ color:white;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(53, 71, 120);
-border-color: rgb(53, 71, 120);
+    <string notr="true">background-color:transparent;
 border: none;
-border-radius: 2px;
-color: rgb(255, 255, 255);</string>
+padding-left:7px;
+color:white;</string>
    </property>
    <property name="text">
     <string/>
@@ -324,30 +308,11 @@ color: rgb(255, 255, 255);</string>
     <string>Last Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>380</y>
-     <width>251</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>19</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;________________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="FName">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>229</y>
+     <y>230</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -360,11 +325,10 @@ color: rgb(255, 255, 255);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(53, 71, 120);
-border-color: rgb(53, 71, 120);
+    <string notr="true">background-color:transparent;
 border: none;
-border-radius: 2px;
-color: rgb(255, 255, 255);</string>
+padding-left:7px;
+color:white;</string>
    </property>
    <property name="text">
     <string/>
@@ -377,7 +341,7 @@ color: rgb(255, 255, 255);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>160</y>
+     <y>163</y>
      <width>251</width>
      <height>28</height>
     </rect>
@@ -391,7 +355,7 @@ image: url(:/label/lineEditBorderPassword.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>197</y>
+     <y>195</y>
      <width>251</width>
      <height>28</height>
     </rect>
@@ -405,9 +369,7 @@ image: url(:/label/lineEditBorderConfirm.svg);</string>
   <zorder>username</zorder>
   <zorder>signupButton</zorder>
   <zorder>craete</zorder>
-  <zorder>label_6</zorder>
   <zorder>LName</zorder>
-  <zorder>label_9</zorder>
   <zorder>FName</zorder>
   <zorder>passwordBorder</zorder>
   <zorder>confirmBorder</zorder>

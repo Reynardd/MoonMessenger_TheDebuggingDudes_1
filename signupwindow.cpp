@@ -16,14 +16,22 @@ SignupWindow::SignupWindow(QWidget *parent) :
     ui->FName->hide();
     ui->cPassword->hide();
     ui->LName->hide();
+    ui->FNameBorder->hide();
+    ui->LNameBorder->hide();
+    ui->confirmBorder->hide();
     anim = new QPropertyAnimation(ui->signupButton,"geometry",this);
     anim->setDuration(250);
     anim->setStartValue(ui->signupButton->geometry());
     anim->setEndValue(QRect(45,268,ui->signupButton->geometry().width(),ui->signupButton->geometry().height()));
     anim->start();
-    connect(anim,&QPropertyAnimation::finished,ui->FName,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->cPassword,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->LName,&QWidget::show);
+    connect(anim,&QPropertyAnimation::finished,[&](){
+        ui->FNameBorder->show();
+        ui->LNameBorder->show();
+        ui->confirmBorder->show();
+        ui->LName->show();
+        ui->FName->show();
+        ui->cPassword->show();
+    });
 }
 
 SignupWindow::~SignupWindow()

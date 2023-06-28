@@ -65,5 +65,6 @@
         <file>lineEditBorderPasswordRed.svg</file>
         <file>lineEditBorderPasswordYellow.svg</file>
         <file>lineEditBorderConfirm.svg</file>
+        <file>lineEditName.svg</file>
     </qresource>
 </RCC>
