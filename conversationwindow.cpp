@@ -6,7 +6,9 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     conversation(conversation),
     ui(new Ui::ConversationWindow)
 {
+    this->setAttribute(Qt::WA_DeleteOnClose,true);
     ui->setupUi(this);
+    this->setWindowTitle(conversation->name());
     ui->dstLabel->setText(conversation->name());
     ui->scrollArea->setWidget(ui->scrollAreaWidgetContents);
     messagesLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
@@ -20,12 +22,12 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
         if(message->sender()==conversation->name())
         {
             layout->setAlignment(Qt::AlignLeft);
-            label->setStyleSheet("background-color:#0050FF;border-radius:15px;color:#00000");
+            label->setStyleSheet("background-color:#0050FF;border-radius:15px;color:#000000");
         }
         else
         {
             layout->setAlignment(Qt::AlignRight);
-            label->setStyleSheet("background-color:#00FFFF;border-radius:15px;color:#00000");
+            label->setStyleSheet("background-color:#00FFFF;border-radius:15px;color:#000000");
         }
         layout->addWidget(label);
         label->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Fixed);
