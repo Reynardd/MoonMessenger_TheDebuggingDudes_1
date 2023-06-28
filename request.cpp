@@ -23,7 +23,7 @@ QJsonObject get(QString url, QUrlQuery params)
         QByteArray response = reply->readAll();
         QJsonDocument doc(QJsonDocument::fromJson(response));
         jsonObject = doc.object();
-        //qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
+        qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
     }
     reply->deleteLater();
     delete manager;

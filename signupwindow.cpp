@@ -161,8 +161,8 @@ QString passwordStrengthChecker(QString password)
     //QRegularExpression weak("^(?=[a-zA-Z0-9]{1,4}$)(?=.*[a-zA-Z])(?=.*\\d)");
     //QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d).{5,}$");
     //QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,}$");
-    QRegularExpression veryWeak("^(?:[a-zA-Z]+|\\d+)$");
-    QRegularExpression weak("^(?:[a-zA-Z]+|\\d+).*$");
+    QRegularExpression veryWeak("^(?:[a-zA-Z]{1,4}|\\d{1,4})$");
+    QRegularExpression weak("^(?:[a-zA-Z]+|\\d+){5,}$");
     QRegularExpression weak_2("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{1,4}$");
     QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
     QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
@@ -177,23 +177,25 @@ QString passwordStrengthChecker(QString password)
     m = moderate.match(password);
     if(m.hasMatch())
     {
+
         return "moderate";
     }
     m = weak.match(password);
     if(m.hasMatch())
     {
-        qDebug() << "weak";
+
         return "weak";
     }
     m = weak_2.match(password);
     if(m.hasMatch())
     {
-        qDebug() << "weak2";
+
         return "weak";
     }
     m = veryWeak.match(password);
     if(m.hasMatch())
     {
+
         return "veryWeak";
     }
     return "empty";
