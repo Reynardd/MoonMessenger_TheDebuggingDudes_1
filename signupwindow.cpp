@@ -14,9 +14,6 @@ SignupWindow::SignupWindow(QWidget *parent) :
     passwordMatch = false;
     ui->setupUi(this);
     ui->FName->hide();
-    ui->label_6->hide();
-    ui->label_8->hide();
-    ui->label_9->hide();
     ui->cPassword->hide();
     ui->LName->hide();
     anim = new QPropertyAnimation(ui->signupButton,"geometry",this);
@@ -25,11 +22,8 @@ SignupWindow::SignupWindow(QWidget *parent) :
     anim->setEndValue(QRect(45,268,ui->signupButton->geometry().width(),ui->signupButton->geometry().height()));
     anim->start();
     connect(anim,&QPropertyAnimation::finished,ui->FName,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->label_6,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->cPassword,&QWidget::show);
     connect(anim,&QPropertyAnimation::finished,ui->LName,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->label_9,&QWidget::show);
-    connect(anim,&QPropertyAnimation::finished,ui->label_8,&QWidget::show);
 }
 
 SignupWindow::~SignupWindow()
@@ -45,7 +39,44 @@ void SignupWindow::on_craete_linkActivated(const QString &link)
     this->close();
 }
 
-
+void SignupWindow::passwordStrengthHandler(QString strength)
+{
+    if(strength=="empty")
+    {
+        ui->passwordBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderPassword.svg);");
+        ui->password->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:white;");
+        passwordStrength = 0;
+        return;
+    }
+    if(strength=="strong")
+    {
+        ui->passwordBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderPasswordGreen.svg);");
+        ui->password->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:green;");
+        passwordStrength = 4;
+        return;
+    }
+    if(strength=="moderate")
+    {
+        ui->passwordBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderPasswordYellow.svg);");
+        passwordStrength = 3;
+        ui->password->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:yellow;");
+        return;
+    }
+    if(strength=="weak")
+    {
+        ui->passwordBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderPasswordOrange.svg);");
+        passwordStrength = 2;
+        ui->password->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:orange;");
+        return;
+    }
+    if(strength=="veryWeak")
+    {
+        ui->passwordBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderPasswordRed.svg);");
+        passwordStrength = 1;
+        ui->password->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:red;");
+        return;
+    }
+}
 void SignupWindow::on_signupButton_clicked()
 {
     ui->signupButton->setEnabled(false);
@@ -120,82 +151,82 @@ void SignupWindow::on_signupButton_clicked()
     }
 }
 
+QString passwordStrengthChecker(QString password)
+{
+    if(password=="")
+    {
+        return "empty";
+    }
+    //QRegularExpression veryWeak("^(?:[a-zA-Z]{1,4}|\\d{1,4})$");
+    //QRegularExpression weak("^(?=[a-zA-Z0-9]{1,4}$)(?=.*[a-zA-Z])(?=.*\\d)");
+    //QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d).{5,}$");
+    //QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,}$");
+    QRegularExpression veryWeak("^(?:[a-zA-Z]+|\\d+)$");
+    QRegularExpression weak("^(?:[a-zA-Z]+|\\d+).*$");
+    QRegularExpression weak_2("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{1,4}$");
+    QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
+    QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
 
+
+
+    QRegularExpressionMatch m;
+    m = strong.match(password);
+    if(m.hasMatch()){
+        return "strong";
+    }
+    m = moderate.match(password);
+    if(m.hasMatch())
+    {
+        return "moderate";
+    }
+    m = weak.match(password);
+    if(m.hasMatch())
+    {
+        qDebug() << "weak";
+        return "weak";
+    }
+    m = weak_2.match(password);
+    if(m.hasMatch())
+    {
+        qDebug() << "weak2";
+        return "weak";
+    }
+    m = veryWeak.match(password);
+    if(m.hasMatch())
+    {
+        return "veryWeak";
+    }
+    return "empty";
+}
+void SignupWindow::passwordMatchHandler()
+{
+    if(ui->cPassword->text()=="")
+    {
+        passwordMatch = false;
+        ui->confirmBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderConfirm.svg);");
+        ui->cPassword->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:white;");
+        return;
+    }
+    if(ui->cPassword->text()==ui->password->text())
+    {
+        passwordMatch = true;
+        ui->confirmBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderCnfirmGreen.svg);");
+        ui->cPassword->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:green;");
+        return;
+    }
+    passwordMatch = false;
+    ui->confirmBorder->setStyleSheet("background:none;image: url(:/label/lineEditBorderConfirmRed.svg);");
+    ui->cPassword->setStyleSheet("background-color:transparent;border: none;padding-left:24px;color:red;");
+
+}
 void SignupWindow::on_password_textChanged(const QString &arg1)
 {
-    if(ui->cPassword->text() == "")
-    {
-        ui->label_9->setText("<html><head/><body><p><span style=\" color:#ffffff;\">________________</span></p></body></html>");
-        passwordMatch = false;
-    }
-    else if(ui->password->text() == ui->cPassword->text())
-    {
-        ui->label_9->setText("<html><head//><body><p><span style=\" color:#00ff00;\">________________<//span><//p><//body><//html>");
-        passwordMatch = true;
-    }
-    else
-    {
-        ui->label_9->setText("<html><head/><body><p><span style=\" color:#ff0000;\">________________</span></p></body></html>");
-        passwordMatch = false;
-    }
-
-    if(arg1 == "")
-    {
-        ui->label_8->setText("<html><head/><body><p><span style=\" color:#ffffff;\">________________</span></p></body></html>");
-        passwordStrength = 0;
-        return;
-    }
-    QRegularExpression veryWeak("^(?:[a-zA-Z]{1,4}|\\d{1,4})$");
-    QRegularExpression weak("^(?=[a-zA-Z0-9]{1,4}$)(?=.*[a-zA-Z])(?=.*\\d)");
-    QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d).{5,}$");
-    QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,}$");
-    QRegularExpressionMatch m;
-    m = strong.match(arg1);
-    if(m.hasMatch()){
-        ui->label_8->setText("<html><head//><body><p><span style=\" color:#00ff00;\">________________<//span><//p><//body><//html>");
-        passwordStrength = 4;
-        return;
-    }
-    m = moderate.match(arg1);
-    if(m.hasMatch())
-    {
-        ui->label_8->setText("<html><head/><body><p><span style=\" color:#ffff00;\">____________</span><span style=\" color:#ffffff;\">____</span></p></body></html>");
-        passwordStrength = 3;
-        return;
-    }
-    m = weak.match(arg1);
-    if(m.hasMatch())
-    {
-        ui->label_8->setText("<html><head/><body><p><span style=\" color:#ffa500;\">________</span>________</p></body></html>");
-        passwordStrength = 2;
-        return;
-    }
-    m = veryWeak.match(arg1);
-    if(m.hasMatch())
-    {
-        ui->label_8->setText("<html><head/><body><p><span style=\" color:#ff0000;\">____</span>____________</p></body></html>");
-        passwordStrength = 1;
-        return;
-    }
-
+    passwordMatchHandler();
+    passwordStrengthHandler(passwordStrengthChecker(arg1));
 }
 
 void SignupWindow::on_cPassword_textChanged(const QString &arg1)
 {
-    if(arg1 == "")
-    {
-        ui->label_9->setText("<html><head/><body><p><span style=\" color:#ffffff;\">________________</span></p></body></html>");
-        passwordMatch = false;
-    }
-    else if(ui->password->text() == ui->cPassword->text())
-    {
-        ui->label_9->setText("<html><head//><body><p><span style=\" color:#00ff00;\">________________<//span><//p><//body><//html>");
-        passwordMatch = true;
-    }
-    else
-    {
-        ui->label_9->setText("<html><head/><body><p><span style=\" color:#ff0000;\">________________</span></p></body></html>");
-        passwordMatch = false;
-    }
+    passwordMatchHandler();
 }
 

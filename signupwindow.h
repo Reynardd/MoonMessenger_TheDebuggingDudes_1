@@ -25,6 +25,8 @@ private slots:
     void on_cPassword_textChanged(const QString &arg1);
 
 private:
+    void passwordStrengthHandler(QString strength);
+    void passwordMatchHandler();
     Ui::SignupWindow *ui;
     QPropertyAnimation *anim,anim2;
     bool passwordMatch;

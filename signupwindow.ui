@@ -269,9 +269,9 @@ image: url(:/label/lineEditBorderUsername.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>194</y>
+     <y>200</y>
      <width>251</width>
-     <height>28</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -404,23 +404,23 @@ image: url(:/label/lineEditBorderConfirm.svg);</string>
   <zorder>widget</zorder>
   <zorder>username</zorder>
   <zorder>signupButton</zorder>
-  <zorder>password</zorder>
   <zorder>craete</zorder>
   <zorder>label_6</zorder>
   <zorder>LName</zorder>
   <zorder>label_9</zorder>
-  <zorder>cPassword</zorder>
   <zorder>FName</zorder>
   <zorder>passwordBorder</zorder>
   <zorder>confirmBorder</zorder>
+  <zorder>password</zorder>
+  <zorder>cPassword</zorder>
  </widget>
  <tabstops>
   <tabstop>username</tabstop>
   <tabstop>password</tabstop>
-  <tabstop>signupButton</tabstop>
   <tabstop>cPassword</tabstop>
   <tabstop>FName</tabstop>
   <tabstop>LName</tabstop>
+  <tabstop>signupButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
