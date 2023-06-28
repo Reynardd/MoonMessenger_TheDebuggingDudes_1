@@ -55,7 +55,8 @@
     <property name="styleSheet">
      <string notr="true">background-color:transparent;
 border: none;
-padding-left:24px;</string>
+padding-left:24px;
+color:white;</string>
     </property>
     <property name="text">
      <string/>
@@ -89,7 +90,8 @@ padding-left:24px;</string>
     <property name="styleSheet">
      <string notr="true">background-color:transparent;
 border: none;
-padding-left:24px;</string>
+padding-left:24px;
+color:white;</string>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhNone</set>
