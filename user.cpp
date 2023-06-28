@@ -38,6 +38,7 @@ void User::logout()
     QUrlQuery query;
     query.addQueryItem("username",username);
     query.addQueryItem("password",password);
+    qDebug() << "link ready to send";
     QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
     if(response.empty())
     {

@@ -35,7 +35,7 @@ void ChatThread::start()
         {
             QtConcurrent::run(&threadPool,&Conversation::getUpdate,conv,user->getToken());
         }
-        QThread::sleep(0.3);
+        QThread::sleep(1);
     }
 }
 void ChatThread::check_new(QString type)
