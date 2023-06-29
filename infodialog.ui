@@ -79,22 +79,34 @@ QPushButton {
     border-radius: 12px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
+
+	
+	image: url(:/label/okButton.svg);
+	border:none;
 }
 
 QPushButton:hover {
     background-color: #7FB3D5; 
     border-style: outset; 
     border-width: 2px;
+
+	
+	image: url(:/label/okButtonHover.svg);
+	border:none;
 }
 
 QPushButton:pressed {
     background-color: #4E7CA8; 
     border-style: inset; 
     border-width: 2px;
+
+	
+	image: url(:/label/okButtonPressed.svg);	
+	border:none;
 }</string>
    </property>
    <property name="text">
-    <string>O K</string>
+    <string/>
    </property>
   </widget>
   <widget class="QWidget" name="centralwidget" native="true">

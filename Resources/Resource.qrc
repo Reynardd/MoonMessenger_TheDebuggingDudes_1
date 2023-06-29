@@ -66,6 +66,18 @@
         <file>lineEditBorderPasswordYellow.svg</file>
         <file>lineEditBorderConfirm.svg</file>
         <file>lineEditName.svg</file>
-        <file>yesButton-01.svg</file>
+        <file>noButton.svg</file>
+        <file>okButton.svg</file>
+        <file>yesButton.svg</file>
+        <file>noButtonHover.svg</file>
+        <file>noButtonPressed.svg</file>
+        <file>okButtonHover.svg</file>
+        <file>okButtonPressed.svg</file>
+        <file>yesButtonHover.svg</file>
+        <file>yesButtonPressed.svg</file>
+        <file>logoutButton.svg</file>
+        <file>logoutButtonHover.svg</file>
+        <file>logoutButtonPressed.svg</file>
+        <file>logoLine.svg</file>
     </qresource>
 </RCC>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 80 24" style="enable-background:new 0 0 80 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0676FF;}
+	.st1{display:none;}
+	.st2{display:inline;fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;}
+	.st3{fill:none;}
+	.st4{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;}
+	.st5{font-family:'KohinoorBangla-Regular';}
+	.st6{font-size:15px;}
+</style>
+<path class="st0" d="M68,24H12C5.4,24,0,18.6,0,12v0C0,5.4,5.4,0,12,0l56,0c6.6,0,12,5.4,12,12v0C80,18.6,74.6,24,68,24z"/>
+<g class="st1">
+	<path class="st2" d="M36.4,7.2L33,13.9v3.8h-1.2v-3.8l-3.5-6.7h1.4l2.7,5.5h0.1l2.7-5.5H36.4z"/>
+	<path class="st2" d="M43.4,17.1c-0.5,0.4-1.4,0.7-2.6,0.7c-2.3,0-3.6-1.2-3.6-4.2c0-3,1.6-4.2,3.5-4.2c1.9,0,3,1.3,3,3.2
+		c0,0.4,0,0.9-0.1,1.4h-5.2c0.1,2,0.9,2.8,2.6,2.8c0.8,0,1.5-0.3,1.9-0.6L43.4,17.1z M38.4,13h4.1c0-0.2,0-0.4,0-0.5
+		c0-1.4-0.6-2.2-1.9-2.2C39.5,10.4,38.5,11.1,38.4,13z"/>
+	<path class="st2" d="M45.5,11.7c0-1.2,1-2.3,2.8-2.3c1,0,1.9,0.3,2.4,0.9L50,11.1c-0.4-0.4-1-0.7-1.7-0.7c-1.1,0-1.6,0.6-1.6,1.2
+		c0,1.8,4.1,1.1,4.1,3.9c0,1.1-0.9,2.3-2.9,2.3c-1.4,0-2.4-0.5-2.9-1l0.7-0.9c0.5,0.5,1.3,0.9,2.2,0.9c1.1,0,1.7-0.6,1.7-1.3
+		C49.7,13.7,45.5,14.4,45.5,11.7z"/>
+</g>
+<rect class="st3" width="80" height="24"/>
+<text id="No" transform="matrix(1 0 0 1 30.5649 17.6924)" class="st4 st5 st6">No</text>
+</svg>

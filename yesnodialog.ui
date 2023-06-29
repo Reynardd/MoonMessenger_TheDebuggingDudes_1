@@ -43,22 +43,34 @@ QPushButton {
     border-radius: 12px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
+
+	
+	image: url(:/label/yesButton.svg);
+	border:none;
 }
 
 QPushButton:hover {
     background-color: #7FB3D5; 
     border-style: outset; 
     border-width: 2px;
+
+	
+	image: url(:/label/yesButtonHover.svg);
+	border:none;
 }
 
 QPushButton:pressed {
     background-color: #4E7CA8; 
     border-style: inset; 
     border-width: 2px;
+	
+	
+	image: url(:/label/yesButtonPressed.svg);
+	border:none;
 }</string>
     </property>
     <property name="text">
-     <string>Yes</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -116,22 +128,34 @@ QPushButton {
     border-radius: 12px;
 	border-color: rgb(6, 118, 255);
 	background-color: rgb(6, 118, 255);
+
+	
+	image: url(:/label/noButton.svg);
+	border:none;
 }
 
 QPushButton:hover {
     background-color: #7FB3D5; 
     border-style: outset; 
     border-width: 2px;
+
+	
+	image: url(:/label/noButtonHover.svg);
+	border:none;
 }
 
 QPushButton:pressed {
     background-color: #4E7CA8; 
     border-style: inset; 
     border-width: 2px;
+
+	
+	image: url(:/label/noButtonPressed.svg);
+	border:none;
 }</string>
     </property>
     <property name="text">
-     <string>No</string>
+     <string/>
     </property>
    </widget>
   </widget>
