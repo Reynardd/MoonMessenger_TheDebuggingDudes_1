@@ -108,12 +108,12 @@
      <x>-20</x>
      <y>0</y>
      <width>381</width>
-     <height>41</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Modern</family>
+     <family>HoloLens MDL2 Assets</family>
     </font>
    </property>
    <property name="styleSheet">

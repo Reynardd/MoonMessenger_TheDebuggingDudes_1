@@ -11,6 +11,8 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     ui(new Ui::ChatListPage)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_TranslucentBackground,true);
+    this->setWindowFlag(Qt::FramelessWindowHint);
     showingMenu = false;
     this->setAttribute(Qt::WA_DeleteOnClose,true);
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
@@ -159,3 +161,35 @@ void ChatListPage::on_pushButton_clicked()
     user->logout();
 }
 
+
+void ChatListPage::on_exitButton_clicked()
+{
+    chatThread->stop();
+    this->close();
+}
+
+
+void ChatListPage::on_minimizeButton_clicked()
+{
+    this->showMinimized();
+}
+void ChatListPage::mousePressEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    dragPosition = event->globalPos() - frameGeometry().topLeft();
+    event->accept();
+}
+void ChatListPage::mouseMoveEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    if (event->buttons() & Qt::LeftButton)
+    {
+        move(event->globalPos() - dragPosition);
+        event->accept();
+    }
+}
+bool ChatListPage::isMouseOnToolbar(QPoint mousePos)
+{
+    QRect toolbar(0,0,350,25);
+    return toolbar.contains(mousePos);
+}

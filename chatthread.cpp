@@ -20,22 +20,26 @@ void ChatThread::setLayout(QLayout* layout)
 }
 void ChatThread::stop()
 {
+    if(!running)return;
     qDebug() <<"stopping chatThread";
-    threadPool.waitForDone();
     running = false;
+    QThread::sleep(2);
+    threadPool.clear();
     qDebug() << "chatThread stopped";
+
 }
 void ChatThread::start()
 {
     running = true;
     while(running)
     {
-        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_user,this));
-        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_channel,this));
-        QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_group,this));
+
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_user,this));
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_channel,this));
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_group,this));
         for(auto conv:user->getConversations())
         {
-            QtConcurrent::run(&threadPool,&Conversation::getUpdate,conv,user->getToken());
+            if(!running)break;QtConcurrent::run(&threadPool,&Conversation::getUpdate,conv,user->getToken());
         }
         QThread::sleep(1);
     }

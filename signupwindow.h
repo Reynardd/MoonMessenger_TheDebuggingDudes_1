@@ -24,7 +24,15 @@ private slots:
 
     void on_cPassword_textChanged(const QString &arg1);
 
+    void on_exitButton_clicked();
+
+    void on_minimizeButton_clicked();
+
 private:
+    void mousePressEvent(QMouseEvent*) override;
+    void mouseMoveEvent(QMouseEvent*) override;
+    bool isMouseOnToolbar(QPoint mousePos);
+    QPoint dragPosition;
     void passwordStrengthHandler(QString strength);
     void passwordMatchHandler();
     Ui::SignupWindow *ui;

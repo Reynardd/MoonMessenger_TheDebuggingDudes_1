@@ -20,7 +20,14 @@ private slots:
 
     void on_loginButton_clicked();
 
+    void on_exitButton_clicked();
+
+    void on_minimizeButton_clicked();
+    void mousePressEvent(QMouseEvent*) override;
+    void mouseMoveEvent(QMouseEvent*) override;
 private:
     Ui::MainWindow *ui;
+    bool isMouseOnToolbar(QPoint mousePos);
+    QPoint dragPosition;
 };
 #endif // MAINWINDOW_H

@@ -80,4 +80,15 @@
         <file>logoutButtonPressed.svg</file>
         <file>logoLine.svg</file>
     </qresource>
+    <qresource prefix="/toolbar">
+        <file>MacOsToolBar-01.svg</file>
+        <file>MacOsToolBarBackground.svg</file>
+        <file>MacOsToolBarButtonExit-01.svg</file>
+        <file>MacOsToolBarButtonExitHover.svg</file>
+        <file>MacOsToolBarButtonExitPressed-01.svg</file>
+        <file>MacOsToolBarButtonMinimize-01.svg</file>
+        <file>MacOsToolBarButtonMinimizeHover.svg</file>
+        <file>MacOsToolBarButtonMinimizePressed-01.svg</file>
+        <file>MacOsToolBarButtonNull-01.svg</file>
+    </qresource>
 </RCC>

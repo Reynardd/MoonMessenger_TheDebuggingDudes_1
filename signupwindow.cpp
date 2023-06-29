@@ -10,6 +10,8 @@ SignupWindow::SignupWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SignupWindow)
 {
+    this->setAttribute(Qt::WA_TranslucentBackground,true);
+    this->setWindowFlag(Qt::FramelessWindowHint);
     passwordStrength = 0;
     passwordMatch = false;
     ui->setupUi(this);
@@ -124,7 +126,8 @@ void SignupWindow::on_signupButton_clicked()
     QUrlQuery query;
     query.addQueryItem("username",username);
     query.addQueryItem("password",password);
-    //if(name!="")query.addQueryItem("firstname",name);
+    query.addQueryItem("first_name",ui->FName->text());
+    query.addQueryItem("last_name",ui->LName->text());
     QJsonObject response = get("http://api.barafardayebehtar.ml:8080/signup",query);
     if(response.empty())
     {
@@ -161,51 +164,18 @@ void SignupWindow::on_signupButton_clicked()
 
 QString passwordStrengthChecker(QString password)
 {
-    if(password=="")
-    {
-        return "empty";
-    }
-    //QRegularExpression veryWeak("^(?:[a-zA-Z]{1,4}|\\d{1,4})$");
-    //QRegularExpression weak("^(?=[a-zA-Z0-9]{1,4}$)(?=.*[a-zA-Z])(?=.*\\d)");
-    //QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d).{5,}$");
-    //QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,}$");
+    if(password=="") { return "empty"; }
     QRegularExpression veryWeak("^(?:[a-zA-Z]{1,4}|\\d{1,4})$");
     QRegularExpression weak("^(?:[a-zA-Z]+|\\d+){5,}$");
     QRegularExpression weak_2("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{1,4}$");
     QRegularExpression moderate("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
     QRegularExpression strong("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{5,}$");
-
-
-
     QRegularExpressionMatch m;
-    m = strong.match(password);
-    if(m.hasMatch()){
-        return "strong";
-    }
-    m = moderate.match(password);
-    if(m.hasMatch())
-    {
-
-        return "moderate";
-    }
-    m = weak.match(password);
-    if(m.hasMatch())
-    {
-
-        return "weak";
-    }
-    m = weak_2.match(password);
-    if(m.hasMatch())
-    {
-
-        return "weak";
-    }
-    m = veryWeak.match(password);
-    if(m.hasMatch())
-    {
-
-        return "veryWeak";
-    }
+    m = strong.match(password);   if(m.hasMatch()){ return "strong"; }
+    m = moderate.match(password); if(m.hasMatch()) { return "moderate"; }
+    m = weak.match(password);     if(m.hasMatch()) { return "weak"; }
+    m = weak_2.match(password);   if(m.hasMatch()) { return "weak";}
+    m = veryWeak.match(password); if(m.hasMatch()) { return "veryWeak"; }
     return "empty";
 }
 void SignupWindow::passwordMatchHandler()
@@ -238,5 +208,37 @@ void SignupWindow::on_password_textChanged(const QString &arg1)
 void SignupWindow::on_cPassword_textChanged(const QString &arg1)
 {
     passwordMatchHandler();
+}
+
+
+void SignupWindow::on_exitButton_clicked()
+{
+    this->close();
+}
+
+
+void SignupWindow::on_minimizeButton_clicked()
+{
+    this->showMinimized();
+}
+void SignupWindow::mousePressEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    dragPosition = event->globalPos() - frameGeometry().topLeft();
+    event->accept();
+}
+void SignupWindow::mouseMoveEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    if (event->buttons() & Qt::LeftButton)
+    {
+        move(event->globalPos() - dragPosition);
+        event->accept();
+    }
+}
+bool SignupWindow::isMouseOnToolbar(QPoint mousePos)
+{
+    QRect toolbar(0,0,350,25);
+    return toolbar.contains(mousePos);
 }
 

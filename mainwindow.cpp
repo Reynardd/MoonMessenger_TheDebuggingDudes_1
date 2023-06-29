@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
-
+    this->setWindowFlag(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground,true);
 }
 
 MainWindow::~MainWindow()
@@ -88,3 +88,34 @@ void MainWindow::on_loginButton_clicked()
 
 }
 
+
+void MainWindow::on_exitButton_clicked()
+{
+    this->close();
+}
+
+
+void MainWindow::on_minimizeButton_clicked()
+{
+    this->showMinimized();
+}
+void MainWindow::mousePressEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    dragPosition = event->globalPos() - frameGeometry().topLeft();
+    event->accept();
+}
+void MainWindow::mouseMoveEvent(QMouseEvent* event)
+{
+    if(!isMouseOnToolbar(event->pos()))return;
+    if (event->buttons() & Qt::LeftButton)
+    {
+        move(event->globalPos() - dragPosition);
+        event->accept();
+    }
+}
+bool MainWindow::isMouseOnToolbar(QPoint mousePos)
+{
+    QRect toolbar(0,0,350,25);
+    return toolbar.contains(mousePos);
+}

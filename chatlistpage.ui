@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>500</height>
+    <height>525</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>350</width>
-    <height>500</height>
+    <height>525</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
-    <height>500</height>
+    <height>525</height>
    </size>
   </property>
   <property name="sizeIncrement">
@@ -44,13 +44,17 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
+     <y>25</y>
      <width>350</width>
      <height>500</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#centralwidget{background-image: url(:/back/background.jpg);}</string>
+    <string notr="true">#centralwidget{
+background-image: url(:/back/background.jpg);
+border-bottom-right-radius:6px;
+border-bottom-left-radius:6px;
+}</string>
    </property>
    <widget class="QFrame" name="menuLayout">
     <property name="geometry">
@@ -257,6 +261,90 @@ QPushButton:pressed {
    <zorder>menuToggleButton</zorder>
    <zorder>scrollArea</zorder>
    <zorder>menuLayout</zorder>
+  </widget>
+  <widget class="QWidget" name="toolbar" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>350</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/toolbar/MacOsToolBarBackground.svg);</string>
+   </property>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>9</y>
+      <width>9</width>
+      <height>9</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background-color:transparent;
+border:none;
+image:url(:/toolbar/MacOsToolBarButtonExit-01.svg)
+}
+QPushButton:hover
+{
+image:url(:/toolbar/MacOsToolBarButtonExitHover.svg)
+}
+QPushButton:pressed
+{
+image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="minimizeButton">
+    <property name="geometry">
+     <rect>
+      <x>18</x>
+      <y>9</y>
+      <width>9</width>
+      <height>9</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background-color:transparent;
+border:none;
+image:url(:/toolbar/MacOsToolBarButtonMinimize-01.svg)
+}
+QPushButton:hover
+{
+image:url(:/toolbar/MacOsToolBarButtonMinimizeHover.svg)
+}
+QPushButton:pressed
+{
+image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="nullButton" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>9</y>
+      <width>9</width>
+      <height>9</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/toolbar/MacOsToolBarButtonNull-01.svg);</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
