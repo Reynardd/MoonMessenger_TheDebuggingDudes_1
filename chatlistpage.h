@@ -3,6 +3,7 @@
 #include <QPropertyAnimation>
 #include <QWidget>
 #include "user.h"
+#include "conversationwindow.h"
 #include "chatthread.h"
 #include <QMouseEvent>
 namespace Ui {
@@ -25,7 +26,7 @@ private slots:
     void on_pushButton_clicked();
 
     void on_exitButton_clicked();
-
+    void showConversation(Conversation* conv);
     void on_minimizeButton_clicked();
 
 private:

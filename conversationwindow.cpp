@@ -52,12 +52,12 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     {
         addMessage(message);
     }
+    ui->lineEdit->setEnabled(true);
 }
 ConversationWindow::~ConversationWindow()
 {
     delete ui;
     delete messagesLayout;
-    disconnect(conversation,SIGNAL(newMessage_arrived(Message*)),this,SLOT(ConversationWindow::new_message(Message*)));
 }
 void ConversationWindow::new_message(Message* message)
 {

@@ -95,8 +95,9 @@ void Conversation::getUpdate(QString token)
 }
 void Conversation::show_conversation()
 {
-    ConversationWindow* window = new ConversationWindow(this);
-    window->exec();
+//    ConversationWindow* window = new ConversationWindow(this);
+//    window->exec();
+    emit show(this);
 }
 const QString& Conversation::name() {return _name; }
 const QString& Conversation::type() {return chatType; }

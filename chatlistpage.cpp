@@ -128,6 +128,7 @@ void ChatListPage::new_conversation(Conversation* conversation)
 {
     QPushButton *button = new QPushButton("    "+conversation->name());
     connect(button,&QPushButton::clicked,conversation,&Conversation::show_conversation);
+    connect(conversation,SIGNAL(show(Conversation*)),this,SLOT(showConversation(Conversation*)));
     button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     button->setFixedHeight(50);
     button->setStyleSheet("\
@@ -169,7 +170,11 @@ void ChatListPage::on_exitButton_clicked()
     this->close();
 }
 
-
+void ChatListPage::showConversation(Conversation* conv)
+{
+    ConversationWindow* window = new ConversationWindow(conv);
+    window->exec();
+}
 void ChatListPage::on_minimizeButton_clicked()
 {
     this->showMinimized();

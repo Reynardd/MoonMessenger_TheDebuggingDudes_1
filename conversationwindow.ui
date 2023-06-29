@@ -221,6 +221,9 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -228,6 +231,24 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
       <width>211</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Write a message...</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
