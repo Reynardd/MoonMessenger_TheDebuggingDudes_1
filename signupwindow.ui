@@ -61,7 +61,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>45</x>
-     <y>200</y>
+     <y>230</y>
      <width>261</width>
      <height>32</height>
     </rect>
@@ -115,7 +115,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>166</y>
+     <y>174</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -144,7 +144,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>258</x>
-     <y>315</y>
+     <y>363</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -184,7 +184,7 @@ image: url(:/label/labelSignIn.svg);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>313</y>
+      <y>361</y>
       <width>203</width>
       <height>20</height>
      </rect>
@@ -225,7 +225,7 @@ image: url(:/label/lineEditBorderUsername.svg);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>227</y>
+      <y>257</y>
       <width>121</width>
       <height>28</height>
      </rect>
@@ -239,7 +239,7 @@ image: url(:/label/lineEditName.svg);</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>227</y>
+      <y>257</y>
       <width>121</width>
       <height>28</height>
      </rect>
@@ -254,7 +254,7 @@ image: url(:/label/lineEditName.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>198</y>
+     <y>217</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -283,7 +283,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>230</y>
+     <y>260</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -312,7 +312,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>230</y>
+     <y>260</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -341,7 +341,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>163</y>
+     <y>171</y>
      <width>251</width>
      <height>28</height>
     </rect>
@@ -355,7 +355,7 @@ image: url(:/label/lineEditBorderPassword.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>195</y>
+     <y>214</y>
      <width>251</width>
      <height>28</height>
     </rect>
