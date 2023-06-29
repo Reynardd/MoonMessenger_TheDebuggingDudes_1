@@ -17,6 +17,7 @@ public:
     const std::vector<Conversation*>& getConversations();
     void newConversation(QString name,QString type);
     void readFromFile();
+    void sendMessage(QString conversationName,QString conversationType,QString data);
 private:
     QString token;
     QString username;
@@ -29,13 +30,14 @@ private:
 private slots:
     void sessionExpiredSlot();
     void new_change();
+
 signals:
     void loggedOut();
     void logOut_failed();
+    void sendMessage_faild();
     void readFile_failed();
     void sessionExpiredSignal();
     void new_conversation(Conversation* conversation);
 
 };
-
 #endif // USER_H

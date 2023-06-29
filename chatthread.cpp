@@ -23,7 +23,6 @@ void ChatThread::stop()
     if(!running)return;
     qDebug() <<"stopping chatThread";
     running = false;
-    QThread::sleep(2);
     threadPool.clear();
     qDebug() << "chatThread stopped";
 

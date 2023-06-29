@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QVBoxLayout>
 #include "conversation.h"
+#include "user.h"
 namespace Ui {
 class ConversationWindow;
 }
@@ -17,10 +18,13 @@ public:
     ~ConversationWindow();
 private slots:
     void new_message(Message* mes);
+
 private:
     QVBoxLayout* messagesLayout;
     Conversation* conversation;
     Ui::ConversationWindow *ui;
+signals:
+    void sendMessage(QString data);
 };
 
 

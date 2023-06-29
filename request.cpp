@@ -14,7 +14,7 @@ QJsonObject get(QString url, QUrlQuery params)
     timeoutTimer.setSingleShot(true);
     QObject::connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
     QObject::connect(&timeoutTimer, &QTimer::timeout, &eventLoop, &QEventLoop::quit);
-    timeoutTimer.start(5000);//timeout duratuin 5 seconds
+    timeoutTimer.start(10000);//timeout duratuin 5 seconds
     eventLoop.exec();
     QJsonObject jsonObject;
     if (timeoutTimer.isActive()) {

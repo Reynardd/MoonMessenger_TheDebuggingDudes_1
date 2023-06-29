@@ -3,12 +3,13 @@
 #include "infodialog.h"
 #include <QTextStream>
 #include "conversationwindow.h"
-Conversation::Conversation(QString name,QString type,QObject *parent)
+Conversation::Conversation(QString name,QString type,QString token,QObject *parent)
     : QObject{parent}
 {
     _name = name;
     chatType = type;
     messageCount = 0;
+    this->getUpdate(token);
 }
 Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
 {
@@ -116,4 +117,8 @@ QString Conversation::toString()
     }
     res+="MM:ENDOFCONV\n";
     return res;
+}
+void Conversation::sendMessageSlot(QString data)
+{
+    emit sendMessageSignal(this->name(),this->type(),data);
 }

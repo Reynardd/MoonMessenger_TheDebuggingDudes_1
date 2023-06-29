@@ -24,7 +24,7 @@ SignupWindow::SignupWindow(QWidget *parent) :
     anim = new QPropertyAnimation(ui->signupButton,"geometry",this);
     anim->setDuration(250);
     anim->setStartValue(ui->signupButton->geometry());
-    anim->setEndValue(QRect(45,316,ui->signupButton->geometry().width(),ui->signupButton->geometry().height()));
+    anim->setEndValue(QRect(45,341,ui->signupButton->geometry().width(),ui->signupButton->geometry().height()));
     anim->start();
     connect(anim,&QPropertyAnimation::finished,[&](){
         ui->FNameBorder->show();

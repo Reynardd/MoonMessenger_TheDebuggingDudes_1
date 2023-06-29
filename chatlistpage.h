@@ -37,7 +37,7 @@ private:
     QPropertyAnimation* menuAnimation;
     QPropertyAnimation* menuButtonAnimation;
     QVBoxLayout* chatsLayout;
-    User* user;
+    //User* user;
     ChatThread* chatThread ;
     bool showingMenu;
 };

@@ -6,6 +6,7 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QVBoxLayout>
 #include <QDebug>
+extern User* user;
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatListPage)

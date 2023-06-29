@@ -3,6 +3,7 @@
 #include "infodialog.h"
 #include <QFile>
 #include <QTextStream>
+User* user;
 User::User(QString _username,QString _password,QString _token,QObject *parent)
     : QObject{parent}
 {
@@ -16,8 +17,9 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
 
 void User:: newConversation(QString name,QString type)
 {
-    Conversation* conversation = new Conversation(name,type);
+    Conversation* conversation = new Conversation(name,type,this->token);
     connect(conversation,&Conversation::newMessage_arrived,this,&User::new_change);
+    //connect(conversation,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
     conversations.push_back(conversation);
     if(type=="user")userChatCount++;
     else if(type=="gtoup")groupChatCount++;
@@ -38,7 +40,6 @@ void User::logout()
     QUrlQuery query;
     query.addQueryItem("username",username);
     query.addQueryItem("password",password);
-    qDebug() << "link ready to send";
     QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
     if(response.empty())
     {
@@ -138,6 +139,7 @@ void User::readFromFile()
         QString data = conversationStream.readAll();
         Conversation* conversationPtr = new Conversation(data,this);
         connect(conversationPtr,&Conversation::newMessage_arrived,this,&User::new_change);
+        //connect(conversationPtr,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
         conversations.push_back(conversationPtr);
         emit new_conversation(conversationPtr);
     }
@@ -148,5 +150,32 @@ void User::new_change()
 }
 void User::sessionExpiredSlot()
 {
+
+}
+void User::sendMessage(QString conversationName,QString conversationType,QString data)
+{
+    QUrlQuery query;
+    query.addQueryItem("token",token);
+    query.addQueryItem("dst",conversationName);
+    query.addQueryItem("body",data);
+    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/sendmessage"+conversationType,query);
+    if(response.empty())
+    {
+        infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
+        dialog->exec();
+        emit sendMessage_faild();
+        return;
+    }
+    if(response.value("code").toString()=="200")
+    {
+        return;
+    }
+    else
+    {
+        infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
+        dialog->exec();
+        emit sendMessage_faild();
+        return;
+    }
 
 }
