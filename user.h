@@ -17,6 +17,7 @@ public:
     const std::vector<Conversation*>& getConversations();
     void newConversation(QString name,QString type);
     void readFromFile();
+    void writeToFile();
     void sendMessage(QString conversationName,QString conversationType,QString data);
 private:
     QString token;
@@ -25,11 +26,10 @@ private:
     int userChatCount;
     int groupChatCount;
     int channelChatCount;
-    void writeToFile();
     std::vector<Conversation*> conversations;
 private slots:
     void sessionExpiredSlot();
-    void new_change();
+    void new_change(Message*);
 
 signals:
     void loggedOut();

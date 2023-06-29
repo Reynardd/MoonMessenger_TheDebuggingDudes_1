@@ -32,14 +32,13 @@ void ChatThread::start()
     running = true;
     while(running)
     {
-
-        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_user,this));
-        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_channel,this));
-        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_group,this));
         for(auto conv:user->getConversations())
         {
             if(!running)break;QtConcurrent::run(&threadPool,&Conversation::getUpdate,conv,user->getToken());
         }
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_user,this));
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_channel,this));
+        if(!running)break;QtConcurrent::run(&threadPool,bind(&ChatThread::check_new_group,this));
         QThread::sleep(1);
     }
 }

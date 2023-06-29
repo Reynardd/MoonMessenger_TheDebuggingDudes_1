@@ -8,7 +8,7 @@ QJsonObject get(QString url, QUrlQuery params)
     requestURL.setQuery(params);
     QNetworkRequest request(requestURL);
     QNetworkReply* reply = manager.get(request);
-    qDebug() << "url: " << requestURL.toDisplayString();
+    //qDebug() << "url: " << requestURL.toDisplayString();
     QEventLoop eventLoop;
     QTimer timeoutTimer;
     timeoutTimer.setSingleShot(true);
@@ -27,7 +27,7 @@ QJsonObject get(QString url, QUrlQuery params)
             if (!doc.isNull()) {
                 if (doc.isObject()) {
                     jsonObject = doc.object();
-                    qDebug() << QString(doc.toJson(QJsonDocument::Compact)) << "\n";
+                    //qDebug() << QString(doc.toJson(QJsonDocument::Compact)) << "\n";
                 } else {
                     qDebug() << "Error: Invalid JSON object received";
                 }

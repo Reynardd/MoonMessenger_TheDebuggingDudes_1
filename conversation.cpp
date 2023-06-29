@@ -3,6 +3,7 @@
 #include "infodialog.h"
 #include <QTextStream>
 #include "conversationwindow.h"
+extern User* user;
 Conversation::Conversation(QString name,QString type,QString token,QObject *parent)
     : QObject{parent}
 {
@@ -86,6 +87,8 @@ void Conversation::getUpdate(QString token)
                 messages.push_back(mes);
                 messageCount++;
                 emit newMessage_arrived(mes);
+                user->writeToFile();
+
             }
         }
     }

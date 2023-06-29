@@ -3,6 +3,7 @@
 #include "infodialog.h"
 #include <QFile>
 #include <QTextStream>
+#include "message.h"
 User* user;
 User::User(QString _username,QString _password,QString _token,QObject *parent)
     : QObject{parent}
@@ -17,8 +18,15 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
 
 void User:: newConversation(QString name,QString type)
 {
+    for(auto&conv:conversations)
+    {
+        if(conv->name()==name && conv->type()==type)
+        {
+            return;
+        }
+    }
     Conversation* conversation = new Conversation(name,type,this->token);
-    connect(conversation,&Conversation::newMessage_arrived,this,&User::new_change);
+    User::connect(conversation,SIGNAL(newMessage_arrived(Message*)),this,SLOT(new_change(Message*)));
     //connect(conversation,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
     conversations.push_back(conversation);
     if(type=="user")userChatCount++;
@@ -144,8 +152,9 @@ void User::readFromFile()
         emit new_conversation(conversationPtr);
     }
 }
-void User::new_change()
+void User::new_change(Message* message)
 {
+    qDebug() << "new change";
     this->writeToFile();
 }
 void User::sessionExpiredSlot()
