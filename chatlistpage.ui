@@ -86,7 +86,7 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>430</y>
        <width>211</width>
        <height>21</height>
       </rect>
@@ -110,7 +110,7 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>460</y>
        <width>80</width>
        <height>24</height>
       </rect>
@@ -161,7 +161,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>1</x>
-       <y>462</y>
+       <y>0</y>
        <width>230</width>
        <height>32</height>
       </rect>
@@ -169,6 +169,35 @@ QPushButton:pressed {
      <property name="styleSheet">
       <string notr="true">image: url(:/label/logoLine.svg);
 background:none;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="switchMode">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>460</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:checked
+{
+	color:red;
+}
+QPushButton
+{
+	color:green;
+}</string>
+     </property>
+     <property name="text">
+      <string>Online</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>

@@ -15,13 +15,12 @@ public:
     ~ChatThread();
     void start();
     void stop();
-    void setLayout(QLayout* layout);
     bool isRunning();
 private:
-    QLayout* layout;
     void check_new_user();
     void check_new_channel();
     void check_new_group();
+    void run();
     QThreadPool threadPool;
     void check_new(QString type);
     bool running;
@@ -30,6 +29,7 @@ signals:
     void sessionExpired();
     void connectionLost();
     void invalidResponse(QString);
+    void isStopped(bool);
 
 };
 

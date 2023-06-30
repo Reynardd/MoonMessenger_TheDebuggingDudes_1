@@ -29,6 +29,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     chatThread = new ChatThread(user,this);
     connect(chatThread,&ChatThread::connectionLost,this,&ChatListPage::connectionLost);
     connect(chatThread,&ChatThread::sessionExpired,this,&ChatListPage::sessionExpired);
+    connect(chatThread,SIGNAL(isStopped(bool)),ui->switchMode,SLOT(setChecked(bool)));
     this->setWindowTitle(user->getUserName());
     ui->nameLabel->setText("Logged in as "+ user->getUserName());
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
@@ -36,13 +37,15 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     connect(user,&User::logOut_failed,[&](){if(logOutFlag)
     {
-    QtConcurrent::run(&ChatThread::start,chatThread);
+//    QtConcurrent::run(&ChatThread::start,chatThread);
+    chatThread->start();
     }});
 
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
     connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});    //chatThread->start();
-    QtConcurrent::run(&ChatThread::start,chatThread);
+//    QtConcurrent::run(&ChatThread::start,chatThread);
+    chatThread->start();
 }
 
 ChatListPage::~ChatListPage()
@@ -242,3 +245,18 @@ void ChatListPage::sessionExpired()
     userLoggedOut();
     sessionExpiredFlag = false;//unnecessary
 }
+void ChatListPage::on_switchMode_clicked(bool checked)
+{
+    if(checked)
+    {
+        chatThread->stop();
+        ui->switchMode->setText("Offline");
+    }
+    else
+    {
+//        QtConcurrent::run(&ChatThread::start,chatThread);
+        chatThread->start();
+        ui->switchMode->setText("Online");
+    }
+}
+

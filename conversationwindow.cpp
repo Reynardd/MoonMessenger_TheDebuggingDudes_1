@@ -15,16 +15,16 @@ void ConversationWindow::addMessage(Message* message)
     if(message->sender()==conversation->name())
     {
         layout->setAlignment(Qt::AlignLeft);
-        label->setStyleSheet("background-color:#0050FF;border-radius:15px;color:#000000");
+        label->setStyleSheet("background-color:#0050FF;border-radius:15px;color:#FF0000");
     }
     else
     {
         layout->setAlignment(Qt::AlignRight);
-        label->setStyleSheet("background-color:#00FFFF;border-radius:15px;color:#000000");
+        label->setStyleSheet("background-color:#00FFFF;border-radius:15px;color:#FF0000");
     }
     layout->addWidget(label);
-    label->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    layout->setGeometry(QRect(layout->geometry().x(),layout->geometry().y(),label->size().width(),label->size().height()));
+    label->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    //layout->setGeometry(QRect(layout->geometry().x(),layout->geometry().y(),label->size().width(),label->size().height()));
     label->setFixedWidth(250);
     messagesLayout->addLayout(layout);
     connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,[&]()
@@ -55,7 +55,6 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
         addMessage(message);
     }
     ui->messageLineEdit->setText(conversation->draftMessage);
-    //QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 ConversationWindow::~ConversationWindow()
 {
@@ -66,7 +65,6 @@ ConversationWindow::~ConversationWindow()
 void ConversationWindow::new_message(Message* message)
 {
     addMessage(message);
-    //QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 
 void ConversationWindow::on_exitButton_clicked()
@@ -75,7 +73,6 @@ void ConversationWindow::on_exitButton_clicked()
 }
 void ConversationWindow::scrollDown()
 {
-
     QScrollBar* scrollbar = ui->scrollArea->verticalScrollBar();
     scrollbar->setValue(scrollbar->maximum());
 }

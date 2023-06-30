@@ -12,18 +12,13 @@ ChatThread::ChatThread(User* user,QObject *parent)
 {
     this->user= user;
     running = false;
-    layout = nullptr;
-}
-void ChatThread::setLayout(QLayout* layout)
-{
-    this->layout = layout;
 }
 void ChatThread::stop()
 {
     if(!running)return;
-    qDebug() <<"stopping chatThread";
     running = false;
     threadPool.clear();
+    emit isStopped(true);
     qDebug() << "chatThread stopped";
 
 }
@@ -31,6 +26,12 @@ bool ChatThread::isRunning() { return running; }
 void ChatThread::start()
 {
     running = true;
+    emit isStopped(false);
+    QtConcurrent::run(&ChatThread::run,this);
+
+}
+void ChatThread::run()
+{
     while(running)
     {
         for(auto conv:user->getConversations())

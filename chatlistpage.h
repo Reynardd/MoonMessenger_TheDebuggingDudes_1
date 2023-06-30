@@ -29,6 +29,8 @@ private slots:
     void showConversation(Conversation* conv);
     void on_minimizeButton_clicked();
 
+    void on_switchMode_clicked(bool checked);
+
 private:
     bool showingDialogFlag;
     bool logOutFlag;

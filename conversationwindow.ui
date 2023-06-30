@@ -165,6 +165,12 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
     <property name="text">
      <string>Send</string>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="messageLineEdit">
     <property name="enabled">
