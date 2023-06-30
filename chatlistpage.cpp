@@ -6,6 +6,8 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QVBoxLayout>
 #include <QDebug>
+#include "yesnodialog.h"
+#include "infodialog.h"
 extern User* user;
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
@@ -14,6 +16,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     ui->setupUi(this);
     this->setAttribute(Qt::WA_TranslucentBackground,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
+    showingDialogFlag = false;
     showingMenu = false;
     this->setAttribute(Qt::WA_DeleteOnClose,true);
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
@@ -23,12 +26,17 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     connect(user,SIGNAL(new_conversation(Conversation*)),this,SLOT(new_conversation(Conversation*)));
     if(readFromFile)user->readFromFile();
     chatThread = new ChatThread(user,this);
+    connect(chatThread,&ChatThread::connectionLost,this,&ChatListPage::connectionLost);
+    connect(chatThread,&ChatThread::sessionExpired,this,&ChatListPage::sessionExpired);
     this->setWindowTitle(user->getUserName());
     ui->nameLabel->setText("Logged in as "+ user->getUserName());
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
     ui->scrollArea->setWidgetResizable(true);
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    connect(user,&User::logOut_failed,[&](){QtConcurrent::run(&ChatThread::start,chatThread);});
+    connect(user,&User::logOut_failed,[&](){if(logOutFlag)
+    {
+    QtConcurrent::run(&ChatThread::start,chatThread);
+    }});
 
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
@@ -46,9 +54,19 @@ ChatListPage::~ChatListPage()
     delete menuButtonAnimation;
     delete ui;
     qDebug() << "chatlistpage deleted";
-
-
 }
+void ChatListPage::connectionLost()
+{
+    if(showingDialogFlag)return;
+    showingDialogFlag = true;
+    YesNoDialog* dialog = new YesNoDialog("It seems we've lost connection to the server\nDo you want to switch to offline mode?",this);
+    if(dialog->exec()==QDialog::Rejected)
+    {
+        chatThread->start();
+    }
+    showingDialogFlag = false;
+}
+
 void ChatListPage::userLoggedOut()
 {
     chatThread->stop();
@@ -159,6 +177,14 @@ void ChatListPage::new_conversation(Conversation* conversation)
 void ChatListPage::on_pushButton_clicked()
 {
     qDebug() << "logout button clicked";
+    if(chatThread->isRunning())
+    {
+        logOutFlag = true;
+    }
+    else
+    {
+        logOutFlag = false;
+    }
     chatThread->stop();
     user->logout();
 }
@@ -198,4 +224,15 @@ bool ChatListPage::isMouseOnToolbar(QPoint mousePos)
 {
     QRect toolbar(0,0,350,25);
     return toolbar.contains(mousePos);
+}
+void ChatListPage::sessionExpired()
+{
+    if(sessionExpiredFlag) {return; }
+    sessionExpiredFlag = true;
+    chatThread->stop();
+    infoDialog* dialog = new infoDialog("Your token is expired\nTry logging in again",this);
+    dialog->exec();
+    delete dialog;
+    userLoggedOut();
+    sessionExpiredFlag = false;//unnecessary
 }

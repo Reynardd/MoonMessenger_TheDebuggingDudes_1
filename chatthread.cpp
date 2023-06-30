@@ -27,6 +27,7 @@ void ChatThread::stop()
     qDebug() << "chatThread stopped";
 
 }
+bool ChatThread::isRunning() { return running; }
 void ChatThread::start()
 {
     running = true;
@@ -49,12 +50,15 @@ void ChatThread::check_new(QString type)
     QJsonObject response = get(URL+"get"+type+"list",query);
     if(response.empty())
     {
-        connectionLost();
+        if(running)emit connectionLost();
+        stop();
         return;
     }
     else if(response.value("code").toString()=="401")
     {
-        emit sessionExpired();
+        if(running)emit sessionExpired();
+        stop();
+        return;
     }
     else if(response.value("code").toString()=="200")
     {
@@ -64,6 +68,8 @@ void ChatThread::check_new(QString type)
         {
             infoDialog* dialog = new infoDialog("Server Message: " + response.value("message").toString());
             dialog->exec();
+            invalidResponse(response.value("message").toString());
+            return;
         }
         int newConversationCount = match.captured(0).toInt();
         int conversationCount = user->getConversationCount(type);
@@ -96,13 +102,4 @@ void ChatThread::check_new_group()
 void ChatThread::check_new_channel()
 {
     check_new("channel");
-}
-void ChatThread::connectionLost()
-{
-    running = false;
-    YesNoDialog * dialog = new YesNoDialog("It Seems Like we have lost Connection to the server.\nDo you want to switch to Offline Mode?");
-    if(dialog->exec()==QDialog::Rejected)
-    {
-        running = true;
-    }
 }

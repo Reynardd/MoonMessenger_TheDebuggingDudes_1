@@ -21,15 +21,18 @@ public:
 private slots:
     void on_menuToggleButton_clicked();
     void userLoggedOut();
+    void connectionLost();
+    void sessionExpired();
     void new_conversation(Conversation* conversation);
-
     void on_pushButton_clicked();
-
     void on_exitButton_clicked();
     void showConversation(Conversation* conv);
     void on_minimizeButton_clicked();
 
 private:
+    bool showingDialogFlag;
+    bool logOutFlag;
+    bool sessionExpiredFlag;
     void mousePressEvent(QMouseEvent*) override;
     void mouseMoveEvent(QMouseEvent*) override;
     bool isMouseOnToolbar(QPoint mousePos);

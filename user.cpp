@@ -18,6 +18,7 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
 
 void User:: newConversation(QString name,QString type)
 {
+    qDebug() << "new conv name: "<<name;
     for(auto&conv:conversations)
     {
         if(conv->name()==name && conv->type()==type)
@@ -25,6 +26,8 @@ void User:: newConversation(QString name,QString type)
             return;
         }
     }
+    qDebug() << "new conv name confirm: "<<name;
+    qDebug() << "new conv type: "<<type;
     Conversation* conversation = new Conversation(name,type,this->token);
     User::connect(conversation,SIGNAL(newMessage_arrived(Message*)),this,SLOT(new_change(Message*)));
     //connect(conversation,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
@@ -32,7 +35,7 @@ void User:: newConversation(QString name,QString type)
     if(type=="user")userChatCount++;
     else if(type=="gtoup")groupChatCount++;
     else {channelChatCount++;}
-
+    this->writeToFile();
     emit new_conversation(conversation);
 }
 QString User::getUserName(){return username;}
@@ -102,6 +105,7 @@ void User::writeToFile()
     userStream << userChatCount <<"\n" << groupChatCount << "\n" << channelChatCount<<"\n";
     for(auto& conversation : conversations)
     {
+        qDebug() << "conv name:"<<conversation->name();
         QFile conversationFile(conversation->name());
         if(!conversationFile.open(QIODevice::ReadWrite | QIODevice::Truncate))
         {
@@ -149,6 +153,7 @@ void User::readFromFile()
         connect(conversationPtr,&Conversation::newMessage_arrived,this,&User::new_change);
         //connect(conversationPtr,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
         conversations.push_back(conversationPtr);
+        this->writeToFile();
         emit new_conversation(conversationPtr);
     }
 }

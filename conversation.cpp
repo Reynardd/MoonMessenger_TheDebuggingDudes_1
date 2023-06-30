@@ -92,11 +92,14 @@ void Conversation::getUpdate(QString token)
             }
         }
     }
+    else
+    {
+        emit getUpdate_failed();
+    }
+
 }
 void Conversation::show_conversation()
 {
-//    ConversationWindow* window = new ConversationWindow(this);
-//    window->exec();
     emit show(this);
 }
 const QString& Conversation::name() {return _name; }
@@ -121,8 +124,4 @@ QString Conversation::toString()
     }
     res+="MM:ENDOFCONV\n";
     return res;
-}
-void Conversation::sendMessageSlot(QString data)
-{
-    emit sendMessageSignal(this->name(),this->type(),data);
 }

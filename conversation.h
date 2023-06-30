@@ -24,14 +24,11 @@ private:
     int messageCount;
     QString chatType;
     vector<Message*> messages; 
-private slots:
-    void sendMessageSlot(QString data);
 signals:
     void getUpdate_failed();
     void connection_lost();
     void show(Conversation*);
     void session_expired();
-    void sendMessageSignal(QString dst,QString convType,QString data);
     void newMessage_arrived(Message* message);
 };
 

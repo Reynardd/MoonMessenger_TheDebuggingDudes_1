@@ -8,11 +8,9 @@ infoDialog::infoDialog(QString text,QWidget *parent) :
     ui->setupUi(this);
     //this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);border: 1px solid white;border-radius: 10px}");
     setWindowFlag(Qt::FramelessWindowHint);
-    ui->plainTextEdit->appendPlainText(text);
-    setAttribute(Qt::WA_TranslucentBackground);
-    QTextOption option = ui->plainTextEdit->document()->defaultTextOption();
-    option.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    ui->plainTextEdit->document()->setDefaultTextOption(option);
+    setAttribute(Qt::WA_TranslucentBackground,true);
+    ui->plainTextEdit->setText(text);
+
 }
 
 

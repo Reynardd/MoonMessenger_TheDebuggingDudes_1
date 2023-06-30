@@ -16,6 +16,7 @@ public:
     void start();
     void stop();
     void setLayout(QLayout* layout);
+    bool isRunning();
 private:
     QLayout* layout;
     void check_new_user();
@@ -25,10 +26,10 @@ private:
     void check_new(QString type);
     bool running;
     User* user;
-private slots:
-    void connectionLost();
 signals:
     void sessionExpired();
+    void connectionLost();
+    void invalidResponse(QString);
 
 };
 
