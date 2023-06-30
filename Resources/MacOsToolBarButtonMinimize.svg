@@ -4,7 +4,7 @@
 	 viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FAC314;}
-	.st1{fill:#90591D;}
+	.st1{display:none;fill:#90591D;}
 	.st2{display:none;fill:#FAB91E;}
 </style>
 <g>

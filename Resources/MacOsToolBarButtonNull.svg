@@ -4,30 +4,33 @@
 	 viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve">
 <style type="text/css">
 	.st0{display:none;}
-	.st1{display:inline;fill:#FAC314;}
-	.st2{fill:#F5E61E;}
+	.st1{fill:#FAC314;}
+	.st2{display:inline;fill:#F5E61E;}
 	.st3{display:inline;fill:#90591D;}
 	.st4{fill:#FAB91E;}
-	.st5{fill:#FF645F;}
-	.st6{display:none;fill:#FF8778;}
-	.st7{display:none;fill:#8C1B11;}
-	.st8{fill:#8C1B11;}
+	.st5{display:inline;fill:#FF645F;}
+	.st6{fill:#FF8778;}
+	.st7{fill:#8C1B11;}
+	.st8{fill:#5E5E5E;}
 </style>
 <g class="st0">
 	<circle class="st1" cx="7.5" cy="7.5" r="7.5"/>
-	<circle id="hover" class="st2" cx="7.5" cy="7.5" r="7.5"/>
+	<circle id="pressed" class="st2" cx="7.5" cy="7.5" r="7.5"/>
 	<path class="st3" d="M12.3,8.1H2.7c-0.3,0-0.6-0.3-0.6-0.6v0c0-0.3,0.3-0.6,0.6-0.6h9.6c0.3,0,0.6,0.3,0.6,0.6v0
 		C12.9,7.8,12.6,8.1,12.3,8.1z"/>
 	<rect x="2.7" y="7" class="st4" width="9.5" height="0.9"/>
 </g>
-<g>
+<g class="st0">
 	<circle class="st5" cx="7.5" cy="7.5" r="7.5"/>
-	<circle id="hover_00000137105285509222145230000002803006306054384058_" class="st6" cx="7.5" cy="7.5" r="7.5"/>
+	<circle id="pressed_00000011014585226312031570000005464597709789193384_" class="st6" cx="7.5" cy="7.5" r="7.5"/>
 	<polygon class="st7" points="10.5,5.2 9.9,4.6 7.4,6.9 4.9,4.6 4.3,5.2 6.8,7.4 4.3,9.7 4.9,10.2 7.4,8 9.9,10.2 10.5,9.7 8,7.4 	
 		"/>
-	<path class="st8" d="M11.3,4.4l-6.8,6.8c-0.2,0.2-0.6,0.2-0.8,0l0,0c-0.2-0.2-0.2-0.6,0-0.8l6.8-6.8c0.2-0.2,0.6-0.2,0.8,0l0,0
+	<path class="st7" d="M11.3,4.4l-6.8,6.8c-0.2,0.2-0.6,0.2-0.8,0l0,0c-0.2-0.2-0.2-0.6,0-0.8l6.8-6.8c0.2-0.2,0.6-0.2,0.8,0l0,0
 		C11.6,3.9,11.6,4.2,11.3,4.4z"/>
-	<path class="st8" d="M10.5,11.3L3.7,4.4c-0.2-0.2-0.2-0.6,0-0.8l0,0c0.2-0.2,0.6-0.2,0.8,0l6.8,6.8c0.2,0.2,0.2,0.6,0,0.8l0,0
+	<path class="st7" d="M10.5,11.3L3.7,4.4c-0.2-0.2-0.2-0.6,0-0.8l0,0c0.2-0.2,0.6-0.2,0.8,0l6.8,6.8c0.2,0.2,0.2,0.6,0,0.8l0,0
 		C11.1,11.5,10.7,11.5,10.5,11.3z"/>
+</g>
+<g>
+	<circle class="st8" cx="7.5" cy="7.5" r="7.5"/>
 </g>
 </svg>
