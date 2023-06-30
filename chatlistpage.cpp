@@ -18,6 +18,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     this->setWindowFlag(Qt::FramelessWindowHint);
     showingDialogFlag = false;
     showingMenu = false;
+    currentChatWindow = nullptr;
     this->setAttribute(Qt::WA_DeleteOnClose,true);
     this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
     user = new User(username,password,token,this);
@@ -70,6 +71,10 @@ void ChatListPage::connectionLost()
 void ChatListPage::userLoggedOut()
 {
     chatThread->stop();
+    if(currentChatWindow)
+    {
+        currentChatWindow->close();
+    }
     QFile file("user.txt");
     file.remove();
     file.close();
@@ -199,6 +204,7 @@ void ChatListPage::on_exitButton_clicked()
 void ChatListPage::showConversation(Conversation* conv)
 {
     ConversationWindow* window = new ConversationWindow(conv);
+    currentChatWindow = window;
     window->exec();
 }
 void ChatListPage::on_minimizeButton_clicked()

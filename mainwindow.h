@@ -16,7 +16,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_craete_linkActivated(const QString &link);
 
     void on_loginButton_clicked();
 
@@ -25,6 +24,8 @@ private slots:
     void on_minimizeButton_clicked();
     void mousePressEvent(QMouseEvent*) override;
     void mouseMoveEvent(QMouseEvent*) override;
+    void on_create_linkActivated(const QString &link);
+
 private:
     Ui::MainWindow *ui;
     bool isMouseOnToolbar(QPoint mousePos);

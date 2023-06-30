@@ -36,6 +36,7 @@ private:
     void mousePressEvent(QMouseEvent*) override;
     void mouseMoveEvent(QMouseEvent*) override;
     bool isMouseOnToolbar(QPoint mousePos);
+    ConversationWindow * currentChatWindow;
     QPoint dragPosition;
     Ui::ChatListPage *ui;
     QPropertyAnimation* menuAnimation;

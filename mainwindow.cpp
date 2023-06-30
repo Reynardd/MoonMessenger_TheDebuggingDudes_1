@@ -19,16 +19,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-void MainWindow::on_craete_linkActivated(const QString &link)
-{
-    SignupWindow * signUp = new SignupWindow();
-    signUp->show();
-    this->close();
-}
-
-
 void MainWindow::on_loginButton_clicked()
 {
     //this is for test only
@@ -119,3 +109,11 @@ bool MainWindow::isMouseOnToolbar(QPoint mousePos)
     QRect toolbar(0,0,350,25);
     return toolbar.contains(mousePos);
 }
+
+void MainWindow::on_create_linkActivated(const QString &link)
+{
+    SignupWindow * signUp = new SignupWindow();
+    signUp->show();
+    this->close();
+}
+

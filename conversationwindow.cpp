@@ -27,8 +27,7 @@ void ConversationWindow::addMessage(Message* message)
     layout->setGeometry(QRect(layout->geometry().x(),layout->geometry().y(),label->size().width(),label->size().height()));
     label->setFixedWidth(250);
     messagesLayout->addLayout(layout);
-    ui->scrollArea->ensureWidgetVisible(label);
-    QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
+
 
 }
 ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *parent) :
@@ -53,6 +52,7 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
         addMessage(message);
     }
     ui->lineEdit->setEnabled(true);
+    QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 ConversationWindow::~ConversationWindow()
 {
@@ -62,6 +62,7 @@ ConversationWindow::~ConversationWindow()
 void ConversationWindow::new_message(Message* message)
 {
     addMessage(message);
+    QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 
 void ConversationWindow::on_exitButton_clicked()
