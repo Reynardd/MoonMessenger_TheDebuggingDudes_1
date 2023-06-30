@@ -27,8 +27,10 @@ void ConversationWindow::addMessage(Message* message)
     layout->setGeometry(QRect(layout->geometry().x(),layout->geometry().y(),label->size().width(),label->size().height()));
     label->setFixedWidth(250);
     messagesLayout->addLayout(layout);
-
-
+    connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,[&]()
+            {
+                QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
+            });
 }
 ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *parent) :
     QDialog(parent),
@@ -39,7 +41,7 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     this->setAttribute(Qt::WA_TranslucentBackground,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
     ui->setupUi(this);
-    sliderPos = 0;
+    scrollingDown = false;
     this->setWindowTitle(conversation->name());
     ui->dstLabel->setText(conversation->name());
     ui->scrollArea->setWidget(ui->scrollAreaWidgetContents);
@@ -47,22 +49,24 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     ui->scrollAreaWidgetContents->setLayout(messagesLayout);
     messagesLayout->setAlignment(Qt::AlignBottom);
     connect(conversation,&Conversation::newMessage_arrived,this,&ConversationWindow::new_message);
+    scrollAnim = new QPropertyAnimation(ui->scrollArea->verticalScrollBar(),"value");
     for(auto message: conversation->Messages())
     {
         addMessage(message);
     }
-    ui->lineEdit->setEnabled(true);
-    QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
+    ui->messageLineEdit->setText(conversation->draftMessage);
+    //QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 ConversationWindow::~ConversationWindow()
 {
     delete ui;
+    delete scrollAnim;
     delete messagesLayout;
 }
 void ConversationWindow::new_message(Message* message)
 {
     addMessage(message);
-    QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
+    //QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
 }
 
 void ConversationWindow::on_exitButton_clicked()
@@ -71,19 +75,9 @@ void ConversationWindow::on_exitButton_clicked()
 }
 void ConversationWindow::scrollDown()
 {
-    QEventLoop eventLoop;
-    QTimer timeoutTimer;
-    timeoutTimer.setSingleShot(true);
-    QObject::connect(&timeoutTimer, &QTimer::timeout, &eventLoop, &QEventLoop::quit);
-    timeoutTimer.start(100);
-    eventLoop.exec();
-    int lastVal = ui->scrollArea->verticalScrollBar()->value();
-    while(true)
-    {
-        ui->scrollArea->verticalScrollBar()->setValue(lastVal+5);
-        if(lastVal==ui->scrollArea->verticalScrollBar()->value()){break;}
-        lastVal=ui->scrollArea->verticalScrollBar()->value();
-    }
+
+    QScrollBar* scrollbar = ui->scrollArea->verticalScrollBar();
+    scrollbar->setValue(scrollbar->maximum());
 }
 void ConversationWindow::on_minimizeButton_clicked()
 {
@@ -110,15 +104,21 @@ bool ConversationWindow::isMouseOnToolbar(QPoint mousePos)
     return toolbar.contains(mousePos);
 }
 
-void ConversationWindow::on_pushButton_clicked()
+void ConversationWindow::on_messageLineEdit_textChanged(const QString &arg1)
 {
-    if(ui->lineEdit->text()==""){return;}
-    user->sendMessage(conversation->name(),conversation->type(),ui->lineEdit->text());
-    ui->lineEdit->clear();
+    conversation->draftMessage = arg1;
 }
 
 
-void ConversationWindow::on_pushButton_2_clicked()
+void ConversationWindow::on_sendButton_clicked()
+{
+    if(ui->messageLineEdit->text()==""){return;}
+    user->sendMessage(conversation->name(),conversation->type(),ui->messageLineEdit->text());
+    ui->messageLineEdit->clear();
+}
+
+
+void ConversationWindow::on_scrollDownButton_clicked()
 {
     scrollDown();
 }

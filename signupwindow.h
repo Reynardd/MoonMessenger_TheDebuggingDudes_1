@@ -36,7 +36,7 @@ private:
     void passwordStrengthHandler(QString strength);
     void passwordMatchHandler();
     Ui::SignupWindow *ui;
-    QPropertyAnimation *anim,anim2;
+    QPropertyAnimation *anim;
     bool passwordMatch;
     int passwordStrength;
 };

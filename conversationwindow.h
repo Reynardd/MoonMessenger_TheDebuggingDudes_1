@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include "conversation.h"
 #include <QMouseEvent>
+#include <QPropertyAnimation>
 #include "user.h"
 namespace Ui {
 class ConversationWindow;
@@ -24,9 +25,11 @@ private slots:
 
     void on_minimizeButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_messageLineEdit_textChanged(const QString &arg1);
 
-    void on_pushButton_2_clicked();
+    void on_sendButton_clicked();
+
+    void on_scrollDownButton_clicked();
 
 private:
     QVBoxLayout* messagesLayout;
@@ -37,7 +40,8 @@ private:
     void mouseMoveEvent(QMouseEvent*) override;
     bool isMouseOnToolbar(QPoint mousePos);
     void scrollDown();
-    int sliderPos;
+    bool scrollingDown;
+    QPropertyAnimation* scrollAnim;
     QPoint dragPosition;
 signals:
     void sendMessage(QString data);
