@@ -151,7 +151,7 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#centralwidget{image: url(:/back/background.jpg)}</string>
+    <string notr="true">#centralwidget{image: url(:/back/background300ppi.jpg)}</string>
    </property>
    <widget class="QPushButton" name="sendButton">
     <property name="geometry">

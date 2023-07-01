@@ -11,6 +11,7 @@
         <file>background.svg</file>
         <file>logo.svg</file>
         <file>background.jpg</file>
+        <file>background300ppi.jpg</file>
     </qresource>
     <qresource prefix="/font">
         <file>Font/Anurati-Regular.otf</file>

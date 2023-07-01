@@ -46,7 +46,7 @@
     <string notr="true">
 #centralwidget
 {
-image: url(:/back/background.jpg);
+image: url(:/back/background300ppi.jpg);
 padding-top:30px;
 }</string>
    </property>

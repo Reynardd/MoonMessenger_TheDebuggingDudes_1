@@ -51,7 +51,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">#centralwidget{
-background-image: url(:/back/background.jpg);
+image: url(:/back/background300ppi.jpg);
 border-bottom-right-radius:6px;
 border-bottom-left-radius:6px;
 }</string>
