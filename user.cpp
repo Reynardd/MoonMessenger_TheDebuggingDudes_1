@@ -18,7 +18,6 @@ User::User(QString _username,QString _password,QString _token,QObject *parent)
 
 void User:: newConversation(QString name,QString type)
 {
-    qDebug() << "new conv name: "<<name;
     for(auto&conv:conversations)
     {
         if(conv->name()==name && conv->type()==type)

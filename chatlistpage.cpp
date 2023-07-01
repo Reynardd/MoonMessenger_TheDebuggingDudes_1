@@ -9,6 +9,7 @@
 #include "yesnodialog.h"
 #include "infodialog.h"
 #include "newconversationwindow.h"
+#include "chatbutton.h"
 extern User* user;
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
@@ -27,6 +28,8 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     user = new User(username,password,token,this);
 
     chatsLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
+    chatsLayout->setSpacing(0);
+
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
     ui->scrollArea->setWidgetResizable(true);
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
@@ -100,35 +103,10 @@ void ChatListPage::userLoggedOut()
 }
 void ChatListPage::new_conversation(Conversation* conversation)
 {
-    QPushButton *button = new QPushButton("                 "+conversation->name());
-    connect(button,&QPushButton::clicked,conversation,&Conversation::show_conversation);
+    ChatButton* button = new ChatButton(conversation);
     connect(conversation,SIGNAL(show(Conversation*)),this,SLOT(showConversation(Conversation*)));
-    button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    button->setFixedHeight(50);
-//    button->setStyleSheet("\
-//        QPushButton {\
-//                color : rgb(255 , 255, 255);\
-//                text-align:left;\
-//                border-radius: 0px;\
-//                border : none;\
-//                border-color: rgb(6, 118, 255);\
-//                background-color: rgb(12, 16, 27);\
-//        }\
-//        QPushButton:hover {\
-//                background-color: rgb(32,42,71); \
-//                border : none;\
-//                border-style: outset; \
-//                border-width: 2px;\
-//        }\
-//        QPushButton:pressed {\
-//                background-color: rgb(40,54,92);\
-//                border : none;\
-//                border-style: inset; \
-//                border-width: 2px;\
-//        }");
-    button->setStyleSheet("image:url(:/label/userChatButton.svg);color:white;border:none;text-align:left;");
-    qDebug()<< chatsLayout->geometry();
     chatsLayout->addWidget(button);
+    chatsLayout->addWidget(button->spacerItem);
 }
 
 
@@ -253,5 +231,13 @@ void ChatListPage::on_switchMode_toggled(bool checked)
         switchAnimation->start();
         chatThread->start();
     }
+}
+
+
+void ChatListPage::on_pushButton_3_clicked()
+{
+    NewConversationWindow * window = new NewConversationWindow("group",this);
+    window->exec();
+    delete window;
 }
 

@@ -232,12 +232,29 @@ QPushButton
 image: url(:/label/moon.png);</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>new group</string>
+     </property>
+    </widget>
     <zorder>switchMode</zorder>
     <zorder>nameLabel</zorder>
     <zorder>pushButton</zorder>
     <zorder>logoLine</zorder>
     <zorder>pushButton_2</zorder>
     <zorder>circle</zorder>
+    <zorder>pushButton_3</zorder>
    </widget>
    <widget class="QPushButton" name="menuToggleButton">
     <property name="geometry">
