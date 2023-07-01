@@ -234,8 +234,8 @@ void ChatListPage::on_pushButton_2_clicked()
 
 void ChatListPage::on_switchMode_toggled(bool checked)
 {
-    QRect left(124,462,20,20);
-    QRect right(176,462,20,20);
+    QRect left(122,462,20,20);
+    QRect right(178,462,20,20);
     switchAnimation->setDuration(100);
     if(checked)
     {
