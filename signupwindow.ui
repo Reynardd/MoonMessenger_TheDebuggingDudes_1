@@ -32,7 +32,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>156</y>
+     <y>161</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -61,7 +61,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>45</x>
-     <y>255</y>
+     <y>260</y>
      <width>261</width>
      <height>32</height>
     </rect>
@@ -115,7 +115,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>199</y>
+     <y>204</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -144,7 +144,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>258</x>
-     <y>388</y>
+     <y>393</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -172,7 +172,7 @@ image: url(:/label/labelSignIn.svg);</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>25</y>
+     <y>30</y>
      <width>350</width>
      <height>500</height>
     </rect>
@@ -256,7 +256,7 @@ image: url(:/label/lineEditName.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>242</y>
+     <y>247</y>
      <width>251</width>
      <height>21</height>
     </rect>
@@ -285,7 +285,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>180</x>
-     <y>285</y>
+     <y>290</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -314,7 +314,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>285</y>
+     <y>290</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -343,7 +343,7 @@ color:white;</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>196</y>
+     <y>201</y>
      <width>251</width>
      <height>28</height>
     </rect>
@@ -357,7 +357,7 @@ image: url(:/label/lineEditBorderPassword.svg);</string>
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>239</y>
+     <y>244</y>
      <width>251</width>
      <height>28</height>
     </rect>
@@ -373,7 +373,7 @@ image: url(:/label/lineEditBorderConfirm.svg);</string>
      <x>0</x>
      <y>0</y>
      <width>350</width>
-     <height>25</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -382,10 +382,10 @@ image: url(:/label/lineEditBorderConfirm.svg);</string>
    <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>4</x>
+      <y>7</y>
+      <width>20</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -393,7 +393,7 @@ image: url(:/label/lineEditBorderConfirm.svg);</string>
 {
 background-color:transparent;
 border:none;
-image:url(:/toolbar/MacOsToolBarButtonExit-01.svg)
+image: url(:/toolbar/MacOsToolBarButtonExit.svg);
 }
 QPushButton:hover
 {
@@ -401,7 +401,7 @@ image:url(:/toolbar/MacOsToolBarButtonExitHover.svg)
 }
 QPushButton:pressed
 {
-image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonExitPressed.svg)
 }</string>
     </property>
     <property name="text">
@@ -411,10 +411,10 @@ image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
    <widget class="QPushButton" name="minimizeButton">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>31</x>
+      <y>7</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -422,7 +422,7 @@ image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
 {
 background-color:transparent;
 border:none;
-image:url(:/toolbar/MacOsToolBarButtonMinimize-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonMinimize.svg)
 }
 QPushButton:hover
 {
@@ -430,7 +430,7 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizeHover.svg)
 }
 QPushButton:pressed
 {
-image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonMinimizePressed.svg)
 }</string>
     </property>
     <property name="text">
@@ -440,16 +440,19 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
    <widget class="QWidget" name="nullButton" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>54</x>
+      <y>7</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/toolbar/MacOsToolBarButtonNull-01.svg);</string>
+     <string notr="true">image: url(:/toolbar/MacOsToolBarButtonNull.svg);</string>
     </property>
    </widget>
+   <zorder>exitButton</zorder>
+   <zorder>nullButton</zorder>
+   <zorder>minimizeButton</zorder>
   </widget>
   <zorder>widget</zorder>
   <zorder>username</zorder>

@@ -44,7 +44,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>25</y>
+     <y>30</y>
      <width>350</width>
      <height>500</height>
     </rect>
@@ -59,7 +59,7 @@ border-bottom-left-radius:6px;
    <widget class="QFrame" name="menuLayout">
     <property name="geometry">
      <rect>
-      <x>-230</x>
+      <x>0</x>
       <y>0</y>
       <width>230</width>
       <height>500</height>
@@ -176,22 +176,24 @@ background:none;</string>
       <rect>
        <x>110</x>
        <y>460</y>
-       <width>80</width>
+       <width>101</width>
        <height>24</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton:checked
 {
-	color:red;
+	image: url(:/label/OfflineButton.svg);
 }
 QPushButton
 {
-	color:green;
+	image: url(:/label/onlineButton.svg);
+	background-color:transparent;
+	border:none;
 }</string>
      </property>
      <property name="text">
-      <string>Online</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -200,6 +202,41 @@ QPushButton
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>new channel</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="circle" native="true">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>176</x>
+       <y>462</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/label/circle2.svg);</string>
+     </property>
+    </widget>
+    <zorder>switchMode</zorder>
+    <zorder>nameLabel</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>logoLine</zorder>
+    <zorder>pushButton_2</zorder>
+    <zorder>circle</zorder>
    </widget>
    <widget class="QPushButton" name="menuToggleButton">
     <property name="geometry">
@@ -313,7 +350,7 @@ image: url(:/back/arrowPressed.svg);
      <x>0</x>
      <y>0</y>
      <width>350</width>
-     <height>25</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -322,10 +359,10 @@ image: url(:/back/arrowPressed.svg);
    <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>4</x>
+      <y>7</y>
+      <width>20</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -333,7 +370,7 @@ image: url(:/back/arrowPressed.svg);
 {
 background-color:transparent;
 border:none;
-image:url(:/toolbar/MacOsToolBarButtonExit-01.svg)
+image: url(:/toolbar/MacOsToolBarButtonExit.svg);
 }
 QPushButton:hover
 {
@@ -341,7 +378,7 @@ image:url(:/toolbar/MacOsToolBarButtonExitHover.svg)
 }
 QPushButton:pressed
 {
-image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonExitPressed.svg)
 }</string>
     </property>
     <property name="text">
@@ -351,10 +388,10 @@ image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
    <widget class="QPushButton" name="minimizeButton">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>31</x>
+      <y>7</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -362,7 +399,7 @@ image:url(:/toolbar/MacOsToolBarButtonExitPressed-01.svg)
 {
 background-color:transparent;
 border:none;
-image:url(:/toolbar/MacOsToolBarButtonMinimize-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonMinimize.svg)
 }
 QPushButton:hover
 {
@@ -370,7 +407,7 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizeHover.svg)
 }
 QPushButton:pressed
 {
-image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
+image:url(:/toolbar/MacOsToolBarButtonMinimizePressed.svg)
 }</string>
     </property>
     <property name="text">
@@ -380,16 +417,19 @@ image:url(:/toolbar/MacOsToolBarButtonMinimizePressed-01.svg)
    <widget class="QWidget" name="nullButton" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>9</y>
-      <width>9</width>
-      <height>9</height>
+      <x>54</x>
+      <y>7</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/toolbar/MacOsToolBarButtonNull-01.svg);</string>
+     <string notr="true">image: url(:/toolbar/MacOsToolBarButtonNull.svg);</string>
     </property>
    </widget>
+   <zorder>exitButton</zorder>
+   <zorder>nullButton</zorder>
+   <zorder>minimizeButton</zorder>
   </widget>
  </widget>
  <resources/>

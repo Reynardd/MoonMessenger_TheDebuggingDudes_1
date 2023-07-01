@@ -27,8 +27,9 @@ private slots:
     void on_exitButton_clicked();
     void showConversation(Conversation* conv);
     void on_minimizeButton_clicked();
-    void on_switchMode_clicked(bool checked);
     void on_menuToggleButton_clicked(bool checked);
+    void on_pushButton_2_clicked();
+    void on_switchMode_toggled(bool checked);
 
 private:
     bool showingDialogFlag;
@@ -42,6 +43,7 @@ private:
     Ui::ChatListPage *ui;
     QPropertyAnimation* menuAnimation;
     QPropertyAnimation* menuButtonAnimation;
+    QPropertyAnimation* switchAnimation;
     QVBoxLayout* chatsLayout;
     //User* user;
     ChatThread* chatThread ;

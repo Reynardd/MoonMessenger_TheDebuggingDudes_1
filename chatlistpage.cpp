@@ -8,6 +8,7 @@
 #include <QDebug>
 #include "yesnodialog.h"
 #include "infodialog.h"
+#include "newconversationwindow.h"
 extern User* user;
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
@@ -35,6 +36,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
     ui->scrollArea->setWidgetResizable(true);
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    ui->circle->setAttribute(Qt::WA_TransparentForMouseEvents,true);
     connect(user,&User::logOut_failed,[&](){if(logOutFlag)
     {
 //    QtConcurrent::run(&ChatThread::start,chatThread);
@@ -43,6 +45,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
 
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
+    switchAnimation = new QPropertyAnimation(ui->circle,"geometry",this);
     connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});    //chatThread->start();
 //    QtConcurrent::run(&ChatThread::start,chatThread);
     chatThread->start();
@@ -180,20 +183,6 @@ void ChatListPage::sessionExpired()
     userLoggedOut();
     sessionExpiredFlag = false;//unnecessary
 }
-void ChatListPage::on_switchMode_clicked(bool checked)
-{
-    if(checked)
-    {
-        chatThread->stop();
-        ui->switchMode->setText("Offline");
-    }
-    else
-    {
-//        QtConcurrent::run(&ChatThread::start,chatThread);
-        chatThread->start();
-        ui->switchMode->setText("Online");
-    }
-}
 
 
 void ChatListPage::on_menuToggleButton_clicked(bool checked)
@@ -228,6 +217,36 @@ void ChatListPage::on_menuToggleButton_clicked(bool checked)
         menuAnimation->start();
         menuButtonAnimation->start();
         showingMenu = true;
+    }
+}
+
+
+void ChatListPage::on_pushButton_2_clicked()
+{
+    NewConversationWindow * window = new NewConversationWindow("channel");
+    window->exec();
+    delete window;
+}
+
+void ChatListPage::on_switchMode_toggled(bool checked)
+{
+    QRect left(124,462,20,20);
+    QRect right(176,462,20,20);
+    switchAnimation->setDuration(100);
+    if(checked)
+    {
+        switchAnimation->setStartValue(right);
+        switchAnimation->setEndValue(left);
+        switchAnimation->start();
+        chatThread->stop();
+    }
+    else
+    {
+        //        QtConcurrent::run(&ChatThread::start,chatThread);
+        switchAnimation->setStartValue(left);
+        switchAnimation->setEndValue(right);
+        switchAnimation->start();
+        chatThread->start();
     }
 }
 
