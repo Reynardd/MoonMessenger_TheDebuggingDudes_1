@@ -120,3 +120,15 @@ void ConversationWindow::on_scrollDownButton_clicked()
     scrollDown();
 }
 
+
+void ConversationWindow::on_exitButton_3_clicked()
+{
+    this->close();
+}
+
+
+void ConversationWindow::on_minimizeButton_3_clicked()
+{
+    this->showMinimized();
+}
+

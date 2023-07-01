@@ -126,7 +126,7 @@ void ChatListPage::new_conversation(Conversation* conversation)
 //                border-style: inset; \
 //                border-width: 2px;\
 //        }");
-    button->setStyleSheet("image:url(:/label/userChatButton-01.svg);color:white;border:none;text-align:left;");
+    button->setStyleSheet("image:url(:/label/userChatButton.svg);color:white;border:none;text-align:left;");
     qDebug()<< chatsLayout->geometry();
     chatsLayout->addWidget(button);
 }

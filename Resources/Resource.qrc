@@ -87,7 +87,10 @@
         <file>onlineButton.svg</file>
         <file>circle2.svg</file>
         <file>moon.png</file>
-        <file>userChatButton-01.svg</file>
+        <file>line.svg</file>
+        <file>userChatButton.svg</file>
+        <file>userChatButtonHover.svg</file>
+        <file>userChatButtonPressed.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>

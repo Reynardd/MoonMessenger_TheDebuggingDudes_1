@@ -31,6 +31,10 @@ private slots:
 
     void on_scrollDownButton_clicked();
 
+    void on_exitButton_3_clicked();
+
+    void on_minimizeButton_3_clicked();
+
 private:
     QVBoxLayout* messagesLayout;
     Conversation* conversation;
