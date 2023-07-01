@@ -59,7 +59,7 @@ border-bottom-left-radius:6px;
    <widget class="QFrame" name="menuLayout">
     <property name="geometry">
      <rect>
-      <x>-230</x>
+      <x>0</x>
       <y>0</y>
       <width>230</width>
       <height>500</height>
@@ -228,7 +228,8 @@ QPushButton
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/label/circle2.svg);</string>
+      <string notr="true">
+image: url(:/label/moon.png);</string>
      </property>
     </widget>
     <zorder>switchMode</zorder>
