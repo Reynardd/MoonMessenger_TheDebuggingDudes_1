@@ -9,6 +9,7 @@ infoDialog::infoDialog(QString text,QWidget *parent) :
     //this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);border: 1px solid white;border-radius: 10px}");
     setWindowFlag(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground,true);
+    setWindowFlag(Qt::Popup);
     ui->plainTextEdit->setText(text);
 
 }

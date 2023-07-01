@@ -40,7 +40,7 @@ void MainWindow::on_loginButton_clicked()
         {
             YesNoDialog *dialog = new YesNoDialog("A Session has already logged in to this Account\nDo you wish to terminate them?",this);
             int r = dialog->exec();
-            if(r==QDialog::Rejected) { return; }
+            if(r==QDialog::Rejected) {ui->loginButton->setEnabled(true); return; }
             QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
             if(response.empty())
             {
