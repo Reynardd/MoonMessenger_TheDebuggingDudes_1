@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     message.cpp \
+    newconversationwindow.cpp \
     request.cpp \
     signupwindow.cpp \
     user.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     infodialog.h \
     mainwindow.h \
     message.h \
+    newconversationwindow.h \
     request.h \
     signupwindow.h \
     user.h \
@@ -40,6 +42,7 @@ FORMS += \
     conversationwindow.ui \
     infodialog.ui \
     mainwindow.ui \
+    newconversationwindow.ui \
     signupwindow.ui \
     yesnodialog.ui
 

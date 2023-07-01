@@ -85,71 +85,6 @@ void ChatListPage::userLoggedOut()
     loginPage->show();
     this->close();
 }
-void ChatListPage::on_menuToggleButton_clicked()
-{
-    ui->menuToggleButton->setEnabled(false);
-    if(showingMenu)
-    {
-        ui->scrollAreaWidgetContents->setEnabled(true);
-        menuAnimation->setStartValue(ui->menuLayout->geometry());
-
-        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()-230,ui->menuLayout->geometry().y(),\
-        ui->menuLayout->width(),ui->menuLayout->height()));
-
-
-        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
-
-        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()-230,ui->menuToggleButton->geometry().y()\
-        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
-
-        menuAnimation->setDuration(170);
-        menuButtonAnimation->setDuration(170);
-        menuAnimation->start();
-        menuButtonAnimation->start();
-        showingMenu = false;
-        ui->menuToggleButton->setStyleSheet(\
-        "QPushButton {\
-        image: url(:/back/arrow.svg);\
-        border:none\
-        }\
-        QPushButton:hover {\
-        image: url(:/back/arrowHover.svg);\
-        }\
-        QPushButton:pressed {\
-        image: url(:/back/arrowPressed.svg);\
-        }");
-    }
-    else
-    {
-        ui->scrollAreaWidgetContents->setEnabled(false);
-        menuAnimation->setStartValue(ui->menuLayout->geometry());
-        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()+230,ui->menuLayout->geometry().y(),\
-        ui->menuLayout->width(),ui->menuLayout->height()));
-
-
-        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
-
-        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()+230,ui->menuToggleButton->geometry().y()\
-        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
-
-        menuAnimation->setDuration(170);
-        menuButtonAnimation->setDuration(170);
-        menuAnimation->start();
-        menuButtonAnimation->start();
-        showingMenu = true;
-        ui->menuToggleButton->setStyleSheet(\
-        "QPushButton {\
-        image: url(:/back/arrowBack.svg);\
-        border:none\
-        }\
-        QPushButton:hover {\
-        image: url(:/back/arrowBackHover.svg);\
-        }\
-        QPushButton:pressed {\
-        image: url(:/back/arrowBackPressed.svg);\
-        }");
-    }
-}
 void ChatListPage::new_conversation(Conversation* conversation)
 {
     QPushButton *button = new QPushButton("    "+conversation->name());
@@ -257,6 +192,42 @@ void ChatListPage::on_switchMode_clicked(bool checked)
 //        QtConcurrent::run(&ChatThread::start,chatThread);
         chatThread->start();
         ui->switchMode->setText("Online");
+    }
+}
+
+
+void ChatListPage::on_menuToggleButton_clicked(bool checked)
+{
+    ui->menuToggleButton->setEnabled(false);
+    if(showingMenu)
+    {
+        ui->scrollAreaWidgetContents->setEnabled(true);
+        menuAnimation->setStartValue(ui->menuLayout->geometry());
+        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()-230,ui->menuLayout->geometry().y(),\
+        ui->menuLayout->width(),ui->menuLayout->height()));
+        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
+        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()-230,ui->menuToggleButton->geometry().y()\
+        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
+        menuAnimation->setDuration(170);
+        menuButtonAnimation->setDuration(170);
+        menuAnimation->start();
+        menuButtonAnimation->start();
+        showingMenu = false;
+    }
+    else
+    {
+        ui->scrollAreaWidgetContents->setEnabled(false);
+        menuAnimation->setStartValue(ui->menuLayout->geometry());
+        menuAnimation->setEndValue(QRect(ui->menuLayout->geometry().x()+230,ui->menuLayout->geometry().y(),\
+        ui->menuLayout->width(),ui->menuLayout->height()));
+        menuButtonAnimation->setStartValue(ui->menuToggleButton->geometry());
+        menuButtonAnimation->setEndValue(QRect(ui->menuToggleButton->geometry().x()+230,ui->menuToggleButton->geometry().y()\
+        ,ui->menuToggleButton->width(),ui->menuToggleButton->height()));
+        menuAnimation->setDuration(170);
+        menuButtonAnimation->setDuration(170);
+        menuAnimation->start();
+        menuButtonAnimation->start();
+        showingMenu = true;
     }
 }
 

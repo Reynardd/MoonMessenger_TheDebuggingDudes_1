@@ -19,6 +19,7 @@ public:
     void readFromFile();
     void writeToFile();
     void sendMessage(QString conversationName,QString conversationType,QString data);
+    void createConversation(QString name,QString title,QString type);
 private:
     QString token;
     QString username;
@@ -38,6 +39,10 @@ signals:
     void readFile_failed();
     void sessionExpiredSignal();
     void new_conversation(Conversation* conversation);
+    void conversationCreated();
+    void conversationAlreadyExist();
+    void convesationDoesntExist();
+    void messageSentSuccessfully();
 
 };
 #endif // USER_H

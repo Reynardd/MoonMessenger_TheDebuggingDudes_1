@@ -7,7 +7,7 @@ QJsonObject get(QString url, QUrlQuery params)
     QNetworkRequest request;
     request.setUrl(requestURL);
     QNetworkReply* reply = manager->get(request);
-    qDebug() << "url: "<<requestURL.toDisplayString();
+    //qDebug() << "url: "<<requestURL.toDisplayString();
     QEventLoop eventLoop;
     QObject::connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
     eventLoop.exec();

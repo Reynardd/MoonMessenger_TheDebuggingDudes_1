@@ -19,7 +19,6 @@ public:
     ~ChatListPage();
 
 private slots:
-    void on_menuToggleButton_clicked();
     void userLoggedOut();
     void connectionLost();
     void sessionExpired();
@@ -28,8 +27,8 @@ private slots:
     void on_exitButton_clicked();
     void showConversation(Conversation* conv);
     void on_minimizeButton_clicked();
-
     void on_switchMode_clicked(bool checked);
+    void on_menuToggleButton_clicked(bool checked);
 
 private:
     bool showingDialogFlag;

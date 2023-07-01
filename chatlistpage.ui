@@ -228,21 +228,37 @@ QPushButton
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-	image: url(:/back/arrow.svg);
-	border:none
+     <string notr="true">QPushButton
+ {
+image: url(:/back/arrowBack.svg);
+border:none
 }
-
 QPushButton:hover {
-	image: url(:/back/arrowHover.svg);
+image: url(:/back/arrowBackHover.svg);
 }
-
 QPushButton:pressed {
-	image: url(:/back/arrowPressed.svg);
+image: url(:/back/arrowBackPressed.svg);
+}
+QPushButton:checked
+{
+image: url(:/back/arrow.svg);
+border:none
+}
+QPushButton:checked:hover {
+image: url(:/back/arrowHover.svg);
+}
+QPushButton:checked:pressed {
+image: url(:/back/arrowPressed.svg);
 }</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea">

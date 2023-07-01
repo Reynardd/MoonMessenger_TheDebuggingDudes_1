@@ -91,4 +91,5 @@
         <file>MacOsToolBarButtonMinimizePressed.svg</file>
         <file>MacOsToolBarButtonNull.svg</file>
     </qresource>
+    <qresource prefix="/controlBox"/>
 </RCC>
