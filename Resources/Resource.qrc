@@ -87,15 +87,15 @@
         <file>circle2.svg</file>
         <file>moon.png</file>
         <file>line.svg</file>
-        <file>userChatButton.svg</file>
-        <file>userChatButtonHover.svg</file>
-        <file>userChatButtonPressed.svg</file>
         <file>channelChatButton.svg</file>
         <file>channelChatButtonHover.svg</file>
         <file>channelChatButtonPressed.svg</file>
         <file>groupChatButton.svg</file>
         <file>groupChatButtonHover.svg</file>
         <file>groupChatButtonPressed.svg</file>
+        <file>userChatButton.svg</file>
+        <file>userChatButtonHover.svg</file>
+        <file>userChatButtonPressed.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
