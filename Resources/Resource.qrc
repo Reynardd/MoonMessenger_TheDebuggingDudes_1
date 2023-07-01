@@ -36,7 +36,6 @@
         <file>Font/Please Read This.rtf</file>
         <file>testRect.svg</file>
         <file>chatTest-01.svg</file>
-        <file>chatTest.jpg</file>
     </qresource>
     <qresource prefix="/label">
         <file>labelUsername.svg</file>
