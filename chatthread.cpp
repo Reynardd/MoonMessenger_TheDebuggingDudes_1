@@ -65,6 +65,8 @@ void ChatThread::check_new(QString type)
     {
         QRegularExpression number("([0-9]+)");
         QRegularExpressionMatch match = number.match(response.value("message").toString());
+
+
         if(!match.hasMatch())
         {
             infoDialog* dialog = new infoDialog("Server Message: " + response.value("message").toString());
@@ -72,6 +74,7 @@ void ChatThread::check_new(QString type)
             invalidResponse(response.value("message").toString());
             return;
         }
+
         int newConversationCount = match.captured(0).toInt();
         int conversationCount = user->getConversationCount(type);
         if(conversationCount<newConversationCount)
@@ -92,15 +95,6 @@ ChatThread::~ChatThread()
     stop();
     qDebug() << "chatthread deleted";
 }
-void ChatThread::check_new_user()
-{
-    check_new("user");
-}
-void ChatThread::check_new_group()
-{
-    check_new("group");
-}
-void ChatThread::check_new_channel()
-{
-    check_new("channel");
-}
+void ChatThread::check_new_user()   { check_new("user"); }
+void ChatThread::check_new_group()  { check_new("group"); }
+void ChatThread::check_new_channel(){ check_new("channel"); }

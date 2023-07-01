@@ -21,9 +21,6 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_loginButton_clicked()
 {
-    //this is for test only
-//    ChatListPage * chatList = new ChatListPage();
-//    chatList->show();
     ui->loginButton->setEnabled(false);
     QString username = ui->username->text(),password = ui->password->text();
     QUrlQuery query;
@@ -43,27 +40,24 @@ void MainWindow::on_loginButton_clicked()
         {
             YesNoDialog *dialog = new YesNoDialog("A Session has already logged in to this Account\nDo you wish to terminate them?",this);
             int r = dialog->exec();
-            if(r==QDialog::Accepted)
+            if(r==QDialog::Rejected) { return; }
+            QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
+            if(response.empty())
             {
-                QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
-                if(response.empty())
-                {
-                    infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
-                    dialog->exec();
-                }
-                else if(response.value("code").toString()=="200")
-                {
-                    infoDialog *dialog = new infoDialog("The Previous Session has Been terminated\nEnjoy Logging in :)");
-                    dialog->exec();
-                    on_loginButton_clicked();
-                }
-                else
-                {
-                    infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
-                    dialog->exec();
-                }
+                infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
+                dialog->exec();
             }
-
+            else if(response.value("code").toString()=="200")
+            {
+                infoDialog *dialog = new infoDialog("The Previous Session has Been terminated\nEnjoy Logging in :)");
+                dialog->exec();
+                on_loginButton_clicked();
+            }
+            else
+            {
+                infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
+                dialog->exec();
+            }
             ui->loginButton->setEnabled(true);
             return;
         }

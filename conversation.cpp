@@ -74,22 +74,19 @@ void Conversation::getUpdate(QString token)
             dialog->exec();
         }
         int newMessageCount = match.captured(0).toInt();
-        if(newMessageCount!=0)
+        if(newMessageCount==0) { return; }
+        for (int i = 0; i < newMessageCount; ++i)
         {
-            for (int i = 0; i < newMessageCount; ++i)
-            {
-                QJsonObject message = response.value("block "+QString::number(i)).toObject();
-                QString text,sender,date;
-                text = message.value("body").toString();
-                sender = message.value("src").toString();
-                date = message.value("date").toString();
-                Message* mes = new Message(messageCount,sender,text,date);
-                messages.push_back(mes);
-                messageCount++;
-                emit newMessage_arrived(mes);
-                user->writeToFile();
-
-            }
+        QJsonObject message = response.value("block "+QString::number(i)).toObject();
+        QString text,sender,date;
+        text = message.value("body").toString();
+        sender = message.value("src").toString();
+        date = message.value("date").toString();
+        Message* mes = new Message(messageCount,sender,text,date);
+        messages.push_back(mes);
+        messageCount++;
+        emit newMessage_arrived(mes);
+        user->writeToFile();
         }
     }
     else

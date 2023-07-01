@@ -17,37 +17,46 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     ui->setupUi(this);
     this->setAttribute(Qt::WA_TranslucentBackground,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_DeleteOnClose,true);
+
+
     showingDialogFlag = false;
     showingMenu = false;
     currentChatWindow = nullptr;
-    this->setAttribute(Qt::WA_DeleteOnClose,true);
-    this->setStyleSheet("#centralwidget{background-image: url(:/back/background.jpg);}");
+
     user = new User(username,password,token,this);
+
     chatsLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
-    connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
-    connect(user,SIGNAL(new_conversation(Conversation*)),this,SLOT(new_conversation(Conversation*)));
-    if(readFromFile)user->readFromFile();
-    chatThread = new ChatThread(user,this);
-    connect(chatThread,&ChatThread::connectionLost,this,&ChatListPage::connectionLost);
-    connect(chatThread,&ChatThread::sessionExpired,this,&ChatListPage::sessionExpired);
-    connect(chatThread,SIGNAL(isStopped(bool)),ui->switchMode,SLOT(setChecked(bool)));
-    this->setWindowTitle(user->getUserName());
-    ui->nameLabel->setText("Logged in as "+ user->getUserName());
     ui->scrollAreaWidgetContents->setLayout(chatsLayout);
     ui->scrollArea->setWidgetResizable(true);
     chatsLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
+    connect(user,&User::loggedOut,this,&ChatListPage::userLoggedOut);
+    connect(user,SIGNAL(new_conversation(Conversation*)),this,SLOT(new_conversation(Conversation*)));
+
+    if(readFromFile)user->readFromFile();
+
+    chatThread = new ChatThread(user,this);
+
+    connect(chatThread,&ChatThread::connectionLost,this,&ChatListPage::connectionLost);
+    connect(chatThread,&ChatThread::sessionExpired,this,&ChatListPage::sessionExpired);
+    connect(chatThread,SIGNAL(isStopped(bool)),ui->switchMode,SLOT(setChecked(bool)));
+
+    ui->nameLabel->setText("Logged in as "+ user->getUserName());
+
+
     ui->circle->setAttribute(Qt::WA_TransparentForMouseEvents,true);
+
     connect(user,&User::logOut_failed,[&](){if(logOutFlag)
     {
-//    QtConcurrent::run(&ChatThread::start,chatThread);
     chatThread->start();
     }});
 
     menuAnimation = new QPropertyAnimation(ui->menuLayout,"geometry",this);
     menuButtonAnimation = new QPropertyAnimation(ui->menuToggleButton,"geometry",this);
     switchAnimation = new QPropertyAnimation(ui->circle,"geometry",this);
-    connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});    //chatThread->start();
-//    QtConcurrent::run(&ChatThread::start,chatThread);
+
+    connect(menuAnimation,&QPropertyAnimation::finished,[&](){ui->menuToggleButton->setEnabled(true);});
     chatThread->start();
 }
 
@@ -66,7 +75,8 @@ void ChatListPage::connectionLost()
 {
     if(showingDialogFlag)return;
     showingDialogFlag = true;
-    YesNoDialog* dialog = new YesNoDialog("It seems we've lost connection to the server\nDo you want to switch to offline mode?",this);
+    YesNoDialog* dialog = new YesNoDialog(\
+    "It seems we've lost connection to the server\nDo you want to switch to offline mode?",this);
     if(dialog->exec()==QDialog::Rejected)
     {
         chatThread->start();
@@ -123,14 +133,8 @@ void ChatListPage::new_conversation(Conversation* conversation)
 void ChatListPage::on_pushButton_clicked()
 {
     qDebug() << "logout button clicked";
-    if(chatThread->isRunning())
-    {
-        logOutFlag = true;
-    }
-    else
-    {
-        logOutFlag = false;
-    }
+    if(chatThread->isRunning()){ logOutFlag = true; }
+    else { logOutFlag = false; }
     chatThread->stop();
     user->logout();
 }
@@ -242,7 +246,6 @@ void ChatListPage::on_switchMode_toggled(bool checked)
     }
     else
     {
-        //        QtConcurrent::run(&ChatThread::start,chatThread);
         switchAnimation->setStartValue(left);
         switchAnimation->setEndValue(right);
         switchAnimation->start();
