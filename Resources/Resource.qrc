@@ -82,6 +82,7 @@
         <file>OfflineButton.svg</file>
         <file>onlineButton.svg</file>
         <file>circle2.svg</file>
+        <file>moon.png</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
