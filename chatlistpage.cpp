@@ -126,6 +126,7 @@ void ChatListPage::new_conversation(Conversation* conversation)
                 border-style: inset; \
                 border-width: 2px;\
         }");
+    qDebug()<< chatsLayout->geometry();
     chatsLayout->addWidget(button);
 }
 

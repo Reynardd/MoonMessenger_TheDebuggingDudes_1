@@ -34,6 +34,9 @@
         <file>Font/MononokiNerdFontPropo-Italic.ttf</file>
         <file>Font/MononokiNerdFontPropo-Regular.ttf</file>
         <file>Font/Please Read This.rtf</file>
+        <file>testRect.svg</file>
+        <file>chatTest-01.svg</file>
+        <file>chatTest.jpg</file>
     </qresource>
     <qresource prefix="/label">
         <file>labelUsername.svg</file>
@@ -84,6 +87,7 @@
         <file>onlineButton.svg</file>
         <file>circle2.svg</file>
         <file>moon.png</file>
+        <file>userChatButton-01.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>

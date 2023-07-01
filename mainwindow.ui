@@ -203,6 +203,9 @@ QPushButton:pressed {
     <property name="text">
      <string/>
     </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
    </widget>
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
