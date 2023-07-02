@@ -85,8 +85,23 @@ padding-left:22px;</string>
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	image: url(:/label/createButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/createButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/createButtonPressed.svg);
+	border:none;
+}
+</string>
+    </property>
     <property name="text">
-     <string>Create</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="cancelButton">
@@ -98,8 +113,23 @@ padding-left:22px;</string>
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	image: url(:/label/cancelButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/cancelButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/cancelButtonPressed.svg);
+	border:none;
+}
+</string>
+    </property>
     <property name="text">
-     <string>Cancel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QWidget" name="LineEditBorder" native="true">

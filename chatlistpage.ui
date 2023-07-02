@@ -206,13 +206,32 @@ QPushButton
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
-       <width>80</width>
+       <y>140</y>
+       <width>120</width>
        <height>24</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+QPushButton{
+	image: url(:/label/createChannelButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/createChannelButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/createChannelButtonPressed.svg);
+	border:none;
+}
+
+
+</string>
+     </property>
      <property name="text">
-      <string>new channel</string>
+      <string/>
      </property>
     </widget>
     <widget class="QWidget" name="circle" native="true">
@@ -237,15 +256,119 @@ image: url(:/label/moon.png);</string>
       <rect>
        <x>20</x>
        <y>80</y>
-       <width>80</width>
+       <width>120</width>
        <height>24</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">
+
+QPushButton{
+	image: url(:/label/createGroupButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/createGroupButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/createGroupButtonPressed.svg);
+	border:none;
+}
+</string>
      </property>
      <property name="text">
-      <string>new group</string>
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>120</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+QPushButton{
+	image: url(:/label/joinGroupButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/joinGroupButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/joinGroupButtonPressed.svg);
+	border:none;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>170</y>
+       <width>120</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+QPushButton{
+	image: url(:/label/joinChannelButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/joinGroupButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/joinGroupButtonPressed.svg);
+	border:none;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>120</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+QPushButton{
+	image: url(:/label/newMessageButton.svg);
+	border:none;
+}
+QPushButton:hover {
+	image: url(:/label/newMessageButtonHover.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/newMessageButtonPressed.svg);
+	border:none;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
     <zorder>switchMode</zorder>
@@ -255,6 +378,9 @@ image: url(:/label/moon.png);</string>
     <zorder>pushButton_2</zorder>
     <zorder>circle</zorder>
     <zorder>pushButton_3</zorder>
+    <zorder>pushButton_4</zorder>
+    <zorder>pushButton_5</zorder>
+    <zorder>pushButton_6</zorder>
    </widget>
    <widget class="QPushButton" name="menuToggleButton">
     <property name="geometry">
