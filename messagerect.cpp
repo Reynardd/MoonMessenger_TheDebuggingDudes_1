@@ -29,7 +29,7 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
         border: 1px solid #e5e5ea;border-top-left-radius:10px;\
         border-top-right-radius:8px;\
         padding-top: 5px;padding-left:5px;\
-        padding-right:5px;padding-bottom:15px;";
+        padding-right:5px;padding-bottom:15px;border:none;";
     label = new QLabel(this);
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
