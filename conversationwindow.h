@@ -43,8 +43,9 @@ private:
     void mousePressEvent(QMouseEvent*) override;
     void mouseMoveEvent(QMouseEvent*) override;
     bool isMouseOnToolbar(QPoint mousePos);
+    void animationScrollDown();
+    bool animationOnRun;
     void scrollDown();
-    bool scrollingDown;
     QPropertyAnimation* scrollAnim;
     QPoint dragPosition;
 signals:

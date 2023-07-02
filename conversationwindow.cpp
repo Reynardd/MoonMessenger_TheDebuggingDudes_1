@@ -23,21 +23,18 @@ void ConversationWindow::addMessage(Message* message)
 
     layout->addWidget(label);
     messagesLayout->addLayout(layout);
-    connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,[&]()
-            {
-                QtConcurrent::run(bind(&ConversationWindow::scrollDown,this));
-            });
+
 }
 ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *parent) :
     QDialog(parent),
     conversation(conversation),
     ui(new Ui::ConversationWindow)
 {
+    animationOnRun = false;
     this->setAttribute(Qt::WA_DeleteOnClose,true);
     this->setAttribute(Qt::WA_TranslucentBackground,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
     ui->setupUi(this);
-    scrollingDown = false;
     this->setWindowTitle(conversation->name());
     ui->dstLabel->setText(conversation->name());
     ui->scrollArea->setWidget(ui->scrollAreaWidgetContents);
@@ -45,11 +42,13 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     ui->scrollAreaWidgetContents->setLayout(messagesLayout);
     messagesLayout->setAlignment(Qt::AlignBottom);
     connect(conversation,&Conversation::newMessage_arrived,this,&ConversationWindow::new_message);
+
     scrollAnim = new QPropertyAnimation(ui->scrollArea->verticalScrollBar(),"value");
-    for(auto message: conversation->Messages())
-    {
-        addMessage(message);
-    }
+    connect(scrollAnim,&QPropertyAnimation::finished,[&](){animationOnRun=false;});
+
+    for(auto message: conversation->Messages()) { addMessage(message); }
+    connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,this,&ConversationWindow::animationScrollDown);
+
     ui->messageLineEdit->setText(conversation->draftMessage);
 }
 ConversationWindow::~ConversationWindow()
@@ -97,6 +96,18 @@ bool ConversationWindow::isMouseOnToolbar(QPoint mousePos)
     return toolbar.contains(mousePos);
 }
 
+void ConversationWindow::animationScrollDown()
+{
+    if(!animationOnRun)
+    {
+        animationOnRun=true;
+        scrollAnim->setStartValue(ui->scrollArea->verticalScrollBar()->value());
+        scrollAnim->setEndValue(ui->scrollArea->verticalScrollBar()->maximum());
+        scrollAnim->setDuration(100);
+        scrollAnim->start();
+    }
+}
+
 void ConversationWindow::on_messageLineEdit_textChanged(const QString &arg1)
 {
     conversation->draftMessage = arg1;
@@ -113,7 +124,8 @@ void ConversationWindow::on_sendButton_clicked()
 
 void ConversationWindow::on_scrollDownButton_clicked()
 {
-    scrollDown();
+    //scrollDown();
+    animationScrollDown();
 }
 
 
