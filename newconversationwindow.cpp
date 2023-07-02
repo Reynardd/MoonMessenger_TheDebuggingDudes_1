@@ -22,7 +22,11 @@ void NewConversationWindow::userSetup()
 {
     ui->nameLineEdit->setPlaceholderText("Username");
     ui->lineEdit->setPlaceholderText("Write a message...");
-    connect(user,&User::convesationDoesntExist,[](){
+    ui->createButton->setStyleSheet("QPushButton{image: url(:/label/sendButtonText.svg);border:none;}\
+                                     QPushButton:hover {image: url(:/label/sendButtonTextHover.svg);border:none;}\
+                                     QPushButton:pressed {image: url(:/label/sendButtonTextPressed.svg);border:none;}");
+
+    connect(user,&User::conversationDoesntExist,[](){
         infoDialog* dialog = new infoDialog("User not found\nTry another username");
         dialog->exec();
         delete dialog;

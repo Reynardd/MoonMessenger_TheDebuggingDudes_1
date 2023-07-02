@@ -25,6 +25,7 @@ void User:: newConversation(QString name,QString type)
             return;
         }
     }
+    if(name=="")return;
     qDebug() << "new conv name confirm: "<<name;
     qDebug() << "new conv type: "<<type;
     Conversation* conversation = new Conversation(name,type,this->token);

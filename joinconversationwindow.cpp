@@ -3,11 +3,14 @@
 #include "user.h"
 #include "infodialog.h"
 extern User* user;
-JoinConversationWindow::JoinConversationWindow(QWidget *parent) :
+JoinConversationWindow::JoinConversationWindow(QString type,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::JoinConversationWindow)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_TranslucentBackground,true);
+    this->setWindowFlag(Qt::FramelessWindowHint);
+    setup(type);
 }
 void JoinConversationWindow::setup(QString type)
 {

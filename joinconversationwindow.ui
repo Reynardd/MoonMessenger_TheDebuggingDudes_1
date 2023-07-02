@@ -145,7 +145,7 @@ padding-left:22px;</string>
      <string notr="true">image: url(:/back/logo.svg);</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="createButton">
+   <widget class="QPushButton" name="joinButton">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -218,7 +218,7 @@ background:none;</string>
    <zorder>nemeLineEditBorder</zorder>
    <zorder>nameLineEdit</zorder>
    <zorder>logo</zorder>
-   <zorder>createButton</zorder>
+   <zorder>joinButton</zorder>
    <zorder>cancelButton</zorder>
   </widget>
  </widget>

@@ -10,6 +10,7 @@
 #include "infodialog.h"
 #include "newconversationwindow.h"
 #include "chatbutton.h"
+#include "joinconversationwindow.h"
 extern User* user;
 ChatListPage::ChatListPage(QString username,QString password,QString token,bool readFromFile,QWidget *parent) :
     QWidget(parent),
@@ -239,6 +240,30 @@ void ChatListPage::on_switchMode_toggled(bool checked)
 void ChatListPage::on_pushButton_3_clicked()
 {
     NewConversationWindow * window = new NewConversationWindow("group",this);
+    window->exec();
+    delete window;
+}
+
+
+void ChatListPage::on_pushButton_6_clicked()
+{
+    NewConversationWindow * window = new NewConversationWindow("user",this);
+    window->exec();
+    delete window;
+}
+
+
+void ChatListPage::on_pushButton_4_clicked()
+{
+    JoinConversationWindow * window = new JoinConversationWindow("group",this);
+    window->exec();
+    delete window;
+}
+
+
+void ChatListPage::on_pushButton_5_clicked()
+{
+    JoinConversationWindow * window = new JoinConversationWindow("channel",this);
     window->exec();
     delete window;
 }
