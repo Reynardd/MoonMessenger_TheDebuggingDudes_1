@@ -28,18 +28,17 @@
    <widget class="QLineEdit" name="nameLineEdit">
     <property name="geometry">
      <rect>
-      <x>16</x>
-      <y>60</y>
+      <x>13</x>
+      <y>91</y>
       <width>271</width>
-      <height>91</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color:white;
 border:none;
 background-color:transparent;
-image: url(:/label/lineEditBorder.svg);
-padding-left:7px;</string>
+padding-left:22px;</string>
     </property>
     <property name="placeholderText">
      <string/>
@@ -61,18 +60,17 @@ padding-left:7px;</string>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>110</y>
+      <x>11</x>
+      <y>142</y>
       <width>271</width>
-      <height>91</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color:white;
 border:none;
 background-color:transparent;
-image: url(:/label/lineEditBorder.svg);
-padding-left:7px;</string>
+padding-left:22px;</string>
     </property>
     <property name="placeholderText">
      <string/>
@@ -104,6 +102,41 @@ padding-left:7px;</string>
      <string>Cancel</string>
     </property>
    </widget>
+   <widget class="QWidget" name="LineEditBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>143</y>
+      <width>260</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/label/lineEditBorder.svg);
+background:none;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="nemeLineEditBorder" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>92</y>
+      <width>260</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/label/lineEditBorder.svg);
+background:none;</string>
+    </property>
+   </widget>
+   <zorder>LineEditBorder</zorder>
+   <zorder>nemeLineEditBorder</zorder>
+   <zorder>nameLineEdit</zorder>
+   <zorder>logo</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>createButton</zorder>
+   <zorder>cancelButton</zorder>
   </widget>
   <widget class="QWidget" name="toolbar" native="true">
    <property name="geometry">
