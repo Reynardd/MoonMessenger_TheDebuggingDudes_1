@@ -66,7 +66,7 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     waiter->setSingleShot(true);
     connect(waiter,&QTimer::timeout,[&](){
         connect(ui->scrollArea->verticalScrollBar(),SIGNAL(valueChanged(int)),this,SLOT(scrollbarValueChanged(int)));
-        delete waiter;
+
     });
     waiter->start(1000);
 }

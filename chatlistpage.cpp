@@ -130,9 +130,9 @@ void ChatListPage::on_exitButton_clicked()
 
 void ChatListPage::showConversation(Conversation* conv)
 {
-    ConversationWindow* window = new ConversationWindow(conv,this);
+    ConversationWindow* window = new ConversationWindow(conv);
     currentChatWindow = window;
-    window->exec();
+    currentChatWindow->exec();
 }
 void ChatListPage::on_minimizeButton_clicked()
 {

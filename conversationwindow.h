@@ -47,7 +47,7 @@ private:
     QPropertyAnimation* scrollAnim;
     QPoint dragPosition;
 signals:
-    void sendMessage(QString data);
+
 };
 
 

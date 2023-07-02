@@ -69,56 +69,6 @@ color: rgb(255, 255, 255);</string>
    <property name="styleSheet">
     <string notr="true">#centralwidget{image: url(:/back/background.jpg)}</string>
    </property>
-   <widget class="QPushButton" name="sendButton">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>460</y>
-      <width>50</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Send</string>
-    </property>
-    <property name="shortcut">
-     <string>Return</string>
-    </property>
-    <property name="default">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="messageLineEdit">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>460</y>
-      <width>271</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::StrongFocus</enum>
-    </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-    <property name="placeholderText">
-     <string>Write a message...</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="scrollDownButton">
     <property name="geometry">
      <rect>
@@ -272,8 +222,6 @@ color:white;</string>
     <zorder>widget</zorder>
     <zorder>sendButton</zorder>
    </widget>
-   <zorder>sendButton</zorder>
-   <zorder>messageLineEdit</zorder>
    <zorder>widget_2</zorder>
    <zorder>scrollArea</zorder>
    <zorder>scrollDownButton</zorder>
