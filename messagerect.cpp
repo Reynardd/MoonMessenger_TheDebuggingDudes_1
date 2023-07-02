@@ -6,6 +6,7 @@
 #include <QFontMetrics>
 #include "user.h"
 #include "conversationwindow.h"
+#include <QFont>
 extern User* user;
 QString extractClock(QString date)
 {
@@ -23,31 +24,34 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     this->setAttribute(Qt::WA_TransparentForMouseEvents,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
     this->setText(text);
-    QString style ="QTextEdit{background-color: qlineargradient(spread:pad, x1:0, y1:0.244, x2:1,\
-        y2:0.801136, stop:0 rgba(162, 44, 181, 255), stop:1 rgba(93, 19, 161, 255));\
-        color:white;\
-        border: 1px solid #e5e5ea;border-top-left-radius:10px;\
-        border-top-right-radius:8px;\
-        padding-top: 5px;padding-left:5px;\
-        padding-right:5px;padding-bottom:15px;border:none;";
+
     label = new QLabel(this);
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    label->setStyleSheet("color:#C3C3C3;padding-right:5px;padding-left:5px;padding-bottom:1px");
+    QString style;
 
-    label->setText(sender +" "+ extractClock(date));
+
+    label->setText(sender +"  "+ extractClock(date));
     label->adjustSize();
     if(fromMe)
     {
+        style = "QTextEdit{background-color: qlineargradient(spread:pad, x1:0, y1:0.244, x2:1,\
+                y2:0.801136, stop:0 rgba(162, 44, 181, 255), stop:1 rgba(93, 19, 161, 255));color:white;\
+                border:none;border-top-right-radius:10px;\
+                border-top-left-radius:10px;\
+                border-bottom-left-radius:10px;}";
         this->setAlignment(Qt::AlignVCenter|Qt::AlignLeft);
-        style+="border-bottom-left-radius:10px}";
         label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+        label->setStyleSheet("color:#C3C3C3;padding-right:5px;padding-left:5px;padding-bottom:1px");
     }
     else
     {
-        style+="border-bottom-right-radius:10px;}";
+        style = "QTextEdit{background-color: qlineargradient(spread:pad, x1:0, y1:0.244, x2:1,\
+                y2:0.801136, stop:0 rgba(28, 209, 152, 255), stop:1 rgba(50, 151, 171, 255));color:black;\
+                border:none;border-radius:10px;}";
         label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
         this->setAlignment(Qt::AlignVCenter|Qt::AlignRight);
+        label->setStyleSheet("color:#212121;padding-right:5px;padding-left:5px;padding-bottom:1px");
     }
 
     this->setStyleSheet(style);
@@ -64,7 +68,6 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
 
         int totalHeight = 0;
         QStringList lines = this->toPlainText().split("\n");
-        qDebug() << "multiLine";
         for (const QString& line : lines)
         {
             QRect rect = metrics.boundingRect(QRect(0, 0, 220, 0), Qt::AlignLeft | Qt::TextWrapAnywhere, line);
@@ -75,8 +78,11 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     }
     else
     {
-        this->setFixedHeight(40);
+        this->setFixedHeight(45);
     }
+    QFont font = label->font();
+    font.setPointSize(8);
+    label->setFont(font);
     label->setGeometry(0,this->height()-label->height(),this->width(),label->height());
 
 }
@@ -124,13 +130,20 @@ MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
     conversationName = qobject_cast<ConversationWindow*>(parent)->conversationName;
     connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
             this, SLOT(showContextMenu(const QPoint &)));
+    QWidget* tail = new QWidget(this);
+    tail->setStyleSheet("image:url(:/label/bubbleTailLeft.svg);");
+    //tail->setAttribute(Qt::WA_TranslucentBackground,true);
 
+    tail->setFixedSize(10,12);
     messageRect = new DynamicRectangle(message,fromMe,this);
     this->setGeometry(0,0,messageRect->width()+10,messageRect->height());
+
     messageRect->show();
-    if(!fromMe){messageRect->move(messageRect->x()+5,messageRect->y());}
+    if(!fromMe){messageRect->move(messageRect->x()+10,messageRect->y());}
     this->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     this->setFixedSize(size());
+    tail->setGeometry(5,this->height()-15,10,12);
+    tail->show();
 }
 
 void MessageRect::showContextMenu(const QPoint &pos)

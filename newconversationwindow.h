@@ -20,6 +20,8 @@ private slots:
 
     void on_minimizeButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::NewConversationWindow *ui;
     void mousePressEvent(QMouseEvent*) override;

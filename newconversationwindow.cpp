@@ -117,3 +117,9 @@ void NewConversationWindow::on_minimizeButton_clicked()
     this->showMinimized();
 }
 
+
+void NewConversationWindow::on_cancelButton_clicked()
+{
+    this->close();
+}
+
