@@ -126,6 +126,9 @@
         <file>sendButton.svg</file>
         <file>bubbleTail.svg</file>
         <file>bubbleTailLeft.svg</file>
+        <file>sendButtonText.svg</file>
+        <file>sendButtonTextHover.svg</file>
+        <file>sendButtonTextPressed.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
