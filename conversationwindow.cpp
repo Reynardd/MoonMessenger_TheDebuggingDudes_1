@@ -11,10 +11,12 @@
 extern User* user;
 void ConversationWindow::addMessage(Message* message)
 {
+
+    if(message->type()!="text") {return; }
     bool fromMe = false;
     QHBoxLayout* layout = new QHBoxLayout();
     layout->setAlignment(Qt::AlignLeft);
-    if(message->sender()==user->getUserName())
+    if(message->sender().toLower()==user->getUserName().toLower())
     {
         fromMe=true;
         layout->setAlignment(Qt::AlignRight);

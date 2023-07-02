@@ -14,6 +14,7 @@ public:
     QString text();
     QString toString();
     QString date();
+    QString type();
     const int& id();
 private:
     int _id;
@@ -21,7 +22,7 @@ private:
     QString _text;
     QString _date;
 signals:
-
+    void wasLiked();
 };
 
 #endif // MESSAGE_H

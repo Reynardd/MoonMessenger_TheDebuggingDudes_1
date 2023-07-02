@@ -31,9 +31,9 @@
   <widget class="QLabel" name="dstLabel">
    <property name="geometry">
     <rect>
-     <x>-20</x>
+     <x>0</x>
      <y>30</y>
-     <width>381</width>
+     <width>350</width>
      <height>41</height>
     </rect>
    </property>
@@ -45,7 +45,9 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(6, 118, 255);
 text-align:center;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border-bottom-right-radius:15px;
+</string>
    </property>
    <property name="text">
     <string>Chat Name</string>
@@ -67,7 +69,11 @@ color: rgb(255, 255, 255);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#centralwidget{image: url(:/back/background.jpg)}</string>
+    <string notr="true">#centralwidget{
+image: url(:/back/background.jpg);
+background-color:transparent;
+border:none;
+}</string>
    </property>
    <widget class="QPushButton" name="scrollDownButton">
     <property name="geometry">
@@ -77,6 +83,9 @@ color: rgb(255, 255, 255);</string>
       <width>41</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>down</string>

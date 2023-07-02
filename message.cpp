@@ -46,4 +46,8 @@ QString Message::toString()
     res+= "MM:ENDOFMESSAGE\n";
     return res;
 }
-
+QString Message::type()
+{
+    if(this->_text.startsWith("#SERVERCOMMAND-LIKE")){ return "like";}
+    return "text";
+}

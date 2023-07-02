@@ -23,7 +23,9 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     this->setAttribute(Qt::WA_TransparentForMouseEvents,true);
     this->setWindowFlag(Qt::FramelessWindowHint);
     this->setText(text);
-    QString style ="QTextEdit{background-color: #0676FF;color:white;\
+    QString style ="QTextEdit{background-color: qlineargradient(spread:pad, x1:0, y1:0.244, x2:1,\
+        y2:0.801136, stop:0 rgba(162, 44, 181, 255), stop:1 rgba(93, 19, 161, 255));\
+        color:white;\
         border: 1px solid #e5e5ea;border-top-left-radius:10px;\
         border-top-right-radius:8px;\
         padding-top: 5px;padding-left:5px;\
