@@ -124,8 +124,8 @@ void ConversationWindow::animationScrollDown()
 
 void ConversationWindow::handleButton(bool showing)
 {
-    QRect showPos(29,390,ui->scrollDownButton->width(),ui->scrollDownButton->height());
-    QRect hidePos(29,590,ui->scrollDownButton->width(),ui->scrollDownButton->height());
+    QRect showPos(304,409,ui->scrollDownButton->width(),ui->scrollDownButton->height());
+    QRect hidePos(304,590,ui->scrollDownButton->width(),ui->scrollDownButton->height());
     if(showing)
     {
         buttonHandler.stop();

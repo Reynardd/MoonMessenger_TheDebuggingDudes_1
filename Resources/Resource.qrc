@@ -118,12 +118,13 @@
         <file>createButtonHover.svg</file>
         <file>createButtonPressed.svg</file>
         <file>lineMessageBorder.svg</file>
-        <file>sendButton.svg</file>
         <file>lineMessageBackground.svg</file>
         <file>scrollDown.svg</file>
         <file>joinButton.svg</file>
         <file>joinButtonHover.svg</file>
         <file>joinButtonPressed.svg</file>
+        <file>sendButton.svg</file>
+        <file>bubbleTail.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
