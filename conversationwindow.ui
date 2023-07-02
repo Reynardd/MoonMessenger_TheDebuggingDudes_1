@@ -34,7 +34,7 @@
      <x>-20</x>
      <y>30</y>
      <width>381</width>
-     <height>21</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -43,7 +43,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 81, 255);
+    <string notr="true">background-color: rgb(6, 118, 255);
 text-align:center;
 color: rgb(255, 255, 255);</string>
    </property>
@@ -189,7 +189,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>445</y>
+      <y>450</y>
       <width>350</width>
       <height>55</height>
      </rect>
@@ -200,10 +200,10 @@ color: rgb(255, 255, 255);</string>
     <widget class="QPushButton" name="sendButton">
      <property name="geometry">
       <rect>
-       <x>309</x>
+       <x>311</x>
        <y>10</y>
-       <width>35</width>
-       <height>35</height>
+       <width>32</width>
+       <height>32</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -224,7 +224,7 @@ border:none;</string>
      <property name="geometry">
       <rect>
        <x>7</x>
-       <y>9</y>
+       <y>8</y>
        <width>300</width>
        <height>38</height>
       </rect>
@@ -272,6 +272,8 @@ color:white;</string>
     <zorder>widget</zorder>
     <zorder>sendButton</zorder>
    </widget>
+   <zorder>sendButton</zorder>
+   <zorder>messageLineEdit</zorder>
    <zorder>widget_2</zorder>
    <zorder>scrollArea</zorder>
    <zorder>scrollDownButton</zorder>
