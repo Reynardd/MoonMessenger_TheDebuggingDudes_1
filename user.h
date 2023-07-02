@@ -20,6 +20,7 @@ public:
     void writeToFile();
     void sendMessage(QString conversationName,QString conversationType,QString data);
     void createConversation(QString name,QString title,QString type);
+    void joinConversation(QString name,QString type);
 private:
     QString token;
     QString username;
@@ -41,7 +42,9 @@ signals:
     void new_conversation(Conversation* conversation);
     void conversationCreated();
     void conversationAlreadyExist();
-    void convesationDoesntExist();
+    void conversationDoesntExist();
+    void joinedConversation();
+    void alreadyInConversation();
     void messageSentSuccessfully();
 
 };

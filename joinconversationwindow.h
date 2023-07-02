@@ -14,6 +14,12 @@ class JoinConversationWindow : public QDialog
 public:
     explicit JoinConversationWindow(QWidget *parent = nullptr);
     ~JoinConversationWindow();
+    void setup(QString type);
+    void joinGroup();
+    void joinChannel();
+private slots:
+    void on_exitButton_clicked();
+    void on_minimizeButton_clicked();
 
 private:
     Ui::JoinConversationWindow *ui;

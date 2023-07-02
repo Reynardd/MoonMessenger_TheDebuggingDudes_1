@@ -186,7 +186,7 @@ void User::sendMessage(QString conversationName,QString conversationType,QString
     }
     if(response.value("code").toString()=="404")
     {
-        emit convesationDoesntExist();
+        emit conversationDoesntExist();
     }
     else
     {
@@ -215,6 +215,33 @@ void User::createConversation(QString name,QString title,QString type)
         return;
     }
     if(response.value("code").toString()=="204")
+    {
+        emit conversationDoesntExist();
+        return;
+    }
+    infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
+    dialog->exec();
+    return;
+}
+void User::joinConversation(QString name,QString type)
+{
+    QUrlQuery query;
+    query.addQueryItem("token",token);
+    query.addQueryItem(type+"_name",name);
+    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/join"+type,query);
+    if(response.empty())
+    {
+        infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
+        dialog->exec();
+        return;
+    }
+    if(response.value("code").toString()=="200")
+    {
+        if(response.value("message").toString()=="Successfully Joined") { emit joinedConversation(); }
+        else { emit alreadyInConversation(); }
+        return;
+    }
+    if(response.value("code").toString()=="404")
     {
         emit conversationAlreadyExist();
         return;
