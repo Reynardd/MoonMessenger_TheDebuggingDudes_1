@@ -117,6 +117,9 @@
         <file>createButton.svg</file>
         <file>createButtonHover.svg</file>
         <file>createButtonPressed.svg</file>
+        <file>lineMessageBackground.svg</file>
+        <file>lineMessageBorder.svg</file>
+        <file>sendButton.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>

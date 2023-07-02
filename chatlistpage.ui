@@ -328,11 +328,11 @@ QPushButton{
 	border:none;
 }
 QPushButton:hover {
-	image: url(:/label/joinGroupButtonHover.svg);
+	image: url(:/label/joinChannelButtonHover.svg);
 	border:none;
 }
 QPushButton:pressed {
-	image: url(:/label/joinGroupButtonPressed.svg);
+	image: url(:/label/joinChannelButtonPressed.svg);
 	border:none;
 }
 </string>
