@@ -120,6 +120,7 @@
         <file>lineMessageBorder.svg</file>
         <file>sendButton.svg</file>
         <file>lineMessageBackground.svg</file>
+        <file>scrollDown.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
