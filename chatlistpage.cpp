@@ -91,11 +91,6 @@ void ChatListPage::userLoggedOut()
 {
     qDebug() << "stopping chatThread because of loggin out";
     chatThread->stop();
-    qDebug() << "closing chat window";
-    if(currentChatWindow)
-    {
-        currentChatWindow->close();
-    }
     qDebug() << "opening file";
     QFile file("user.txt");
     qDebug() << "removing file";
@@ -135,7 +130,7 @@ void ChatListPage::on_exitButton_clicked()
 
 void ChatListPage::showConversation(Conversation* conv)
 {
-    ConversationWindow* window = new ConversationWindow(conv);
+    ConversationWindow* window = new ConversationWindow(conv,this);
     currentChatWindow = window;
     window->exec();
 }

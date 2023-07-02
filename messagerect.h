@@ -5,12 +5,18 @@
 #include <QTextEdit>
 #include <QObject>
 #include "message.h"
+#include <QLabel>
+#include <QMenu>
 class DynamicRectangle : public QTextEdit
 {
     Q_OBJECT
 public:
     DynamicRectangle(Message* message,bool fromME,QWidget* parent = nullptr);
     void wheelEvent(QWheelEvent* event) override;
+private:
+    void onTextChanged();
+    bool fromMe;
+    QLabel* label;
 };
 
 class MessageRect : public QWidget
@@ -19,7 +25,12 @@ class MessageRect : public QWidget
 public:
     explicit MessageRect(Message* message,bool fromMe,QWidget *parent = nullptr);
 private:
+    bool fromMe;
     DynamicRectangle* messageRect;
+    Message* message;
+    QString conversationName;
+private slots:
+    void showContextMenu(const QPoint &);
 signals:
 
 };

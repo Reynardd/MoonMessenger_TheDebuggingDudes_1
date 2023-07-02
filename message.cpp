@@ -35,6 +35,7 @@ QString Message::text()
 {
     return _text;
 }
+const int& Message::id() { return _id; }
 QString Message::toString()
 {
     QString res;

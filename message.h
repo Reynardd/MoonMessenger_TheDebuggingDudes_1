@@ -14,6 +14,7 @@ public:
     QString text();
     QString toString();
     QString date();
+    const int& id();
 private:
     int _id;
     QString _sender;

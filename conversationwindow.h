@@ -19,6 +19,7 @@ class ConversationWindow : public QDialog
 public:
     explicit ConversationWindow(Conversation* conversation,QWidget *parent = nullptr);
     ~ConversationWindow();
+    QString conversationName;
 private slots:
     void new_message(Message* mes);
     void on_messageLineEdit_textChanged(const QString &arg1);

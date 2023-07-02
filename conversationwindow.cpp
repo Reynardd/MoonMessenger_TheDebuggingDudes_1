@@ -13,11 +13,11 @@ void ConversationWindow::addMessage(Message* message)
 {
     bool fromMe = false;
     QHBoxLayout* layout = new QHBoxLayout();
-    layout->setAlignment(Qt::AlignRight);
-    if(message->sender()==conversation->name())
+    layout->setAlignment(Qt::AlignLeft);
+    if(message->sender()==user->getUserName())
     {
         fromMe=true;
-        layout->setAlignment(Qt::AlignLeft);
+        layout->setAlignment(Qt::AlignRight);
     }
     MessageRect* label = new MessageRect(message,fromMe,this);
 
@@ -42,7 +42,7 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     ui->scrollAreaWidgetContents->setLayout(messagesLayout);
     messagesLayout->setAlignment(Qt::AlignBottom);
     connect(conversation,&Conversation::newMessage_arrived,this,&ConversationWindow::new_message);
-
+    conversationName = conversation->name();
     connect(&buttonHandler,&QTimer::timeout,[&](){handleButton(false);});
 
     scrollAnim = new QPropertyAnimation(ui->scrollArea->verticalScrollBar(),"value");
@@ -148,7 +148,6 @@ void ConversationWindow::handleButton(bool showing)
         buttonAnimOnRun = true;
         scrollButtonAnim->start();
     }
-    qDebug() << "button pos:" << ui->scrollDownButton->pos();
 }
 
 void ConversationWindow::on_messageLineEdit_textChanged(const QString &arg1)
@@ -186,14 +185,10 @@ void ConversationWindow::scrollbarValueChanged(int value)
 {
     if(value==ui->scrollArea->verticalScrollBar()->maximum())
     {
-        qDebug() << "hiding button - end";
         handleButton(false);
         return;
     }
     else
-    {
-        qDebug() << "showing button scroll bar";
-        handleButton(true);
-    }
+    { handleButton(true); }
 }
 
