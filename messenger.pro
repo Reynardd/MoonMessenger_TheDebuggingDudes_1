@@ -18,6 +18,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     message.cpp \
+    messagerect.cpp \
     newconversationwindow.cpp \
     request.cpp \
     signupwindow.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     infodialog.h \
     mainwindow.h \
     message.h \
+    messagerect.h \
     newconversationwindow.h \
     request.h \
     signupwindow.h \

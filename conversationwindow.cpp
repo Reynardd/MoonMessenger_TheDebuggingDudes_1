@@ -7,25 +7,21 @@
 #include <QThread>
 #include <QtConcurrent/QtConcurrent>
 #include <functional>
+#include "messagerect.h"
 extern User* user;
 void ConversationWindow::addMessage(Message* message)
 {
-    QLabel* label = new QLabel(" "+message->sender()+"\n    "+message->text(),this);
+    bool fromMe = false;
     QHBoxLayout* layout = new QHBoxLayout();
+    layout->setAlignment(Qt::AlignRight);
     if(message->sender()==conversation->name())
     {
+        fromMe=true;
         layout->setAlignment(Qt::AlignLeft);
-        label->setStyleSheet("background-color:#0050FF;border-radius:15px;color:#FF0000");
     }
-    else
-    {
-        layout->setAlignment(Qt::AlignRight);
-        label->setStyleSheet("background-color:#00FFFF;border-radius:15px;color:#FF0000");
-    }
+    MessageRect* label = new MessageRect(message,fromMe,this);
+
     layout->addWidget(label);
-    label->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    //layout->setGeometry(QRect(layout->geometry().x(),layout->geometry().y(),label->size().width(),label->size().height()));
-    label->setFixedWidth(250);
     messagesLayout->addLayout(layout);
     connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,[&]()
             {

@@ -135,9 +135,9 @@ color: rgb(255, 255, 255);</string>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>30</y>
-      <width>321</width>
+      <width>350</width>
       <height>421</height>
      </rect>
     </property>
@@ -179,7 +179,7 @@ color: rgb(255, 255, 255);</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>321</width>
+       <width>350</width>
        <height>421</height>
       </rect>
      </property>
