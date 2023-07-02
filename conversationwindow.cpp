@@ -43,18 +43,38 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     messagesLayout->setAlignment(Qt::AlignBottom);
     connect(conversation,&Conversation::newMessage_arrived,this,&ConversationWindow::new_message);
 
+    connect(&buttonHandler,&QTimer::timeout,[&](){handleButton(false);});
+
     scrollAnim = new QPropertyAnimation(ui->scrollArea->verticalScrollBar(),"value");
     connect(scrollAnim,&QPropertyAnimation::finished,[&](){animationOnRun=false;});
 
     for(auto message: conversation->Messages()) { addMessage(message); }
     connect(ui->scrollArea->verticalScrollBar(),&QScrollBar::rangeChanged,this,&ConversationWindow::animationScrollDown);
 
+    scrollButtonAnim = new QPropertyAnimation(ui->scrollDownButton,"geometry");
+    buttonAnimOnRun = false;
+    buttonHandler.setSingleShot(true);
+    connect(scrollButtonAnim,&QPropertyAnimation::finished,[&](){buttonAnimOnRun = false;});
+
+
+
+
     ui->messageLineEdit->setText(conversation->draftMessage);
+    ui->scrollDownButton->raise();
+
+    QTimer*waiter = new QTimer;
+    waiter->setSingleShot(true);
+    connect(waiter,&QTimer::timeout,[&](){
+        connect(ui->scrollArea->verticalScrollBar(),SIGNAL(valueChanged(int)),this,SLOT(scrollbarValueChanged(int)));
+        delete waiter;
+    });
+    waiter->start(1000);
 }
 ConversationWindow::~ConversationWindow()
 {
     delete ui;
     delete scrollAnim;
+    delete scrollButtonAnim;
     delete messagesLayout;
 }
 void ConversationWindow::new_message(Message* message)
@@ -62,18 +82,10 @@ void ConversationWindow::new_message(Message* message)
     addMessage(message);
 }
 
-void ConversationWindow::on_exitButton_clicked()
-{
-    this->close();
-}
 void ConversationWindow::scrollDown()
 {
     QScrollBar* scrollbar = ui->scrollArea->verticalScrollBar();
     scrollbar->setValue(scrollbar->maximum());
-}
-void ConversationWindow::on_minimizeButton_clicked()
-{
-    this->showMinimized();
 }
 void ConversationWindow::mousePressEvent(QMouseEvent* event)
 {
@@ -108,6 +120,37 @@ void ConversationWindow::animationScrollDown()
     }
 }
 
+void ConversationWindow::handleButton(bool showing)
+{
+    QRect showPos(29,390,ui->scrollDownButton->width(),ui->scrollDownButton->height());
+    QRect hidePos(29,590,ui->scrollDownButton->width(),ui->scrollDownButton->height());
+    if(showing)
+    {
+        buttonHandler.stop();
+        buttonHandler.start(2000);
+        if(ui->scrollDownButton->geometry()==showPos) {return;}
+        scrollButtonAnim->setStartValue(hidePos);;
+        scrollButtonAnim->setEndValue(showPos);
+        scrollButtonAnim->setDuration(100);
+        if(buttonAnimOnRun){return;}
+        buttonAnimOnRun = true;
+        scrollButtonAnim->start();
+    }
+    else
+    {
+        if(buttonAnimOnRun){return;}
+        if(ui->scrollDownButton->geometry()==hidePos) {return;}
+        scrollButtonAnim->stop();
+        buttonHandler.stop();
+        scrollButtonAnim->setStartValue(showPos);
+        scrollButtonAnim->setEndValue(hidePos);
+        scrollButtonAnim->setDuration(100);
+        buttonAnimOnRun = true;
+        scrollButtonAnim->start();
+    }
+    qDebug() << "button pos:" << ui->scrollDownButton->pos();
+}
+
 void ConversationWindow::on_messageLineEdit_textChanged(const QString &arg1)
 {
     conversation->draftMessage = arg1;
@@ -124,7 +167,6 @@ void ConversationWindow::on_sendButton_clicked()
 
 void ConversationWindow::on_scrollDownButton_clicked()
 {
-    //scrollDown();
     animationScrollDown();
 }
 
@@ -138,5 +180,20 @@ void ConversationWindow::on_exitButton_3_clicked()
 void ConversationWindow::on_minimizeButton_3_clicked()
 {
     this->showMinimized();
+}
+
+void ConversationWindow::scrollbarValueChanged(int value)
+{
+    if(value==ui->scrollArea->verticalScrollBar()->maximum())
+    {
+        qDebug() << "hiding button - end";
+        handleButton(false);
+        return;
+    }
+    else
+    {
+        qDebug() << "showing button scroll bar";
+        handleButton(true);
+    }
 }
 

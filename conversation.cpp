@@ -86,7 +86,7 @@ void Conversation::getUpdate(QString token)
         messages.push_back(mes);
         messageCount++;
         emit newMessage_arrived(mes);
-        user->writeToFile();
+        //user->writeToFile();
         }
     }
     else

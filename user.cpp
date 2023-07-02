@@ -50,7 +50,7 @@ void User::logout()
     QUrlQuery query;
     query.addQueryItem("username",username);
     query.addQueryItem("password",password);
-    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query);
+    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/logout",query,true);
     if(response.empty())
     {
         infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
@@ -152,7 +152,7 @@ void User::readFromFile()
         connect(conversationPtr,&Conversation::newMessage_arrived,this,&User::new_change);
         //connect(conversationPtr,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
         conversations.push_back(conversationPtr);
-        this->writeToFile();
+        //this->writeToFile();
         emit new_conversation(conversationPtr);
     }
 }

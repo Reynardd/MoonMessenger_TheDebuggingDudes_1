@@ -27,7 +27,7 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     QLabel* label = new QLabel(this);
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    label->setStyleSheet("color:#C3C3C3;padding-right:5px;padding-bottom:1px");
+    label->setStyleSheet("color:#C3C3C3;padding-right:5px;padding-left:5px;padding-bottom:1px");
 
     label->setText(sender +" "+ extractClock(date));
     label->adjustSize();

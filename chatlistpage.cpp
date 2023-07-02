@@ -89,16 +89,23 @@ void ChatListPage::connectionLost()
 
 void ChatListPage::userLoggedOut()
 {
+    qDebug() << "stopping chatThread because of loggin out";
     chatThread->stop();
+    qDebug() << "closing chat window";
     if(currentChatWindow)
     {
         currentChatWindow->close();
     }
+    qDebug() << "opening file";
     QFile file("user.txt");
+    qDebug() << "removing file";
     file.remove();
+    qDebug() << "closing file";
     file.close();
+    qDebug() << "creating login page";
     MainWindow * loginPage = new MainWindow();
     loginPage->show();
+    qDebug() << "closing this";
     this->close();
 }
 void ChatListPage::new_conversation(Conversation* conversation)

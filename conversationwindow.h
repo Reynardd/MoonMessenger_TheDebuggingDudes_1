@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 #include "user.h"
+#include <QTimer>
 namespace Ui {
 class ConversationWindow;
 }
@@ -20,20 +21,12 @@ public:
     ~ConversationWindow();
 private slots:
     void new_message(Message* mes);
-
-    void on_exitButton_clicked();
-
-    void on_minimizeButton_clicked();
-
     void on_messageLineEdit_textChanged(const QString &arg1);
-
     void on_sendButton_clicked();
-
     void on_scrollDownButton_clicked();
-
     void on_exitButton_3_clicked();
-
     void on_minimizeButton_3_clicked();
+    void scrollbarValueChanged(int);
 
 private:
     QVBoxLayout* messagesLayout;
@@ -45,6 +38,10 @@ private:
     bool isMouseOnToolbar(QPoint mousePos);
     void animationScrollDown();
     bool animationOnRun;
+    QTimer buttonHandler;
+    void handleButton(bool showing);
+    QPropertyAnimation* scrollButtonAnim;
+    bool buttonAnimOnRun;
     void scrollDown();
     QPropertyAnimation* scrollAnim;
     QPoint dragPosition;

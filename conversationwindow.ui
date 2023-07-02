@@ -122,8 +122,8 @@ color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="scrollDownButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>460</y>
+      <x>20</x>
+      <y>590</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -185,6 +185,10 @@ color: rgb(255, 255, 255);</string>
      </property>
     </widget>
    </widget>
+   <zorder>sendButton</zorder>
+   <zorder>messageLineEdit</zorder>
+   <zorder>scrollArea</zorder>
+   <zorder>scrollDownButton</zorder>
   </widget>
   <widget class="QWidget" name="toolbar" native="true">
    <property name="geometry">

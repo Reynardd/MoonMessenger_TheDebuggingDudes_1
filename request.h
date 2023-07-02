@@ -9,5 +9,5 @@
 #include <QString>
 #include <QJsonDocument>
 #include <QEventLoop>
-QJsonObject get(QString url,QUrlQuery params);
+QJsonObject get(QString url,QUrlQuery params,bool print = false);
 #endif // REQUEST_H

@@ -1,5 +1,5 @@
 #include "request.h"
-QJsonObject get(QString url, QUrlQuery params)
+QJsonObject get(QString url, QUrlQuery params,bool print)
 {
     QNetworkAccessManager* manager = new QNetworkAccessManager();
     QUrl requestURL(url);
@@ -7,7 +7,7 @@ QJsonObject get(QString url, QUrlQuery params)
     QNetworkRequest request;
     request.setUrl(requestURL);
     QNetworkReply* reply = manager->get(request);
-    //qDebug() << "url: "<<requestURL.toDisplayString();
+    if(print)qDebug() << "url: "<<requestURL.toDisplayString();
     QEventLoop eventLoop;
     QObject::connect(reply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
     eventLoop.exec();
@@ -23,7 +23,7 @@ QJsonObject get(QString url, QUrlQuery params)
         QByteArray response = reply->readAll();
         QJsonDocument doc(QJsonDocument::fromJson(response));
         jsonObject = doc.object();
-        //qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
+        if(print)qDebug() << QString(doc.toJson(QJsonDocument::Compact)) <<"\n";
     }
     reply->deleteLater();
     delete manager;
