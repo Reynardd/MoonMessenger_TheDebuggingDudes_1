@@ -47,7 +47,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     connect(chatThread,&ChatThread::sessionExpired,this,&ChatListPage::sessionExpired);
     connect(chatThread,SIGNAL(isStopped(bool)),ui->switchMode,SLOT(setChecked(bool)));
 
-    ui->nameLabel->setText("Logged in as "+ user->getUserName());
+    ui->nameLabel->setText(user->getUserName());
 
 
     ui->circle->setAttribute(Qt::WA_TransparentForMouseEvents,true);
