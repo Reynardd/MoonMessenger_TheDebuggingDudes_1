@@ -137,7 +137,7 @@ MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
     tail->setFixedSize(10,12);
     messageRect = new DynamicRectangle(message,fromMe,this);
     this->setGeometry(0,0,messageRect->width()+10,messageRect->height());
-
+    connect(message,&Message::wasLiked,[](){qDebug() << "a message was liked";});
     messageRect->show();
     if(!fromMe){messageRect->move(messageRect->x()+10,messageRect->y());}
     this->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -155,6 +155,7 @@ void MessageRect::showContextMenu(const QPoint &pos)
         QAction action1("Like", this);
         connect(&action1, &QAction::triggered,[&](){
             qDebug() << "liking message #"+QString::number(message->id()) << "in conversation" << conversationName ;
+            user->sendMessage(conversationName,"user","#SERVERCOMMAND-LIKE"+QString::number(message->id()));
         });
         contextMenu.addAction(&action1);
         contextMenu.exec(mapToGlobal(pos));

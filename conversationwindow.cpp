@@ -11,7 +11,6 @@
 extern User* user;
 void ConversationWindow::addMessage(Message* message)
 {
-
     if(message->type()!="text") {return; }
     bool fromMe = false;
     QHBoxLayout* layout = new QHBoxLayout();

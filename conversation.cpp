@@ -3,6 +3,7 @@
 #include "infodialog.h"
 #include <QTextStream>
 #include "conversationwindow.h"
+#include <algorithm>
 extern User* user;
 Conversation::Conversation(QString name,QString type,QString token,QObject *parent)
     : QObject{parent}
@@ -84,8 +85,21 @@ void Conversation::getUpdate(QString token)
         date = message.value("date").toString();
         Message* mes = new Message(messageCount,sender,text,date);
         messages.push_back(mes);
-        messageCount++;
         emit newMessage_arrived(mes);
+        messageCount++;
+        if(mes->type()=="like")
+        {
+            QString id = mes->text().replace("#SERVERCOMMAND-LIKE","").replace("\n","");
+            for(Message* m:messages)
+            {
+                if(m->id()==id.toInt())
+                {
+                    emit m->wasLiked();
+                    return;
+                }
+            }
+        }
+
         //user->writeToFile();
         }
     }

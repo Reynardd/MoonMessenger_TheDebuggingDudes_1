@@ -52,7 +52,7 @@ void JoinConversationWindow::setup(QString type)
             delete dialog;
         });
         connect(user,&User::conversationDoesntExist,[&](){
-            infoDialog* dialog = new infoDialog("Conversation Does not exist\nMake sure you entered to name correctly");
+            infoDialog* dialog = new infoDialog("Conversation Does not exist\nMake sure you entered the name correctly");
             dialog->exec();
             delete dialog;
         });

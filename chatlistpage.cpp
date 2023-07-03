@@ -68,10 +68,15 @@ ChatListPage::~ChatListPage()
 {
     chatThread->stop();
     delete chatThread;
+    qDebug() << "destructor: chat thread removed";
     delete chatsLayout;
+    qDebug() << "destructor: chat layout removed";
     delete user;
+    qDebug() << "destructor: user removed";
     delete menuAnimation;
+    qDebug() << "destructor: menu anim removed";
     delete menuButtonAnimation;
+    qDebug() << "destructor: menuButton anim removed";
     delete ui;
     qDebug() << "chatlistpage deleted";
 }

@@ -229,7 +229,7 @@ void User::joinConversation(QString name,QString type)
     QUrlQuery query;
     query.addQueryItem("token",token);
     query.addQueryItem(type+"_name",name);
-    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/join"+type,query);
+    QJsonObject response = get("http://api.barafardayebehtar.ml:8080/join"+type,query,true);
     if(response.empty())
     {
         infoDialog *dialog = new infoDialog("Couldn't Connect to the Host!\nCheck your Internet Connection");
@@ -244,7 +244,7 @@ void User::joinConversation(QString name,QString type)
     }
     if(response.value("code").toString()=="404")
     {
-        emit conversationAlreadyExist();
+        emit conversationDoesntExist();
         return;
     }
     infoDialog *dialog = new infoDialog("Something went Wrong\nServer Message: "+response.value("message").toString());
