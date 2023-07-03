@@ -129,6 +129,7 @@
         <file>sendButtonText.svg</file>
         <file>sendButtonTextHover.svg</file>
         <file>sendButtonTextPressed.svg</file>
+        <file>likeIcon.svg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>

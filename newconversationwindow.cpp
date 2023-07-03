@@ -31,12 +31,14 @@ void NewConversationWindow::userSetup()
         dialog->exec();
         delete dialog;
     });
-    connect(user,&User::messageSentSuccessfully,[&](){
+    auto g =[&](){
         infoDialog* dialog = new infoDialog("Message was sent to the user\nYou should be able to see them in chats now");
         dialog->exec();
         delete dialog;
-        close();
-    });
+        this->close();
+
+    };
+    connect(user,&User::messageSentSuccessfully,g);
     connect(ui->createButton,&QPushButton::clicked,this,&NewConversationWindow::textUser);
 }
 void NewConversationWindow::channelSetup()
@@ -53,7 +55,7 @@ void NewConversationWindow::channelSetup()
         infoDialog* dialog = new infoDialog("Channel was created successfully\nYou should be able to see it in chats");
         dialog->exec();
         delete dialog;
-        close();
+        this->close();
     });
 }
 void NewConversationWindow::groupSetup()

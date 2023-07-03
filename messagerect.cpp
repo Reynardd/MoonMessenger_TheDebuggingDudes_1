@@ -29,7 +29,8 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     QString style;
-
+    like = new QWidget(this);
+    like->setStyleSheet("image:url(:/label/likeIcon.svg)");
 
     label->setText(sender +"  "+ extractClock(date));
     label->adjustSize();
@@ -42,18 +43,23 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
                 border-bottom-left-radius:10px;}";
         this->setAlignment(Qt::AlignVCenter|Qt::AlignLeft);
         label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
-        label->setStyleSheet("color:#C3C3C3;padding-right:5px;padding-left:5px;padding-bottom:1px");
+        labelStyle="color:#C3C3C3;";
+        //label->setStyleSheet();
     }
     else
     {
         style = "QTextEdit{background-color: qlineargradient(spread:pad, x1:0, y1:0.244, x2:1,\
-                y2:0.801136, stop:0 rgba(28, 209, 152, 255), stop:1 rgba(50, 151, 171, 255));color:black;\
+                y2:0.801136, stop:0 rgba(39, 33, 43, 255), stop:1 rgba(39, 33, 43, 255));color:white;\
                 border:none;border-radius:10px;}";
         label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
         this->setAlignment(Qt::AlignVCenter|Qt::AlignRight);
-        label->setStyleSheet("color:#212121;padding-right:5px;padding-left:5px;padding-bottom:1px");
+        labelStyle="color:#212121;";
+        labelStyle="color:#C3C3C3;";
+        //label->setStyleSheet();
     }
-
+    label->setStyleSheet(labelStyle+"padding-right:5px;padding-left:5px;padding-bottom:1px");
+    isLiked = false;
+    like->hide();
     this->setStyleSheet(style);
     int width = this->fontMetrics().boundingRect(this->toPlainText()).width();
     if(width < 70) { this->setFixedWidth(100);}
@@ -81,14 +87,35 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
         this->setFixedHeight(45);
     }
     QFont font = label->font();
+    if(fromMe) { like->setGeometry(5,this->height()-12,10,10); }
+    else { like->setGeometry(this->width()-15,this->height()-12,10,10);}
     font.setPointSize(8);
     label->setFont(font);
     label->setGeometry(0,this->height()-label->height(),this->width(),label->height());
 
+    if(message->isLiked)
+    {
+        handleLike();
+    }
+
+}
+void DynamicRectangle::handleLike()
+{
+    if(isLiked)
+    {
+        isLiked = false;
+        like->hide();
+        label->setStyleSheet(labelStyle+"padding-right:5px;padding-left:5px;padding-bottom:1px");
+    }
+    else
+    {
+        isLiked = true;
+        like->show();
+        label->setStyleSheet(labelStyle+"padding-right:15px;padding-left:15px;padding-bottom:1px");
+    }
 }
 void DynamicRectangle::onTextChanged()
 {
-
     int width = this->fontMetrics().boundingRect(this->toPlainText()).width();
     if(width < 70) { this->setFixedWidth(100);}
     else if (width > 220) { this->setFixedWidth(250);}
@@ -102,7 +129,6 @@ void DynamicRectangle::onTextChanged()
 
         int totalHeight = 0;
         QStringList lines = this->toPlainText().split("\n");
-        qDebug() << "multiLine";
         for (const QString& line : lines)
         {
             QRect rect = metrics.boundingRect(QRect(0, 0, 220, 0), Qt::AlignLeft | Qt::TextWrapAnywhere, line);
@@ -137,7 +163,7 @@ MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
     tail->setFixedSize(10,12);
     messageRect = new DynamicRectangle(message,fromMe,this);
     this->setGeometry(0,0,messageRect->width()+10,messageRect->height());
-    connect(message,&Message::wasLiked,[](){qDebug() << "a message was liked";});
+    connect(message,&Message::wasLiked,messageRect,&DynamicRectangle::handleLike);
     messageRect->show();
     if(!fromMe){messageRect->move(messageRect->x()+10,messageRect->y());}
     this->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);

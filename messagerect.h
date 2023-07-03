@@ -13,10 +13,14 @@ class DynamicRectangle : public QTextEdit
 public:
     DynamicRectangle(Message* message,bool fromME,QWidget* parent = nullptr);
     void wheelEvent(QWheelEvent* event) override;
+    void handleLike();
 private:
+    QString labelStyle;
     void onTextChanged();
+    bool isLiked;
     bool fromMe;
     QLabel* label;
+    QWidget* like;
 };
 
 class MessageRect : public QWidget

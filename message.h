@@ -16,6 +16,8 @@ public:
     QString date();
     QString type();
     const int& id();
+    bool isLiked;
+    void toggleLiked();
 private:
     int _id;
     QString _sender;

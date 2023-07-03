@@ -7,6 +7,8 @@ Message::Message(int id,QString sender,QString text,QString date,QObject *parent
     _sender = sender;
     _text = text;
     _date = date;
+    connect(this,&Message::wasLiked,this,&Message::toggleLiked);
+    isLiked = false;
 }
 Message::Message(QString data,QObject* parent) : QObject{parent}
 {
@@ -15,6 +17,8 @@ Message::Message(QString data,QObject* parent) : QObject{parent}
     _sender = stream.readLine();
     _date = stream.readLine();
     _text = stream.readAll();
+    isLiked = false;
+    connect(this,&Message::wasLiked,this,&Message::toggleLiked);
 }
 Message::Message(Message &m)
 {
@@ -36,6 +40,13 @@ QString Message::text()
     return _text;
 }
 const int& Message::id() { return _id; }
+
+void Message::toggleLiked()
+{
+    if(isLiked){isLiked = false;}
+    else {isLiked = true;}
+
+}
 QString Message::toString()
 {
     QString res;

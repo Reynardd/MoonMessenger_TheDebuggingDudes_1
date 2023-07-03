@@ -26,7 +26,16 @@ Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
         buffer = stream.readLine();
         if(buffer=="MM:ENDOFMESSAGE")
         {
-            messages.push_back(new Message(message));
+            Message* mes = new Message(message);
+            if(mes->type()=="like")
+            {
+                QString id = mes->text().replace("#SERVERCOMMAND-LIKE","").replace("\n","");
+                for(Message* m:messages)
+                {
+                    if(m->id()==id.toInt()) { emit m->wasLiked();break;}
+                }
+            }
+            messages.push_back(mes);
             message.clear();
         }
         else
@@ -90,6 +99,7 @@ void Conversation::getUpdate(QString token)
         if(mes->type()=="like")
         {
             QString id = mes->text().replace("#SERVERCOMMAND-LIKE","").replace("\n","");
+                qDebug() << "emitting like for"<<id;
             for(Message* m:messages)
             {
                 if(m->id()==id.toInt())
