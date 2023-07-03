@@ -40,7 +40,7 @@ void NewConversationWindow::userSetup()
     };
     connection = connect(user, &User::messageSentSuccessfully, g);
     connect(user, &User::messageSentSuccessfully, [=]() {
-        QObject::disconnect(connection);
+        disconnect(connection);
     });
     connect(ui->createButton,&QPushButton::clicked,this,&NewConversationWindow::textUser);
 }

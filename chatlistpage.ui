@@ -100,10 +100,14 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);</string>
+      <string notr="true">color: rgb(255, 255, 255);
+</string>
      </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -400,7 +404,7 @@ QPushButton:pressed {
     <widget class="QWidget" name="widget_3" native="true">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>82</x>
        <y>12</y>
        <width>65</width>
        <height>65</height>

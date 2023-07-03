@@ -121,7 +121,6 @@ void ChatListPage::new_conversation(Conversation* conversation)
 
 void ChatListPage::on_pushButton_clicked()
 {
-    qDebug() << "logout button clicked";
     if(chatThread->isRunning()){ logOutFlag = true; }
     else { logOutFlag = false; }
     chatThread->stop();

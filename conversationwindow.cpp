@@ -12,7 +12,6 @@ extern User* user;
 void ConversationWindow::addMessage(Message* message)
 {
     if(message->type()!="text") {
-        qDebug() << message->text();
         return; }
     bool fromMe = false;
     QHBoxLayout* layout = new QHBoxLayout();
@@ -65,7 +64,7 @@ ConversationWindow::ConversationWindow(Conversation* conversation,QWidget *paren
     ui->messageLineEdit->setText(conversation->draftMessage);
     ui->scrollDownButton->raise();
 
-    QTimer*waiter = new QTimer;
+    QTimer*waiter = new QTimer(this);
     waiter->setSingleShot(true);
     connect(waiter,&QTimer::timeout,[&](){
         connect(ui->scrollArea->verticalScrollBar(),SIGNAL(valueChanged(int)),this,SLOT(scrollbarValueChanged(int)));

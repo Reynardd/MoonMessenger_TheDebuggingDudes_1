@@ -26,8 +26,6 @@ void User:: newConversation(QString name,QString type)
         }
     }
     if(name=="")return;
-    qDebug() << "new conv name confirm: "<<name;
-    qDebug() << "new conv type: "<<type;
     Conversation* conversation = new Conversation(name,type,this->token);
     User::connect(conversation,SIGNAL(newMessage_arrived(Message*)),this,SLOT(new_change(Message*)));
     //connect(conversation,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
@@ -171,7 +169,6 @@ void User::readFromFile()
 }
 void User::new_change(Message* message)
 {
-    qDebug() << "new change";
     this->writeToFile();
 }
 void User::sessionExpiredSlot()
