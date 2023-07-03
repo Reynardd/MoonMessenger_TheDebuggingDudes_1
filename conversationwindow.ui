@@ -169,8 +169,15 @@ image:url(:/label/scrollDown.svg);
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/label/sendButton.svg);
-border:none;</string>
+      <string notr="true">QPushButton{
+	image: url(:/label/sendButton.svg);
+	border:none;
+}
+QPushButton:pressed {
+	image: url(:/label/sendButtonPressed.svg);
+	border:none;
+}
+</string>
      </property>
      <property name="text">
       <string/>

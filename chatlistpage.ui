@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>525</height>
+    <height>530</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>350</width>
-    <height>525</height>
+    <height>530</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
-    <height>525</height>
+    <height>530</height>
    </size>
   </property>
   <property name="sizeIncrement">
@@ -86,7 +86,7 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>430</y>
+       <y>85</y>
        <width>211</width>
        <height>21</height>
       </rect>
@@ -110,7 +110,7 @@ border-radius: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10p
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>460</y>
+       <y>439</y>
        <width>80</width>
        <height>24</height>
       </rect>
@@ -161,7 +161,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>1</x>
-       <y>0</y>
+       <y>467</y>
        <width>230</width>
        <height>32</height>
       </rect>
@@ -175,7 +175,7 @@ background:none;</string>
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>460</y>
+       <y>439</y>
        <width>101</width>
        <height>24</height>
       </rect>
@@ -205,9 +205,9 @@ QPushButton
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>55</x>
-       <y>140</y>
-       <width>120</width>
+       <x>10</x>
+       <y>208</y>
+       <width>210</width>
        <height>24</height>
       </rect>
      </property>
@@ -241,7 +241,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>178</x>
-       <y>462</y>
+       <y>441</y>
        <width>20</width>
        <height>20</height>
       </rect>
@@ -254,9 +254,9 @@ image: url(:/label/moon.png);</string>
     <widget class="QPushButton" name="pushButton_3">
      <property name="geometry">
       <rect>
-       <x>55</x>
-       <y>80</y>
-       <width>120</width>
+       <x>10</x>
+       <y>151</y>
+       <width>210</width>
        <height>24</height>
       </rect>
      </property>
@@ -284,9 +284,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButton_4">
      <property name="geometry">
       <rect>
-       <x>55</x>
-       <y>110</y>
-       <width>120</width>
+       <x>10</x>
+       <y>175</y>
+       <width>210</width>
        <height>24</height>
       </rect>
      </property>
@@ -314,9 +314,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>55</x>
-       <y>170</y>
-       <width>120</width>
+       <x>10</x>
+       <y>232</y>
+       <width>210</width>
        <height>24</height>
       </rect>
      </property>
@@ -344,9 +344,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
-       <x>55</x>
-       <y>50</y>
-       <width>120</width>
+       <x>10</x>
+       <y>118</y>
+       <width>210</width>
        <height>24</height>
       </rect>
      </property>
@@ -371,6 +371,47 @@ QPushButton:pressed {
       <string/>
      </property>
     </widget>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>175</y>
+       <width>210</width>
+       <height>2</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/label/lineAddButton.svg);</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>231</y>
+       <width>210</width>
+       <height>2</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/label/lineAddButton.svg);</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_3" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>12</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/label/avatar.svg);
+boder:none
+</string>
+     </property>
+    </widget>
     <zorder>switchMode</zorder>
     <zorder>nameLabel</zorder>
     <zorder>pushButton</zorder>
@@ -381,6 +422,9 @@ QPushButton:pressed {
     <zorder>pushButton_4</zorder>
     <zorder>pushButton_5</zorder>
     <zorder>pushButton_6</zorder>
+    <zorder>widget</zorder>
+    <zorder>widget_2</zorder>
+    <zorder>widget_3</zorder>
    </widget>
    <widget class="QPushButton" name="menuToggleButton">
     <property name="geometry">

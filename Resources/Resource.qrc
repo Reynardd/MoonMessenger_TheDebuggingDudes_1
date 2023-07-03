@@ -9,7 +9,6 @@
         <file>arrowBackHover.svg</file>
         <file>arrowBack.svg</file>
         <file>background.svg</file>
-        <file>logo.svg</file>
         <file>background.jpg</file>
         <file>background300ppi.jpg</file>
     </qresource>
@@ -96,21 +95,6 @@
         <file>userChatButton.svg</file>
         <file>userChatButtonHover.svg</file>
         <file>userChatButtonPressed.svg</file>
-        <file>createChannelButton.svg</file>
-        <file>createGroupButton.svg</file>
-        <file>joinChannelButton.svg</file>
-        <file>joinGroupButton.svg</file>
-        <file>newMessageButton.svg</file>
-        <file>createChannelButtonHover.svg</file>
-        <file>createChannelButtonPressed.svg</file>
-        <file>createGroupButtonHover.svg</file>
-        <file>joinChannelButtonHover.svg</file>
-        <file>joinChannelButtonPressed.svg</file>
-        <file>joinGroupButtonHover.svg</file>
-        <file>joinGroupButtonPressed.svg</file>
-        <file>newMessageButtonHover.svg</file>
-        <file>newMessageButtonPressed.svg</file>
-        <file>createGroupButtonPressed.svg</file>
         <file>cancelButton.svg</file>
         <file>cancelButtonHover.svg</file>
         <file>cancelButtonPressed.svg</file>
@@ -130,7 +114,26 @@
         <file>sendButtonTextPressed.svg</file>
         <file>likeIcon.svg</file>
         <file>bubbleTailLeft.svg</file>
-        <file>icon.jpg</file>
+        <file>createChannelButton.svg</file>
+        <file>createChannelButtonHover.svg</file>
+        <file>createChannelButtonPressed.svg</file>
+        <file>createGroupButton.svg</file>
+        <file>createGroupButtonHover.svg</file>
+        <file>joinChannelButton.svg</file>
+        <file>joinChannelButtonHover.svg</file>
+        <file>joinChannelButtonPressed.svg</file>
+        <file>joinGroupButton.svg</file>
+        <file>joinGroupButtonHover.svg</file>
+        <file>joinGroupButtonPressed.svg</file>
+        <file>newMessageButton.svg</file>
+        <file>newMessageButtonHover.svg</file>
+        <file>newMessageButtonPressed.svg</file>
+        <file>lineAddButton.svg</file>
+        <file>avatar.svg</file>
+        <file>createGroupButtonPressed.svg</file>
+        <file>sendButtonPressed.svg</file>
+        <file>logo.svg</file>
+         <file>icon.jpg</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
