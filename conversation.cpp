@@ -40,19 +40,15 @@ Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
                 }
             }
 
-            else if(mes->type()=="edit")
+
+            if(mes->type()=="delete")
             {
-                QRegularExpression regex("#SERVERCOMMAND-EDIT:(\\d+)-(.*)");
-                QRegularExpressionMatch match = regex.match(mes->text());
-                QString id = match.captured(1);
-                QString text = match.captured(2);
+                QString id = mes->text().replace("#SERVERCOMMAND-DELETE","").replace("\n","");
                 for(Message* m:messages)
                 {
                     if(m->id()==id.toInt())
                     {
-                        qDebug() << "emiting edited";
-                        emit m->edited(text);
-                        break;
+                        emit m->deleted();;
                     }
                 }
             }
@@ -128,22 +124,19 @@ void Conversation::getUpdate(QString token)
                 }
             }
         }
-        else if(mes->type()=="edit")
+
+        if(mes->type()=="delete")
         {
-            QRegularExpression regex("#SERVERCOMMAND-EDIT:(\\d+)-(.*)");
-            QRegularExpressionMatch match = regex.match(mes->text());
-            QString id = match.captured(1);
-            QString text = match.captured(2);
+            QString id = mes->text().replace("#SERVERCOMMAND-DELETE","").replace("\n","");
             for(Message* m:messages)
             {
                 if(m->id()==id.toInt())
                 {
-                    emit m->edited(text);
+                    emit m->deleted();
                     return;
                 }
             }
         }
-
         //user->writeToFile();
         }
     }

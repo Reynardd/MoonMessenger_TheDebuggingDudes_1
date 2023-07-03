@@ -24,6 +24,7 @@ private slots:
 
 private:
     Ui::NewConversationWindow *ui;
+    QMetaObject::Connection connection;
     void mousePressEvent(QMouseEvent*) override;
     void mouseMoveEvent(QMouseEvent*) override;
     void userSetup();

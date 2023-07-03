@@ -22,7 +22,7 @@ private:
     QLabel* label;
     QWidget* like;
 private slots:
-    void edit(QString text);
+
 };
 
 class MessageRect : public QWidget

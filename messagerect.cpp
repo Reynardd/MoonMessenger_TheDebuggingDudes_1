@@ -91,7 +91,7 @@ DynamicRectangle::DynamicRectangle(Message* message,bool fromMe,QWidget* parent)
     label->setGeometry(0,this->height()-label->height(),this->width(),label->height());
 
     if(message->isLiked) { handleLike(); }
-    if(message->isEdited) {edit(message->editedText());}
+
 }
 void DynamicRectangle::handleLike()
 {
@@ -115,10 +115,6 @@ void DynamicRectangle::wheelEvent(QWheelEvent* event)
 {
     event->ignore();
 }
-void DynamicRectangle::edit(QString text)
-{
-    this->setFixedHeight(0);
-}
 MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
     : QWidget{parent},fromMe(fromMe),message(message)
 {
@@ -136,7 +132,7 @@ MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
     messageRect = new DynamicRectangle(message,fromMe,this);
     this->setGeometry(0,0,messageRect->width()+10,messageRect->height());
     connect(message,&Message::wasLiked,messageRect,&DynamicRectangle::handleLike);
-    connect(message,&Message::edited,[&](){this->setFixedHeight(0);});
+    connect(message,&Message::deleted,[&](){qDebug() << "deleted called";this->setFixedHeight(0);});
     messageRect->show();
     if(!fromMe){messageRect->move(messageRect->x()+10,messageRect->y());}
     this->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -152,6 +148,7 @@ MessageRect::MessageRect(Message* message,bool fromMe,QWidget *parent)
         tail->setStyleSheet("image:url(:/label/bubbleTail.svg);");
     }
     tail->show();
+    if(message->isDeleted) {this->setFixedHeight(0);}
 }
 
 void MessageRect::showContextMenu(const QPoint &pos)
@@ -165,9 +162,9 @@ void MessageRect::showContextMenu(const QPoint &pos)
         user->sendMessage(conversationName,"user","#SERVERCOMMAND-LIKE"+QString::number(message->id()));
     });
     connect(&action2, &QAction::triggered,[&](){
-        qDebug() << "editing message #"+QString::number(message->id()) << "in conversation" << conversationName ;
-        user->sendMessage(conversationName,"user","#SERVERCOMMAND-EDIT:"+QString::number(message->id())+"-Edited Message");
-    });
+        qDebug() << "deleting message #"+QString::number(message->id()) << "in conversation" << conversationName ;
+        user->sendMessage(conversationName,"user","#SERVERCOMMAND-DELETE"+QString::number(message->id()))
+    ;});
     if(!fromMe)contextMenu.addAction(&action1);
     else contextMenu.addAction(&action2);
     contextMenu.exec(mapToGlobal(pos));

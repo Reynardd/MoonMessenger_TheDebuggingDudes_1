@@ -38,7 +38,7 @@ void NewConversationWindow::userSetup()
         this->close();
 
     };
-    QMetaObject::Connection connection = connect(user, &User::messageSentSuccessfully, g);
+    connection = connect(user, &User::messageSentSuccessfully, g);
     connect(user, &User::messageSentSuccessfully, [=]() {
         QObject::disconnect(connection);
     });
@@ -92,6 +92,7 @@ void NewConversationWindow::createGroup()
 }
 NewConversationWindow::~NewConversationWindow()
 {
+    disconnect(connection);
     delete ui;
 }
 void NewConversationWindow::mousePressEvent(QMouseEvent* event)
