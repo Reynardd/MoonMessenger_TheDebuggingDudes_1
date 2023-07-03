@@ -2,7 +2,7 @@
 the messenger has fallen from the space so it might malfuntion :D go easy on it
 for installing on mac extract the .dmg file and use the command: 
 in shell: `./messenger.app/Contents/macOS/messenger`
-
+dont forget to give permission to the app for r/w files
 some pictures from the app
 
 ![photo_2_2023-07-03_12-22-21](https://github.com/Reynardd/MoonMessenger_TheDebuggingDudes_1/assets/83103488/f52fb587-c435-4182-a52f-18b824b13f46)
