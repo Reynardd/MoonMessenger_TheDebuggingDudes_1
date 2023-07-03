@@ -59,7 +59,7 @@ border-bottom-left-radius:6px;
    <widget class="QFrame" name="menuLayout">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-230</x>
       <y>0</y>
       <width>230</width>
       <height>500</height>
