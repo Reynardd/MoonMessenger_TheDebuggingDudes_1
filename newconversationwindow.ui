@@ -55,7 +55,8 @@ padding-left:22px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/back/logo.svg);</string>
+     <string notr="true">image: url(:/back/logo.svg);
+image: url(:/label/logo.svg);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">

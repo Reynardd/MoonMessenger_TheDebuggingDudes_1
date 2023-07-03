@@ -206,7 +206,7 @@ background:none;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/back/logo.svg);</string>
+     <string notr="true">image: url(:/label/logo.svg);</string>
     </property>
    </widget>
    <widget class="QWidget" name="usernameBorder" native="true">
