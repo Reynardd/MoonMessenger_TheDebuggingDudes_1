@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QApplication::setWindowIcon(QIcon(":/label/icon.jpg"));
+    QApplication::setWindowIcon(QIcon(":/label/icon.ico"));
     QFile file("user.txt");
     if(file.exists())
     {

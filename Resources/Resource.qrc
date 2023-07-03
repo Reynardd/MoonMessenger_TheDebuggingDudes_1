@@ -133,7 +133,8 @@
         <file>createGroupButtonPressed.svg</file>
         <file>sendButtonPressed.svg</file>
         <file>logo.svg</file>
-         <file>icon.jpg</file>
+        <file>icon.jpg</file>
+        <file>icon.ico</file>
     </qresource>
     <qresource prefix="/toolbar">
         <file>MacOsToolBar.svg</file>
