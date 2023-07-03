@@ -156,15 +156,15 @@ padding-left:22px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	image: url(:/label/createButton.svg);
+	image: url(:/label/joinButton.svg);
 	border:none;
 }
 QPushButton:hover {
-	image: url(:/label/createButtonHover.svg);
+	image: url(:/label/joinButtonHover.svg);
 	border:none;
 }
 QPushButton:pressed {
-	image: url(:/label/createButtonPressed.svg);
+	image: url(:/label/joinButtonPressed.svg);
 	border:none;
 }
 </string>
