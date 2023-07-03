@@ -21,6 +21,7 @@ ChatListPage::ChatListPage(QString username,QString password,QString token,bool 
     this->setWindowFlag(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_DeleteOnClose,true);
 
+    sessionExpiredFlag = false;
 
     showingDialogFlag = false;
     showingMenu = false;
@@ -222,8 +223,8 @@ void ChatListPage::on_pushButton_2_clicked()
 
 void ChatListPage::on_switchMode_toggled(bool checked)
 {
-    QRect left(122,462,20,20);
-    QRect right(178,462,20,20);
+    QRect left(122,441,20,20);
+    QRect right(178,441,20,20);
     switchAnimation->setDuration(100);
     if(checked)
     {

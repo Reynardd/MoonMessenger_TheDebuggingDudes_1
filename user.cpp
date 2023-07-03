@@ -150,11 +150,23 @@ void User::readFromFile()
         QTextStream conversationStream(&conversationFile);
         QString data = conversationStream.readAll();
         Conversation* conversationPtr = new Conversation(data,this);
+        bool flag = true;
+        for(auto&conv:conversations)
+        {
+            if(conv->name()==conversationPtr->name()&&conv->type()==conversationPtr->type())
+            {
+                flag = false;
+                break;
+            }
+        }
+        if(flag)
+        {
         connect(conversationPtr,&Conversation::newMessage_arrived,this,&User::new_change);
         //connect(conversationPtr,SIGNAL(sendMessageSignal(QString,QString,QString)),this,SLOT(sendMessage(QString,QString,QString)));
         conversations.push_back(conversationPtr);
         //this->writeToFile();
         emit new_conversation(conversationPtr);
+        }
     }
 }
 void User::new_change(Message* message)

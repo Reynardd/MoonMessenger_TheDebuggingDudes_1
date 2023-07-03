@@ -2,9 +2,11 @@
 #include "chatlistpage.h"
 #include <QApplication>
 #include <QFile>
+#include <QIcon>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QApplication::setWindowIcon(QIcon(":/label/icon.jpg"));
     QFile file("user.txt");
     if(file.exists())
     {

@@ -38,7 +38,10 @@ void NewConversationWindow::userSetup()
         this->close();
 
     };
-    connect(user,&User::messageSentSuccessfully,g);
+    QMetaObject::Connection connection = connect(user, &User::messageSentSuccessfully, g);
+    connect(user, &User::messageSentSuccessfully, [=]() {
+        QObject::disconnect(connection);
+    });
     connect(ui->createButton,&QPushButton::clicked,this,&NewConversationWindow::textUser);
 }
 void NewConversationWindow::channelSetup()

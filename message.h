@@ -15,16 +15,21 @@ public:
     QString toString();
     QString date();
     QString type();
+    QString editedText();
     const int& id();
-    bool isLiked;
+    bool isLiked,isEdited;
     void toggleLiked();
+private slots:
+    void edit(QString);
 private:
     int _id;
     QString _sender;
     QString _text;
     QString _date;
+    QString _newText;
 signals:
     void wasLiked();
+    void edited(QString);
 };
 
 #endif // MESSAGE_H

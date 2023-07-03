@@ -8,7 +8,9 @@ Message::Message(int id,QString sender,QString text,QString date,QObject *parent
     _text = text;
     _date = date;
     connect(this,&Message::wasLiked,this,&Message::toggleLiked);
+    connect(this,SIGNAL(edited(QString)),this,SLOT(edit(QString)));
     isLiked = false;
+    isEdited = false;
 }
 Message::Message(QString data,QObject* parent) : QObject{parent}
 {
@@ -18,7 +20,9 @@ Message::Message(QString data,QObject* parent) : QObject{parent}
     _date = stream.readLine();
     _text = stream.readAll();
     isLiked = false;
+    isEdited = false;
     connect(this,&Message::wasLiked,this,&Message::toggleLiked);
+    connect(this,SIGNAL(edited(QString)),this,SLOT(edit(QString)));
 }
 Message::Message(Message &m)
 {
@@ -60,5 +64,13 @@ QString Message::toString()
 QString Message::type()
 {
     if(this->_text.startsWith("#SERVERCOMMAND-LIKE")){ return "like";}
+    if(this->_text.startsWith("#SERVERCOMMAND-EDIT")){ return "edit";}
     return "text";
 }
+void Message::edit(QString text)
+{
+    qDebug() << "message is edited";
+    _newText = text;
+    isEdited = true;
+}
+QString Message::editedText() { return _newText; }

@@ -24,9 +24,13 @@ Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
     while(!stream.atEnd())
     {
         buffer = stream.readLine();
+
         if(buffer=="MM:ENDOFMESSAGE")
         {
+
             Message* mes = new Message(message);
+            messages.push_back(mes);
+            message.clear();
             if(mes->type()=="like")
             {
                 QString id = mes->text().replace("#SERVERCOMMAND-LIKE","").replace("\n","");
@@ -35,8 +39,24 @@ Conversation::Conversation(QString data, QObject* parent) : QObject{parent}
                     if(m->id()==id.toInt()) { emit m->wasLiked();break;}
                 }
             }
-            messages.push_back(mes);
-            message.clear();
+
+            else if(mes->type()=="edit")
+            {
+                QRegularExpression regex("#SERVERCOMMAND-EDIT:(\\d+)-(.*)");
+                QRegularExpressionMatch match = regex.match(mes->text());
+                QString id = match.captured(1);
+                QString text = match.captured(2);
+                for(Message* m:messages)
+                {
+                    if(m->id()==id.toInt())
+                    {
+                        qDebug() << "emiting edited";
+                        emit m->edited(text);
+                        break;
+                    }
+                }
+            }
+
         }
         else
         {
@@ -99,12 +119,26 @@ void Conversation::getUpdate(QString token)
         if(mes->type()=="like")
         {
             QString id = mes->text().replace("#SERVERCOMMAND-LIKE","").replace("\n","");
-                qDebug() << "emitting like for"<<id;
             for(Message* m:messages)
             {
                 if(m->id()==id.toInt())
                 {
                     emit m->wasLiked();
+                    return;
+                }
+            }
+        }
+        else if(mes->type()=="edit")
+        {
+            QRegularExpression regex("#SERVERCOMMAND-EDIT:(\\d+)-(.*)");
+            QRegularExpressionMatch match = regex.match(mes->text());
+            QString id = match.captured(1);
+            QString text = match.captured(2);
+            for(Message* m:messages)
+            {
+                if(m->id()==id.toInt())
+                {
+                    emit m->edited(text);
                     return;
                 }
             }
